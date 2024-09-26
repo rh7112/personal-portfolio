@@ -1,6 +1,6 @@
 import React from "react";
 
-const SkillBlock = (icon, title, level) => {
+const SkillCard = (icon, title, level) => {
   const levelColor = {
     Experienced: "text-orange-700",
     Intermediate: "text-blue-400",
@@ -18,4 +18,4 @@ const SkillBlock = (icon, title, level) => {
   );
 };
 
-export default SkillBlock;
+export default SkillCard;

@@ -2,7 +2,15 @@
 import React, { useTransition, useState } from "react";
 import Image from "next/image";
 import TabButton from "./TabButton";
-import { FaDatabase, FaPython, FaReact, FaNodeJs, FaGit } from "react-icons/fa";
+import {
+  FaDatabase,
+  FaPython,
+  FaReact,
+  FaNodeJs,
+  FaGit,
+  FaGraduationCap,
+  FaUserGraduate,
+} from "react-icons/fa";
 import { FaC } from "react-icons/fa6";
 import { IoLogoJavascript, IoIosDocument } from "react-icons/io";
 import {
@@ -12,101 +20,116 @@ import {
   SiRetool,
   Si4D,
   SiBraintree,
+  SiCsharp,
+  SiDotnet,
 } from "react-icons/si";
 import { TbBrandCpp, TbBrandNextjs } from "react-icons/tb";
 import { BsRegex } from "react-icons/bs";
 import { GrGraphQl } from "react-icons/gr";
-import SkillBlock from "./SkillBlock";
+import SkillCard from "./SkillCard";
+import ExperienceCard from "./ExperienceCard";
+import EducationCard from "./EducationCard";
+import { GiDiploma } from "react-icons/gi";
 
 const TAB_DATA = [
-  {
-    title: "Skills",
-    id: "skills",
-    content: (
-      <div className="grid auto-rows-fr lg:grid-cols-3 sm:grid-cols-2 gap-1">
-        {SkillBlock(IoLogoJavascript, "Javascript", "Experienced")}
-        {SkillBlock(SiRetool, "Retool", "Experienced")}
-        {SkillBlock(FaDatabase, "SQL (MySQL, PostGreSQL)", "Experienced")}
-        {SkillBlock(Si4D, "Fourth Dimensional Programming (4D)", "Experienced")}
-        {SkillBlock(FaPython, "Python", "Experienced")}
-        {SkillBlock(FaGit, "Git (Github, Gitlab)", "Experienced")}
-        {SkillBlock(BsRegex, "Regex", "Experienced")}
-        {SkillBlock(IoIosDocument, "Documentation", "Experienced")}
-        {SkillBlock(IoLogoJavascript, "User-Interface Design", "Intermediate")}
-        {SkillBlock(IoLogoJavascript, "User-Experience Design", "Intermediate")}
-        {SkillBlock(TbBrandCpp, "C++", "Intermediate")}
-        {SkillBlock(FaC, "C", "Intermediate")}
-        {SkillBlock(SiJira, "Jira Query Language (JQL)", "Intermediate")}
-        {SkillBlock(SiDatadog, "Datadog", "Intermediate")}
-        {SkillBlock(FaReact, "React", "Beginner")}
-        {SkillBlock(FaNodeJs, "Node", "Beginner")}
-        {SkillBlock(GrGraphQl, "GraphQL", "Beginner")}
-        {SkillBlock(TbBrandNextjs, "NextJS", "Beginner")}
-        {SkillBlock(SiNextui, "NextUI", "Beginner")}
-      </div>
-    ),
-  },
   {
     title: "Experience",
     id: "experience",
     content: (
-      <ul className="list-disc pl-2">
-        <li>Software Developer - Sweetwater Sound Inc.</li>
-        <li>Information Technology Intern - Zimmer Biomet</li>
-        <li>Post-Enumeration Survey Enumerator - Census Bureau</li>
-        <li>Technology Sales Associate - Staples</li>
-        <li>
-          Concrete Former, Pourer, Laborer, Finisher - Black's Concrete
-          Construction
-        </li>
-      </ul>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <ExperienceCard
+          title="Sweetwater Sound Inc."
+          dateRange="Since May 2021"
+          jobTitle="Software Developer"
+        />
+        <ExperienceCard
+          title="Zimmer Biomet"
+          dateRange="Oct. 2020 - May 2021"
+          jobTitle="Information Technology Intern"
+        />
+        <ExperienceCard
+          title="United States Census Bureau"
+          dateRange="Jan. 2020 - Oct. 2020"
+          jobTitle="Post-Enumeration Surveyor"
+        />
+        <ExperienceCard
+          title="Staples"
+          dateRange="Jun. 2018 - May 2019"
+          jobTitle="Technology Sales Associate"
+        />
+        <ExperienceCard
+          title="Black's Concrete Construction"
+          dateRange="Jun. 2016 - Feb. 2017"
+          jobTitle="Concrete Former, Pourer, Laborer, Finisher"
+        />
+      </div>
     ),
   },
   {
-    title: "Projects",
-    id: "projects",
+    title: "Skills",
+    id: "skills",
     content: (
-      <ul className="list-disc pl-2">
-        <li>Sweetwater Turkey Handout Application (ReTurkey)</li>
-        <li>Gear Exchange - BrainTree by Paypal Implementation</li>
-        <li>
-          The Tax Resource's (TTR) Tax Exemption Certification Management System
-          (ECMS)
-        </li>
-        <li>Consumer Audio</li>
-        <li>In-House Credit Freezing/Thawing</li>
-        <li>Price Management Platform</li>
-        <li>Personalized Tile Promotions</li>
-        <li>Search Miner</li>
-        <li>DementiaTrack</li>
-      </ul>
+      <div className="grid auto-rows-fr lg:grid-cols-3 sm:grid-cols-2 gap-2">
+        {SkillCard(IoLogoJavascript, "Javascript", "Experienced")}
+        {SkillCard(SiRetool, "Retool", "Experienced")}
+        {SkillCard(FaDatabase, "SQL (MySQL, PostGreSQL)", "Experienced")}
+        {SkillCard(Si4D, "Fourth Dimensional Programming (4D)", "Experienced")}
+        {SkillCard(FaPython, "Python", "Experienced")}
+        {SkillCard(FaGit, "Git (Github, Gitlab)", "Experienced")}
+        {SkillCard(BsRegex, "Regex", "Experienced")}
+        {SkillCard(IoIosDocument, "Documentation", "Experienced")}
+        {SkillCard(IoLogoJavascript, "User-Interface Design", "Intermediate")}
+        {SkillCard(IoLogoJavascript, "User-Experience Design", "Intermediate")}
+        {SkillCard(TbBrandCpp, "C++", "Intermediate")}
+        {SkillCard(FaC, "C", "Intermediate")}
+        {SkillCard(SiJira, "Jira Query Language (JQL)", "Intermediate")}
+        {SkillCard(SiDatadog, "Datadog", "Intermediate")}
+        {SkillCard(FaReact, "React", "Beginner")}
+        {SkillCard(FaNodeJs, "Node", "Beginner")}
+        {SkillCard(GrGraphQl, "GraphQL", "Beginner")}
+        {SkillCard(TbBrandNextjs, "NextJS", "Beginner")}
+        {SkillCard(SiNextui, "NextUI", "Beginner")}
+        {SkillCard(SiCsharp, "C#", "Beginner")}
+        {SkillCard(SiDotnet, ".Net", "Beginner")}
+      </div>
     ),
   },
   {
     title: "Education",
     id: "education",
     content: (
-      <ul className="list-disc pl-2">
-        <li>
-          Associate of Science in Computer Science - Ivy Tech Community College
-        </li>
-        <li>Bachelor of Science in Computer Science - Purdue Fort Wayne</li>
-      </ul>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <EducationCard
+          degree="Bachelor of Science in Computer Science"
+          institution="Purdue University - Fort Wayne"
+          icon={<FaUserGraduate size={24} color="#fff" />}
+        />
+        <EducationCard
+          degree="Associate of Science in Computer Science"
+          institution="Ivy Tech Community College"
+          icon={<FaGraduationCap size={24} color="#fff" />}
+        />
+        <EducationCard
+          degree="Core 40 - Academic Honors Diploma"
+          institution="Whitko High School"
+          icon={<GiDiploma size={24} color="#fff" />}
+        />
+      </div>
     ),
   },
   {
     title: "Certifications",
     id: "certifications",
     content: (
-      <ul>
-        <li>Python - Certified Entry-Level Python Programmer</li>
-      </ul>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <p className="bg-slate-800 rounded-lg shadow p-4 mb-4 flex items-center">Python - Certified Entry-Level Python Programmer</p>
+      </div>
     ),
   },
 ];
 
 const AboutSection = () => {
-  const [tab, setTab] = useState("skills");
+  const [tab, setTab] = useState("experience");
   const [isPending, startTransition] = useTransition();
 
   const handleTabChange = (id) => {
@@ -126,6 +149,13 @@ const AboutSection = () => {
           </p>
           <div className="flex flex-row justify-start mt-8 flex-wrap gap-3">
             <TabButton
+              selectTab={() => handleTabChange("experience")}
+              active={tab === "experience"}
+            >
+              {" "}
+              Experience{" "}
+            </TabButton>
+            <TabButton
               selectTab={() => handleTabChange("skills")}
               active={tab === "skills"}
             >
@@ -133,25 +163,11 @@ const AboutSection = () => {
               Skills{" "}
             </TabButton>
             <TabButton
-              selectTab={() => handleTabChange("projects")}
-              active={tab === "projects"}
-            >
-              {" "}
-              Projects{" "}
-            </TabButton>
-            <TabButton
               selectTab={() => handleTabChange("education")}
               active={tab === "education"}
             >
               {" "}
               Education{" "}
-            </TabButton>
-            <TabButton
-              selectTab={() => handleTabChange("experience")}
-              active={tab === "experience"}
-            >
-              {" "}
-              Experience{" "}
             </TabButton>
             <TabButton
               selectTab={() => handleTabChange("certifications")}
