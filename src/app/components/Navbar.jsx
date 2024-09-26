@@ -32,7 +32,12 @@ const Navbar = () => {
           href={"/"}
           className="text-2xl md:text-5xl text-white font-semibold"
         >
-          <Image src="/images/logo-no-background.png" alt="" width={100} height={50} alt="logo" />
+          <Image
+            src="/images/logo-no-background.png"
+            width={100}
+            height={50}
+            alt="logo"
+          />
         </Link>
         <div className="mobile-menu block md:hidden">
           {!navbarOpen ? (
@@ -41,7 +46,6 @@ const Navbar = () => {
               className="flex items-center px-3 py-2 border rounded border-slate-200 text-slate-200 hover:text-white hover:border-white"
             >
               <Bars3Icon className="h-5 w-5" />
-              
             </button>
           ) : (
             <button
