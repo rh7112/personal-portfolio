@@ -122,7 +122,9 @@ const TAB_DATA = [
     id: "certifications",
     content: (
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <p className="bg-slate-800 rounded-lg shadow p-4 mb-4 flex items-center">Python - Certified Entry-Level Python Programmer</p>
+        <p className="bg-slate-800 rounded-lg shadow p-4 mb-4 flex items-center">
+          Python - Certified Entry-Level Python Programmer
+        </p>
       </div>
     ),
   },
@@ -141,7 +143,7 @@ const AboutSection = () => {
   return (
     <section className="text-white">
       <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px04 xl:gap-16 sm:py-16 xl:px-16">
-        <Image src="/images/ryan_pfp.png" width={500} height={500} />
+        <Image src="/images/ryan_pfp.png" alt="" width={500} height={500} />
         <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
           <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
           <p className="text-base lg:text-lg">
