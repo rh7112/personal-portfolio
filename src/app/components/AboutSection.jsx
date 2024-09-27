@@ -40,7 +40,8 @@ const TAB_DATA = [
         <ExperienceCard
           title="Sweetwater Sound Inc."
           dateRange="Since May 2021"
-          jobTitle="Software Developer"
+          jobTitle="Software Engineer"
+          description="In my time at Sweetwater I've spent time on the Production Support, MATH (Maintenance, Accounting, Tax, and Human Resource), Customer Experience, and Retool teams."
         />
         <ExperienceCard
           title="Zimmer Biomet"
@@ -143,11 +144,19 @@ const AboutSection = () => {
   return (
     <section className="text-white">
       <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px04 xl:gap-16 sm:py-16 xl:px-16">
-        <Image src="https://rh7112.github.io/personal-portfolio/images/ryan_pfp.png" alt="" width={500} height={500} />
+        <Image
+          src="https://rh7112.github.io/personal-portfolio/images/ryan_pfp.png"
+          alt=""
+          width={500}
+          height={500}
+        />
         <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
           <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
           <p className="text-base lg:text-lg">
-            Lorem Ipsum somethign sometihng something
+            With a propencity for technology and a passion for solving complex
+            problems, I am a Software Engineer. I have worked on many projects,
+            between a few different teams. Believe communication and collaboration
+            are key to a successful project. 
           </p>
           <div className="flex flex-row justify-start mt-8 flex-wrap gap-3">
             <TabButton

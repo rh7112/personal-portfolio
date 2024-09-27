@@ -14,22 +14,30 @@ const HeroSection = () => {
         <div className="col-span-7 place-self-center text-center sm:text-left">
           <h1 className="text-white mb-4 text-4xl sm:text-5xl lg:text-6xl front-extrabold">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-700  to-green-700">
-              Hello, Im{" "}
+              Hello, Im
             </span>
             <br />
             <TypeAnimation
               sequence={[
                 "Ryan Hurd",
                 5000,
-                "a Father",
+                "A Husband & Father",
                 1500,
-                "a Software Engineer",
+                "A Software Engineer",
                 1500,
-                "a Fisherman",
+                "A Home Cook & Baker",
                 1500,
-                "an Amateur Chef",
+                "A Plex Server Administrator",
                 1500,
-                "a Gamer",
+                "A Gamer",
+                1500,
+                "An Angler",
+                1500,
+                "A Pickleall-er",
+                1500,
+                "A Bowler",
+                1500,
+                "A Bass Guitarist",
                 1500,
               ]}
               wrapper="span"
@@ -37,9 +45,6 @@ const HeroSection = () => {
               repeat={Infinity}
             />
           </h1>
-          {/* <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
-            Software Developer
-          </p> */}
           <div>
             <button className="px-6 py-3 w-full sm:w-fit rounded-full mr-4 bg-gradient-to-br from-orange-700 via-blue-400 to-green-700 hover:bg-slate-200 text-black">
               Hire Me

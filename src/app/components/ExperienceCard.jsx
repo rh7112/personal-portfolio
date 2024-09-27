@@ -36,16 +36,17 @@ function calculateTimeSpent(dateRange) {
   }
 }
 
-const ExperienceCard = ({ title, dateRange, jobTitle }) => {
+const ExperienceCard = ({ title, dateRange, jobTitle, description }) => {
   return (
     <div className="bg-slate-800 rounded-lg shadow p-4">
       <div className="flex items-center mb-2">
         <h3 className="mr-2">{title}</h3>
-        <p className="text-gray-500 font-light text-sm">
+        <p className="text-orange-700 font-light text-sm">
           {dateRange} ({calculateTimeSpent(dateRange)})
         </p>
       </div>
-      <p className="text-gray-400">{jobTitle}</p>
+      <p className="text-blue-400">{jobTitle}</p>
+      <p className="text-gray-200">{description}</p>
     </div>
   );
 };
