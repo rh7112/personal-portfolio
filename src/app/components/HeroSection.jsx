@@ -21,24 +21,30 @@ const HeroSection = () => {
               sequence={[
                 "Ryan Hurd",
                 5000,
-                "A Husband & Father",
-                1500,
+                "A Husband",
+                1250,
+                "A Father",
+                1250,
                 "A Software Engineer",
-                1500,
-                "A Home Cook & Baker",
-                1500,
+                1250,
+                "A Home Cook",
+                1250,
+                "A Baker",
+                1250,
+                "An Amateur Mixologist",
+                1250,
                 "A Plex Server Administrator",
-                1500,
+                1250,
                 "A Gamer",
-                1500,
+                1250,
                 "An Angler",
-                1500,
-                "A Pickleall-er",
-                1500,
+                1250,
+                "A Pickleball-er",
+                1250,
                 "A Bowler",
-                1500,
+                1250,
                 "A Bass Guitarist",
-                1500,
+                1250,
               ]}
               wrapper="span"
               speed={50}
@@ -59,7 +65,7 @@ const HeroSection = () => {
         <div className="col-span-5 place-self-center mt-4 lg:mt-0">
           <div className="rounded-full bg-[#181818] w-[250] h-[250px] lg:w-[400px] lg:h-[400px] relative">
             <Image
-              src="https://rh7112.github.io/personal-portfolio/images/ryan_pfp.png"
+              src={"https://rh7112.github.io/personal-portfolio/images/ryan_pfp.png"}
               alt="hero image"
               className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
               width={300}

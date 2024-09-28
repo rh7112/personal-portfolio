@@ -12,7 +12,7 @@ const projectsData = [
     image: "https://rh7112.github.io/personal-portfolio/images/projects/1.png",
     url: null,
     gitUrl: null,
-    tag: ["All", "Retool", "Guest Services"],
+    tag: ["All", "Retool", "Javascript", "Guest Services"],
   },
   {
     id: 2,
@@ -62,7 +62,7 @@ const projectsData = [
     image: "https://rh7112.github.io/personal-portfolio/images/projects/6.png",
     url: null,
     gitUrl: null,
-    tag: ["All", "Retool", "Merchandising"],
+    tag: ["All", "Retool", "Javascript", "Merchandising"],
   },
   {
     id: 7,
@@ -82,7 +82,7 @@ const projectsData = [
     image: "https://rh7112.github.io/personal-portfolio/images/projects/8.png",
     url: null,
     gitUrl: null,
-    tag: ["All", "Retool", "Marketing"],
+    tag: ["All", "Retool", "Javascript", "Marketing"],
   },
   {
     id: 9,
@@ -123,6 +123,36 @@ const projectsData = [
     url: null,
     gitUrl: "https://github.com/rh7112/website-development-final-project",
     tag: ["All", "HTML5", "CSS3"],
+  },
+  {
+    id: 13,
+    title: "Inventory Variances",
+    description:
+      "This Retool app helps the Music Store to track variances in the inventory they hold. The application displays the item id, variance amount, notes, and other useful information for those in the Music Store to help them maintain their stock.",
+    image: null,
+    url: null,
+    gitUrl: "",
+    tag: ["All", "Retool", "Javascript", "Music Store"],
+  },
+  {
+    id: 14,
+    title: "End of Day Notes",
+    description:
+      "This application provided those working the Guitar Gallery with a way to provide notes to those who were on the alternate shift of the ongoings of the day. This application was built using the Retool platform. ",
+    image: null,
+    url: null,
+    gitUrl: "",
+    tag: ["All", "Retool", "Javascript", "Guitar Gallery"],
+  },
+  {
+    id: 15,
+    title: "Gitlab Permissions Lookup",
+    description:
+      "The Application and Platform Support teams were often contacted about 'who owns what Gitlab repository.' This issue was brought up to the Retool team, and I ultimately built out an applicaiton that uses the Gitlab REST API to pull project information, owners, etc. I displayed this information to the user and allowed them to send emails to owners and maintainers, to avoid the back and forth with other teams.",
+    image: null,
+    url: null,
+    gitUrl: "",
+    tag: ["All", "Retool", "Javascript", "Information Technology"],
   },
 ];
 
@@ -187,8 +217,8 @@ const ProjectsSection = () => {
         />
         <ProjectTag
           onClick={handleTagChange}
-          name="Retool"
-          isSelected={tag === "Retool"}
+          name="Javascript"
+          isSelected={tag === "Javascript"}
           department={false}
         />
         <ProjectTag

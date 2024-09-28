@@ -145,7 +145,7 @@ const AboutSection = () => {
     <section className="text-white">
       <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px04 xl:gap-16 sm:py-16 xl:px-16">
         <Image
-          src="https://rh7112.github.io/personal-portfolio/images/ryan_pfp.png"
+          src={"https://rh7112.github.io/personal-portfolio/images/ryan_pfp.png"}
           alt=""
           width={500}
           height={500}
@@ -155,8 +155,8 @@ const AboutSection = () => {
           <p className="text-base lg:text-lg">
             With a propencity for technology and a passion for solving complex
             problems, I am a Software Engineer. I have worked on many projects,
-            between a few different teams. Believe communication and collaboration
-            are key to a successful project. 
+            between a few different teams. Believe communication and
+            collaboration are key to a successful project.
           </p>
           <div className="flex flex-row justify-start mt-8 flex-wrap gap-3">
             <TabButton

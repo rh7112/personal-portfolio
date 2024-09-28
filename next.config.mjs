@@ -9,7 +9,7 @@ const nextConfig = {
     reactStrictMode: true,
   }),
   images: {
-    domains: ["rh7112.github.io"],
+    domains: ["rh7112.github.io"]
   },
 };
 
