@@ -8,9 +8,6 @@ const nextConfig = {
     output: "export",
     reactStrictMode: true,
   }),
-  images: {
-    domains: ["rh7112.github.io"]
-  },
 };
 
 export default nextConfig;
