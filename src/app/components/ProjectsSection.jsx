@@ -217,6 +217,12 @@ const ProjectsSection = () => {
         />
         <ProjectTag
           onClick={handleTagChange}
+          name="Music Store"
+          isSelected={tag === "Music Store"}
+          department={true}
+        />
+        <ProjectTag
+          onClick={handleTagChange}
           name="Javascript"
           isSelected={tag === "Javascript"}
           department={false}
