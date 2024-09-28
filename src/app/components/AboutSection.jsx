@@ -145,7 +145,7 @@ const AboutSection = () => {
     <section className="text-white">
       <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px04 xl:gap-16 sm:py-16 xl:px-16">
         <Image
-          src="https://rh7112.github.io/personal-portfolio/images/ryan_pfp.png"
+          src="https://rh7112.github.io/personal-portfolio/images/ryan-pfp.png"
           alt="ryan profile picture"
           width={500}
           height={500}
