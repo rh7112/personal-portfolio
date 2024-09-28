@@ -1,6 +1,6 @@
 "use client";
 import React, { useTransition, useState } from "react";
-import Image from "next/image";
+import NextImage from "next/image";
 import TabButton from "./TabButton";
 import {
   FaDatabase,
@@ -144,7 +144,7 @@ const AboutSection = () => {
   return (
     <section className="text-white">
       <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px04 xl:gap-16 sm:py-16 xl:px-16">
-        <Image
+        <NextImage
           src="https://rh7112.github.io/personal-portfolio/images/projects/1.png"
           alt="ryan profile picture"
           width={500}
