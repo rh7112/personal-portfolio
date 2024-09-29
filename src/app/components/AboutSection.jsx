@@ -1,6 +1,5 @@
 "use client";
 import React, { useTransition, useState } from "react";
-import NextImage from "next/image";
 import Image from "next/image";
 import TabButton from "./TabButton";
 import {
@@ -145,21 +144,9 @@ const AboutSection = () => {
   return (
     <section className="text-white">
       <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px04 xl:gap-16 sm:py-16 xl:px-16">
-        <img
-          src="/personal-portfolio/images/ryan-pfp.png"
-          alt="ryan profile picture"
-          width={500}
-          height={500}
-        />
         <Image
-          src={"/images/ryan-pfp.png"}
-          alt="ryan profile picture (next image1)"
-          width={500}
-          height={500}
-        />
-        <Image
-          src={"/personal-portfolio/images/ryan-pfp.png"}
-          alt="ryan profile picture (next image12)"
+          src={"/images/ryan-pic.png"}
+          alt="ryan hurd's profile picture"
           width={500}
           height={500}
         />
