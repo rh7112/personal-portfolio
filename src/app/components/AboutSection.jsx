@@ -153,7 +153,7 @@ const AboutSection = () => {
         />
         <Image
           src={"/personal-portfolio/images/projects/1.png"}
-          alt="ryan profile picture"
+          alt="ryan profile picture (next image)"
           width={500}
           height={500}
         />
