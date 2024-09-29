@@ -161,7 +161,7 @@ const AboutSection = () => {
           src={
             "https://play-lh.googleusercontent.com/1-hPxafOxdYpYZEOKzNIkSP43HXCNftVJVttoo4ucl7rsMASXW3Xr6GlXURCubE1tA=w3840-h2160-rw"
           }
-          alt="ryan profile picture (next image)"
+          alt="ryan profile picture (next image123)"
           width={500}
           height={500}
         />
