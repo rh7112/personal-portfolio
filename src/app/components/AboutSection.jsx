@@ -157,6 +157,14 @@ const AboutSection = () => {
           width={500}
           height={500}
         />
+        <Image
+          src={
+            "https://play-lh.googleusercontent.com/1-hPxafOxdYpYZEOKzNIkSP43HXCNftVJVttoo4ucl7rsMASXW3Xr6GlXURCubE1tA=w3840-h2160-rw"
+          }
+          alt="ryan profile picture (next image)"
+          width={500}
+          height={500}
+        />
 
         <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
           <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
