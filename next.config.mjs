@@ -7,9 +7,6 @@ const nextConfig = {
     basePath: "/personal-portfolio",
     output: "export",
     reactStrictMode: true,
-    images: {
-      formats: ["image/webp"],
-    },
   }),
 };
 
