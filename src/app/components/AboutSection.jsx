@@ -152,16 +152,14 @@ const AboutSection = () => {
           height={500}
         />
         <Image
-          src={"/1.png"}
-          alt="ryan profile picture (next image)"
+          src={"/images/ryan-pfp.png"}
+          alt="ryan profile picture (next image1)"
           width={500}
           height={500}
         />
         <Image
-          src={
-            "https://play-lh.googleusercontent.com/1-hPxafOxdYpYZEOKzNIkSP43HXCNftVJVttoo4ucl7rsMASXW3Xr6GlXURCubE1tA=w3840-h2160-rw"
-          }
-          alt="ryan profile picture (next image123)"
+          src={"/personal-portfolio/images/ryan-pfp.png"}
+          alt="ryan profile picture (next image12)"
           width={500}
           height={500}
         />
