@@ -33,7 +33,7 @@ const Navbar = () => {
           className="text-2xl md:text-5xl text-white font-semibold"
         >
           <Image
-            src={"/images/logo-no-background.png"}
+            src={"//logo-no-background.png"}
             alt="logo"
             width={100}
             height={50}
