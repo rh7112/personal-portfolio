@@ -1,4 +1,5 @@
 import React from "react";
+import AccordionCard from "./AccordionCard";
 
 function calculateTimeSpent(dateRange) {
   let startDate, endDate;
@@ -36,7 +37,13 @@ function calculateTimeSpent(dateRange) {
   }
 }
 
-const ExperienceCard = ({ title, dateRange, jobTitle, description }) => {
+const ExperienceCard = ({
+  title,
+  dateRange,
+  jobTitle,
+  description,
+  accordionItems = null,
+}) => {
   return (
     <div className="bg-slate-800 rounded-lg shadow p-4">
       <div className="flex items-center mb-2">
@@ -47,6 +54,7 @@ const ExperienceCard = ({ title, dateRange, jobTitle, description }) => {
       </div>
       <p className="text-orange-700 mb-3 font-bold">{jobTitle}</p>
       <p className="text-gray-200">{description}</p>
+      {accordionItems?.length > 0 && <AccordionCard items={accordionItems} />}
     </div>
   );
 };
