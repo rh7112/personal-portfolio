@@ -54,6 +54,24 @@ const sweetwaterAccordionItems = [
   },
 ];
 
+const concreteAccordionItems = [
+  {
+    title: "Formwork",
+    description:
+      "Establishing a solid foundation is crucial in concrete construction. This involves carefully placing rebar and other strengthening materials, followed by the installation of forms to contain the concrete. We utilized a variety of form types, including 2x4s, Dee forms, wall forms, and basement forms, to ensure that the finished product met the customer's specifications.",
+  },
+  {
+    title: "Concrete Placement and Laboring",
+    description:
+      "Upon arrival of the concrete truck, our team sprang into action to ensure timely and efficient placement of the material. This involved wheelbarrowing concrete to the designated areas, achieving the optimal consistency and coverage. Additionally, this task included removing forms after the concrete had set, which sometimes occurred on the same day or after a few days. In some cases, this process also involved sealing or cutting the concrete to achieve the desired finish or to make relief cuts as needed.",
+  },
+  {
+    title: "Finishing Touches",
+    description:
+      "The final stage of the process involved achieving the desired aesthetic and functional finish. This included applying a high-gloss finish to garage floors, creating precise brush lines on sidewalks, and ensuring level bases on walls. For stamped concrete projects, this entailed adding external colorants, applying the stamp pattern, and tamping it down to achieve the desired texture and design.",
+  },
+];
+
 const TAB_DATA = [
   {
     title: "Experience",
@@ -88,8 +106,9 @@ const TAB_DATA = [
         <ExperienceCard
           title="Black's Concrete Construction"
           dateRange="Jun. 2016 - Feb. 2017"
-          jobTitle="Concrete Former, Pourer, Laborer, Finisher"
-          accordionItems={null}
+          jobTitle="Concrete Former, Laborer, and Finisher"
+          description="Concrete Construction taught me the meaning of a hard days work, instilling a strong work ethic, and becoming a valuable team member. I'm proud to have been part of the Black's Concrete Construction team."
+          accordionItems={concreteAccordionItems}
         />
       </div>
     ),
