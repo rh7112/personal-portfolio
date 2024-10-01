@@ -54,6 +54,24 @@ const sweetwaterAccordionItems = [
   },
 ];
 
+const zimmerBiomentAccordionItems = [
+  {
+    title: "Imaging Devices",
+    description:
+      "One of the key responsibilities in this role involved preparing newly delivered devices for deployment. This included installing company-approved operating images and software, configuring the machines, and storing them for future assignment. The process entailed unboxing devices, setting them up on designated racks, connecting them to the network, and utilizing the BIOS to configure settings. Once complete, devices were re-boxed and stored for later distribution.",
+  },
+  {
+    title: "Computer Assignment",
+    description:
+      "Following the imaging process, we prioritized customer requests and assigned machines accordingly. This involved recording the serial number, attributing the device to the correct user, and preparing it for either shipment or delivery to technicians at various locations in Warsaw, Indiana.",
+  },
+  {
+    title: "Computer Deliveries",
+    description:
+      "Assigned devices were delivered daily to Zimmer-Biomet buildings across town. I utilized a company vehicle to make these deliveries, typically around 3 p.m.",
+  },
+];
+
 const concreteAccordionItems = [
   {
     title: "Formwork",
@@ -89,7 +107,7 @@ const TAB_DATA = [
           title="Zimmer Biomet"
           dateRange="Oct. 2020 - May 2021"
           jobTitle="Information Technology Intern"
-          accordionItems={null}
+          accordionItems={zimmerBiomentAccordionItems}
         />
         <ExperienceCard
           title="United States Census Bureau"
@@ -190,15 +208,15 @@ const AboutSection = () => {
 
   return (
     <section className="text-white">
-      <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px04 xl:gap-16 sm:py-16 xl:px-16">
-        <Image
-          src={
-            "https://rh7112.github.io/personal-portfolio/images/ryan-pic.png"
-          }
-          alt="ryan hurd's profile picture"
-          width={500}
-          height={500}
-        />
+      <div className="md:grid md:grid-cols-2 gap-8 py-8 px04 xl:gap-16 sm:py-16 xl:px-16">
+            <Image
+              src={
+                "https://rh7112.github.io/personal-portfolio/images/ryan-pic.png"
+              }
+              alt="ryan hurd's profile picture"
+              width={500}
+              height={500}
+            />
 
         <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
           <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
