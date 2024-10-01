@@ -6,6 +6,7 @@ import { TypeAnimation } from "react-type-animation";
 import { FaMale } from "react-icons/fa";
 import { BsFillKeyboardFill } from "react-icons/bs";
 import { GiFishingHook } from "react-icons/gi";
+import AccordionCard from "./AccordionCard";
 
 const HeroSection = () => {
   const handleDownload = (filePath) => {
@@ -14,6 +15,7 @@ const HeroSection = () => {
     link.download = "ryan-hurd-resume.pdf";
     link.click();
   };
+
   return (
     <section>
       <div className="grid grid-cols-1 sm:grid-cols-12 place-items-">

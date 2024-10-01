@@ -1,4 +1,6 @@
 import React from "react";
+import AccordionCard from "./AccordionCard";
+import { Accordion, AccordionItem } from "@nextui-org/accordion";
 
 function calculateTimeSpent(dateRange) {
   let startDate, endDate;
@@ -36,7 +38,19 @@ function calculateTimeSpent(dateRange) {
   }
 }
 
-const ExperienceCard = ({ title, dateRange, jobTitle, description }) => {
+const ExperienceCard = ({
+  title,
+  dateRange,
+  jobTitle,
+  description,
+  accordionItems = null,
+}) => {
+  const titleLabels = {
+    "Sweetwater Sound Inc.": "Teams",
+    "Black's Concrete Construction": "Positions",
+    // Add more titles and labels as needed
+  };
+
   return (
     <div className="bg-slate-800 rounded-lg shadow p-4">
       <div className="flex items-center mb-2">
@@ -47,6 +61,17 @@ const ExperienceCard = ({ title, dateRange, jobTitle, description }) => {
       </div>
       <p className="text-orange-700 mb-3 font-bold">{jobTitle}</p>
       <p className="text-gray-200">{description}</p>
+      {console.log(accordionItems)}
+      {accordionItems?.length > 0 && (
+        <Accordion>
+          <AccordionItem
+            aria-label={titleLabels}
+            title={titleLabels[title] || ""}
+          >
+            <AccordionCard items={accordionItems} style='w-11/12 m-auto' />
+          </AccordionItem>
+        </Accordion>
+      )}
     </div>
   );
 };

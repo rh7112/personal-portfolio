@@ -7,22 +7,27 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next export"
+    "export": "next export",
+    "deploy": "gh-pages -d out -t true",
+    "static": "next build && next export && touch ./out/.nojekyll && echo 'www.ryan.hurd.cc' > ./out/CNAME"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@heroicons/react": "^2.1.5",
     "@nextui-org/image": "^2.0.32",
+    "@nextui-org/react": "^2.4.8",
     "@nextui-org/system": "^2.2.6",
     "@nextui-org/theme": "^2.2.11",
-    "framer-motion": "^11.5.4",
+    "framer-motion": "^11.9.0",
+    "gh-pages": "^6.1.1",
     "next": "^14.2.13",
     "next-images": "^1.8.5",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.3.0",
-    "react-type-animation": "^3.2.0"
+    "react-type-animation": "^3.2.0",
+    "resend": "^4.0.0"
   },
   "devDependencies": {
     "eslint": "^8",
