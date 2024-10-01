@@ -78,7 +78,7 @@ const ExperienceCard = ({
           >
             <AccordionCard
               items={accordionItems}
-              style="w-11/12 m-auto bg-slate-800 text-black"
+              style="w-11/12 m-auto bg-slate-800 text-white"
             />
           </AccordionItem>
         </Accordion>

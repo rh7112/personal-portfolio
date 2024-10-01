@@ -25,13 +25,12 @@ const AccordionCard = ({ items, style }) => {
           key={index}
           aria-label={item.title}
           title={item.title}
-          className="ml-5 mr-5 text-white"
           indicator={
             accordionStates[item.title] ? <IoIosArrowUp /> : <IoIosArrowDown />
           }
           onPress={() => toggleAccordion(item.title)}
         >
-          {item.description}
+          <p className="text-slate-300">{item.description}</p>
         </AccordionItem>
       ))}
     </Accordion>
