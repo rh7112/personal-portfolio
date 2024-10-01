@@ -1,6 +1,8 @@
 import React from "react";
 import AccordionCard from "./AccordionCard";
 import { Accordion, AccordionItem } from "@nextui-org/accordion";
+import { useState } from "react";
+import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 
 function calculateTimeSpent(dateRange) {
   let startDate, endDate;
@@ -47,9 +49,11 @@ const ExperienceCard = ({
 }) => {
   const titleLabels = {
     "Sweetwater Sound Inc.": "Teams",
+    "Zimmer Biomet": "Responsibilities",
     "Black's Concrete Construction": "Positions",
-    // Add more titles and labels as needed
   };
+
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="bg-slate-800 rounded-lg shadow p-4">
@@ -62,13 +66,20 @@ const ExperienceCard = ({
       <p className="text-orange-700 mb-3 font-bold">{jobTitle}</p>
       <p className="text-gray-200">{description}</p>
       {console.log(accordionItems)}
+
       {accordionItems?.length > 0 && (
         <Accordion>
           <AccordionItem
+            className="mt-2 bg-slate-700 text-blue-400"
             aria-label={titleLabels}
             title={titleLabels[title] || ""}
+            indicator={isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
+            onPress={() => setIsOpen(!isOpen)}
           >
-            <AccordionCard items={accordionItems} style='w-11/12 m-auto' />
+            <AccordionCard
+              items={accordionItems}
+              style="w-11/12 m-auto bg-slate-800 text-black"
+            />
           </AccordionItem>
         </Accordion>
       )}

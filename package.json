@@ -4,12 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export && touch ./out/.nojekyll && echo 'www.ryan.hurd.cc' > ./out/CNAME && gh-pages -d out -t true",
     "start": "next start",
     "lint": "next lint",
-    "export": "next export",
-    "deploy": "gh-pages -d out -t true",
-    "static": "next build && next export && touch ./out/.nojekyll && echo 'www.ryan.hurd.cc' > ./out/CNAME"
+    "export": "next export"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.6.0",
