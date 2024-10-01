@@ -9,7 +9,7 @@ const projectsData = [
     title: "Sweetwater Turkey Handout Application (ReTurkey)",
     description:
       "Developed a Retool application for Sweetwater's Guest Services team to efficiently distribute turkeys (and gift cards) to employees during Thanksgiving. This streamlined process improved employee satisfaction and reduced administrative tasks.",
-    image: "https://rh7112.github.io/personal-portfolio/images/projects/1.png",
+    image: "images/projects/1.png",
     url: null,
     gitUrl: null,
     tag: ["All", "Retool", "Javascript", "Guest Services"],
@@ -19,7 +19,7 @@ const projectsData = [
     title: "Gear Exchange - BrainTree by Paypal Implementation",
     description:
       "Integrated BrainTree payment processing into Gear Exchange, enabling secure and seamless transactions. This implementation enhanced the overall user experience and increased sales conversions.",
-    image: "https://rh7112.github.io/personal-portfolio/images/projects/2.png",
+    image: "images/projects/2.png",
     url: "https://www.sweetwater.com/used",
     gitUrl: null,
     tag: ["All", "4D", "BrainTree", "Gear Exchange"],
@@ -29,7 +29,7 @@ const projectsData = [
     title: "TTR's Tax Exemption Certification Management System (ECMS)",
     description:
       "Designed and developed the Tax Exemption Certification Management System to automate tax exemption data intake from schools, churches, and other organizations. This solution saved the tax team approximately two people's worth of hours per week.",
-    image: "",
+    image: "images/projects/3.png",
     url: "https://ttrecms.com/about",
     gitUrl: null,
     tag: ["All", "4D", "Accounting", "Python", "Sales"],
@@ -49,7 +49,7 @@ const projectsData = [
     title: "In-House Credit Freezing/Thawing",
     description:
       "Modified the underlying logic to 'freeze' credits on customer accounts, complying with Indiana's updated laws. This change enabled the accounting team to efficiently manage credits and improve financial accuracy.",
-    image: "",
+    image: "images/projects/5.png",
     url: null,
     gitUrl: null,
     tag: ["All", "4D", "Accounting"],
@@ -59,7 +59,7 @@ const projectsData = [
     title: "Price Management Platform",
     description:
       "Developed the Price Management Platform to help Merchandising determine optimal competitor pricing strategies. This tool analyzes statistics to identify 'winning prices' and inform pricing decisions.",
-    image: "https://rh7112.github.io/personal-portfolio/images/projects/6.png",
+    image: "images/projects/6.png",
     url: null,
     gitUrl: null,
     tag: ["All", "Retool", "Javascript", "Merchandising"],
@@ -69,7 +69,7 @@ const projectsData = [
     title: "Personalized Tile Promotions",
     description:
       "Created personalized tile promotions to enhance user recommendations on Sweetwater.com. These promotions leverage browsing history to improve the user experience and increase engagement.",
-    image: "https://rh7112.github.io/personal-portfolio/images/projects/7.png",
+    image: "images/projects/7.png",
     url: null,
     gitUrl: null,
     tag: ["All", "4D", "Marketing"],
@@ -79,7 +79,7 @@ const projectsData = [
     title: "Search Miner",
     description:
       "Developed the Search Miner tool to help a select group of users analyze Sweetwater.com search results. This tool improves website health, SEO, and various other aspects of the online presence.",
-    image: "https://rh7112.github.io/personal-portfolio/images/projects/8.png",
+    image: "images/projects/8.png",
     url: null,
     gitUrl: null,
     tag: ["All", "Retool", "Javascript", "Marketing"],
@@ -89,7 +89,7 @@ const projectsData = [
     title: "DementiaTrack",
     description:
       "My senior capstone project, DementiaTrack, aimed to diagnose patients using sensor data from activities like sleep, daily activity, movement, and bathroom activities. This research project explored the potential of sensor-based diagnosis.",
-    image: "https://rh7112.github.io/personal-portfolio/images/projects/9.png",
+    image: "images/projects/9.png",
     url: null,
     gitUrl: "https://github.com/Memotexe/DementiaTrack",
     tag: ["All", "React", "Python", "Node"],
@@ -99,7 +99,7 @@ const projectsData = [
     title: "Personal Portfolio",
     description:
       "Built this portfolio to expand my knowledge of technologies like NextJS, React, and Node. This project showcases my skills and experience in web development and technology stacks.",
-    image: "",
+    image: "images/projects/10.png",
     url: "/",
     gitUrl: "https://github.com/rh7112/personal-portfolio",
     tag: ["All", "NextJS", "Node"],
@@ -109,7 +109,7 @@ const projectsData = [
     title: "Mentor Managing Application",
     description:
       "This was an 'Orbital' class at Sweetwater, we conducted weekly mob coding sessions to build an application that enables mentees to select mentors for a set period. This process aimed to facilitate learning and skill acquisition in areas that might not have been explored otherwise.",
-    image: "https://rh7112.github.io/personal-portfolio/images/projects/11.png",
+    image: "images/projects/11.png",
     url: null,
     gitUrl: null,
     tag: ["All", "C#", ".Net", "Information Technology"],
@@ -119,7 +119,7 @@ const projectsData = [
     title: "Website Development - Final Project",
     description:
       "My final project for website development in Spring 2018 was a website for Black's Concrete Construction, a former employer. Built using HTML5 and CSS3, it was a functional site that showcased the company's services and projects, despite being a basic design.",
-    image: null,
+    image: "images/projects/12.png",
     url: null,
     gitUrl: "https://github.com/rh7112/website-development-final-project",
     tag: ["All", "HTML5", "CSS3"],
@@ -129,7 +129,7 @@ const projectsData = [
     title: "Inventory Variances",
     description:
       "This Retool app helps the Music Store to track variances in the inventory they hold. The application displays the item id, variance amount, notes, and other useful information for those in the Music Store to help them maintain their stock.",
-    image: null,
+    image: "images/projects/13.png",
     url: null,
     gitUrl: "",
     tag: ["All", "Retool", "Javascript", "Music Store"],
@@ -139,7 +139,7 @@ const projectsData = [
     title: "End of Day Notes",
     description:
       "This application provided those working the Guitar Gallery with a way to provide notes to those who were on the alternate shift of the ongoings of the day. This application was built using the Retool platform. ",
-    image: null,
+    image: "images/projects/14.png",
     url: null,
     gitUrl: "",
     tag: ["All", "Retool", "Javascript", "Guitar Gallery"],
@@ -149,7 +149,7 @@ const projectsData = [
     title: "Gitlab Permissions Lookup",
     description:
       "The Application and Platform Support teams were often contacted about 'who owns what Gitlab repository.' This issue was brought up to the Retool team, and I ultimately built out an applicaiton that uses the Gitlab REST API to pull project information, owners, etc. I displayed this information to the user and allowed them to send emails to owners and maintainers, to avoid the back and forth with other teams.",
-    image: null,
+    image: "images/projects/15.png",
     url: null,
     gitUrl: "",
     tag: ["All", "Retool", "Javascript", "Information Technology"],
