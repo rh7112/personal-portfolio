@@ -8,75 +8,54 @@ import MenuOverlay from "./MenuOverlay";
 import Image from "next/image";
 
 const navLinks = [
-  {
-    title: "Home",
-    path: "/",
-    scroll: true,
-  },
-  {
-    title: "About",
-    path: "#about",
-    scroll: true,
-  },
-  {
-    title: "Projects",
-    path: "#projects",
-    scroll: true,
-  },
-  {
-    title: "Contact",
-    path: "#contact",
-    scroll: true,
-  },
+  { title: "Home", path: "/" },
+  { title: "About", path: "#about" },
+  { title: "Projects", path: "#projects" },
+  { title: "Contact", path: "#contact" },
 ];
 
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-10 bg-[#121212] bg-opactiy-100">
-      <div className="flex flex-wrap items-cetner justify-between mx-auto px-4 py-2">
+    <nav className="fixed top-0 left-0 right-0 z-10 bg-[#121212]">
+      <div className="flex justify-between mx-auto px-4 py-2">
         <Link
-          href={"/"}
+          href="/"
           className="text-2xl md:text-5xl text-white font-semibold"
         >
           <Image
-            src={
-              "https://rh7112.github.io/personal-portfolio/images/logo-no-background.png"
-            }
+            src="https://rh7112.github.io/personal-portfolio/images/logo-no-background.png"
             alt="logo"
             width={100}
             height={50}
           />
         </Link>
-        <div className="mobile-menu block md:hidden">
-          {!navbarOpen ? (
-            <button
-              onClick={() => setNavbarOpen(true)}
-              className="flex items-center px-3 py-2 border rounded border-slate-200 text-slate-200 hover:text-white hover:border-white"
-            >
-              <Bars3Icon className="h-5 w-5" />
-            </button>
+        <button
+          onClick={() => setNavbarOpen(!navbarOpen)}
+          className="md:hidden flex items-center px-3 py-2 border rounded border-slate-200 text-slate-200 hover:text-white hover:border-white"
+        >
+          {navbarOpen ? (
+            <XMarkIcon className="h-5 w-5" />
           ) : (
-            <button
-              onClick={() => setNavbarOpen(false)}
-              className="flex items-center px-3 py-2 border rounded border-slate-200 text-slate-200 hover:text-white hover:border-white"
-            >
-              <XMarkIcon className="h-5 w-5" />
-            </button>
+            <Bars3Icon className="h-5 w-5" />
           )}
-        </div>
-        <div className="menu hidden md:block md:w-auto" id="navbar">
-          <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0">
-            {navLinks.map((link, index) => (
-              <li key={index}>
-                <NavLink href={link.path} title={link.title} />
-              </li>
-            ))}
-          </ul>
-        </div>
+        </button>
+        <ul className="hidden md:flex md:space-x-8">
+          {navLinks.map((link) => (
+            <li key={link.path}>
+              <NavLink href={link.path} title={link.title} />
+            </li>
+          ))}
+        </ul>
       </div>
-      {navbarOpen ? <MenuOverlay links={navLinks} /> : null}
+      {navbarOpen && (
+        <MenuOverlay
+          links={navLinks}
+          isOpen={navbarOpen}
+          setIsOpen={setNavbarOpen}
+        />
+      )}
     </nav>
   );
 };

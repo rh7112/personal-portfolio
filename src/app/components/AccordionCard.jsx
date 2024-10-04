@@ -3,32 +3,21 @@ import { useState } from "react";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 
 const AccordionCard = ({ items, style }) => {
-  const [accordionStates, setAccordionStates] = useState(
-    items.reduce((acc, item) => ({ ...acc, [item.title]: false }), {})
-  );
+  const [expanded, setExpanded] = useState({});
 
-  const toggleAccordion = (title) => {
-    setAccordionStates((prevState) => {
-      const newState = {};
-      items.forEach((item) => {
-        newState[item.title] =
-          item.title === title ? !prevState[item.title] : false;
-      });
-      return newState;
-    });
-  };
+  const toggle = (title) =>
+    setExpanded((prev) => ({ ...prev, [title]: !prev[title] }));
 
   return (
     <Accordion className={style} variant="splitted">
       {items.map((item, index) => (
         <AccordionItem
           key={index}
-          aria-label={item.title}
           title={item.title}
           indicator={
-            accordionStates[item.title] ? <IoIosArrowUp /> : <IoIosArrowDown />
+            expanded[item.title] ? <IoIosArrowUp /> : <IoIosArrowDown />
           }
-          onPress={() => toggleAccordion(item.title)}
+          onPress={() => toggle(item.title)}
         >
           <p className="text-slate-300">{item.description}</p>
         </AccordionItem>

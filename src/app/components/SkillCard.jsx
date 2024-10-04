@@ -12,7 +12,7 @@ const SkillCard = (icon, title, level) => {
       {React.createElement(icon, {
         className: "h-6 w-6 sm:ml-2 sm:mt-2 sm:mb-2",
       })}
-      <div className="flex-1 flex flex-wrap gap-2 justify-center">
+      <div className="flex-1 flex mt-2 flex-wrap gap-2 justify-center">
         <h4>{title}</h4>
         <small className={`${levelColor}`}>{level}</small>
       </div>

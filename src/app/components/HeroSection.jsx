@@ -3,18 +3,48 @@
 import React from "react";
 import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
-import { FaMale } from "react-icons/fa";
-import { BsFillKeyboardFill } from "react-icons/bs";
-import { GiFishingHook } from "react-icons/gi";
-import AccordionCard from "./AccordionCard";
+
+const Button = ({ children, onClick, className }) => {
+  return (
+    <button
+      className={`w-full sm:w-fit rounded-full ${className}`}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
+};
 
 const HeroSection = () => {
   const handleDownload = (filePath) => {
-    const link = document.createElement("a");
-    link.href = filePath;
-    link.download = "ryan-hurd-resume.pdf";
-    link.click();
+    const blob = new Blob([filePath], { type: "application/pdf" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "ryan-hurd-resume.pdf";
+    a.click();
   };
+
+  const textValues = [
+    "Ryan Hurd",
+    "A Husband",
+    "A Father",
+    "A Software Engineer",
+    "A Home Cook",
+    "A Baker",
+    "An Amateur Mixologist",
+    "A Plex Server Admin",
+    "A Gamer",
+    "An Angler",
+    "A Pickleball-er",
+    "A Bowler",
+    "A Bass Guitarist",
+  ];
+
+  const sequence = textValues.flatMap((text, index) => [
+    text,
+    index === 0 ? 5000 : 1250,
+  ]);
 
   return (
     <section>
@@ -25,52 +55,20 @@ const HeroSection = () => {
               Hello, I&apos;m
             </span>
             <br />
-            <TypeAnimation
-              sequence={[
-                "Ryan Hurd",
-                5000,
-                "A Husband",
-                1250,
-                "A Father",
-                1250,
-                "A Software Engineer",
-                1250,
-                "A Home Cook",
-                1250,
-                "A Baker",
-                1250,
-                "An Amateur Mixologist",
-                1250,
-                "A Plex Server Administrator",
-                1250,
-                "A Gamer",
-                1250,
-                "An Angler",
-                1250,
-                "A Pickleball-er",
-                1250,
-                "A Bowler",
-                1250,
-                "A Bass Guitarist",
-                1250,
-              ]}
-              wrapper="span"
-              speed={50}
-              repeat={Infinity}
-            />
+            <TypeAnimation sequence={sequence} speed={50} repeat={Infinity} />
           </h1>
           <div>
-            <button className="px-6 py-3 w-full sm:w-fit rounded-full mr-4 bg-gradient-to-br from-orange-700 via-blue-400 to-green-700 hover:bg-slate-200 text-black">
-              Hire Me
-            </button>
-            <button
-              className="px-1 py-1 w-full sm:w-fit rounded-full bg-gradient-to-br from-orange-700 via-blue-400 to-green-700 hover:bg-slate-800 text-white  mt-3"
+            <Button className="px-6 py-3 mr-4 bg-gradient-to-br from-orange-700 via-blue-400 to-green-700 hover:bg-slate-200 text-black">
+              Not sure what this button will be for yet{/* Hire Me */}
+            </Button>
+            <Button
+              className="px-1 py-1 bg-gradient-to-br from-orange-700 via-blue-400 to-green-700 hover:bg-slate-800 text-white mt-3"
               onClick={() => handleDownload("/documents/ryan-hurd-resume.pdf")}
             >
               <span className="block bg-[#121212] hover:bg-slate-800 rounded-full px-5 py-2">
                 Download Resume
               </span>
-            </button>
+            </Button>
           </div>
         </div>
         <div className="col-span-5 place-self-center mt-4 lg:mt-0">
