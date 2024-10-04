@@ -154,6 +154,26 @@ const projectsData = [
     gitUrl: "",
     tag: ["All", "Retool", "Javascript", "Information Technology"],
   },
+  {
+    id: 16,
+    title: "Retool Minesweeper",
+    description:
+      "As part of our bi-weekly mob coding, we were tasked with individually developing the Minesweeper game within Retool. The first week, our task was to build out a non-functional board for the game. The goal for the session after that was to have a functional game. I built out the game, including the likes of having adjacent blocks revealed when an empty cell is clicked. There were many approaches that could've been taken, but I built mine using Retool's Gridview. I placed images inside of a Gridview, and placed that Gridview inside another to simulate the board.",
+    image: "images/projects/16.png",
+    url: "https://tools-dev.sweetwater.com/embedded/public/4927b6b7-bbe0-4ce4-b84b-89adef9bc87c",
+    gitUrl: "",
+    tag: ["All", "Retool", "Javascript"],
+  },
+  {
+    id: 17,
+    title: "Synchrony Bonus Bucks Promotions",
+    description:
+      "For almost a year, I was responsible for sending out Bonus Bucks (a.k.a. Gift Cards) to Sweewater credit card holders who met the criteria for a given promotion. These promotions include Spend and Get, Apply and Earn, Father's Day, and more. In my spare time, I built out an application to handle automation of this process, so I personally wasnt't the individual handling this task on a weekly basis while these promotions were running. Once I completed it, I presented the aplication to my superiors and a few stakeholders and we began moving this responsibility from the Information Technology department to the Marketing department.",
+    image: "images/projects/17.png",
+    url: "",
+    gitUrl: "",
+    tag: ["All", "4D", "Marketing"],
+  },
 ];
 
 const ProjectsSection = () => {
