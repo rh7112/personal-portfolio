@@ -9,16 +9,24 @@ import Image from "next/image";
 
 const navLinks = [
   {
+    title: "Home",
+    path: "/",
+    scroll: true,
+  },
+  {
     title: "About",
     path: "#about",
+    scroll: true,
   },
   {
     title: "Projects",
     path: "#projects",
+    scroll: true,
   },
   {
     title: "Contact",
     path: "#contact",
+    scroll: true,
   },
 ];
 
@@ -33,7 +41,9 @@ const Navbar = () => {
           className="text-2xl md:text-5xl text-white font-semibold"
         >
           <Image
-            src={"https://ryan.hurd.cc/personal-portfolio/images/logo-no-background.png"}
+            src={
+              "https://rh7112.github.io/personal-portfolio/images/logo-no-background.png"
+            }
             alt="logo"
             width={100}
             height={50}
