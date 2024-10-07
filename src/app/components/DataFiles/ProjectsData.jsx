@@ -41,9 +41,9 @@ export const PROJECTS_DATA = [
   },
   {
     id: 5,
-    title: "In-House Credit Freezing/Thawing",
+    title: "Credit Remittance",
     description:
-      "Modified the underlying logic to 'freeze' credits on customer accounts, complying with Indiana's updated laws. This change enabled the accounting team to efficiently manage credits and improve financial accuracy.",
+      "Also titled as  'In-House Credit Freezing/Thawing.' On this project, I helped to modify the underlying logic to 'freeze' credits on customer accounts, complying with Indiana's updated laws. This change enabled the accounting team to efficiently manage credits and improve financial accuracy.",
     image: "images/projects/5.png",
     url: null,
     gitUrl: null,
@@ -163,12 +163,334 @@ export const PROJECTS_DATA = [
     id: 17,
     title: "Synchrony Bonus Bucks Promotions",
     description:
-      "For almost a year, I was responsible for sending out Bonus Bucks (a.k.a. Gift Cards) to Sweewater credit card holders who met the criteria for a given promotion. These promotions include Spend and Get, Apply and Earn, Father's Day, and more. In my spare time, I built out an application to handle automation of this process, so I personally wasnt't the individual handling this task on a weekly basis while these promotions were running. Once I completed it, I presented the aplication to my superiors and a few stakeholders and we began moving this responsibility from the Information Technology department to the Marketing department.",
+      "For almost a year, I was responsible for sending out Bonus Bucks (a.k.a. Gift Cards) to Sweewater credit card holders who met the criteria for a given promotion. These promotions include Spend and Get, Apply and Earn, Father's Day, and more. I sent these bonus bucks out by removing duplicate records from the provided file, and formatting the file very specifically to meet the criteria for a user-script that hi-jacked some logic for sending out gift cards. This sent out hundreds of thousands of dollars to customers on a weekly basis for a given promotion period, several times throughout the year.",
     image: "images/projects/17.png",
     url: null,
     gitUrl: null,
     tag: ["All", "4D", "Marketing"],
   },
+  {
+    id: 18,
+    title: "Software Engineering - Flashcard Application",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "Android Studio", "Java", "Kotlin"],
+  },
+  {
+    id: 19,
+    title: "Project Management - Accessibility Compliant Website",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All"], // TODO: Finish this
+  },
+  {
+    id: 20,
+    title: "Build Cycle Calendar",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "4D", "Information Technology"],
+  },
+  {
+    id: 21,
+    title: "SQL Query Engine Optimizations",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "4D", "Information Technology"],
+  },
+  {
+    id: 22,
+    title: "Customer Email Module",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "4D", "Sales"],
+  },
+  {
+    id: 23,
+    title: "Return Rules",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "4D", "Sales"],
+  },
+  {
+    id: 24,
+    title: "Service Orders",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "4D", "Sales"],
+  },
+  {
+    id: 25,
+    title: "Security Improvements", // Confidential/Regulated PII in Logging platform
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "4D", "Information Technology"],
+  },
+  {
+    id: 26,
+    title: "Confluence Test Plan Space",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "4D", "Information Technology"],
+  },
+  {
+    id: 27,
+    title: "Marketplace Dating",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "4D", "Accounting"],
+  },
+  {
+    id: 28,
+    title: "Invoice - Tax Queue Updates",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "4D", "Accounting"],
+  },
+  {
+    id: 29,
+    title: "Automated Collection Letters",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "4D", "Accounting"],
+  },
+  {
+    id: 30,
+    title: "Automated Check Posting",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "4D", "Accounting"],
+  },
+  {
+    id: 31,
+    title: "Late Payment Fee Tax Issue",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "4D", "Accounting"],
+  },
+  {
+    id: 32,
+    title: "Verification Worksheet",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "4D", "Accounting"],
+  },
+  {
+    id: 33,
+    title: "Mockaroo Data Generator",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "4D", "Information Technology", "API"],
+  },
+  {
+    id: 34,
+    title: "Vendor Credits",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "4D", "Accounting"],
+  },
+
+  {
+    id: 35,
+    title: "Easy Pay Auto-Approval Rules",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "4D", "Accounting"],
+  },
+  {
+    id: 36,
+    title: "Rebates API",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "4D", "Information Technology"],
+  },
+  {
+    id: 37,
+    title: "Gear Exchange - Updates",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "4D", "Gear Exchange"],
+  },
+  {
+    id: 38,
+    title: "Quotes - Splitting",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "4D", "Sales"],
+  },
+  {
+    id: 39,
+    title: "Customer Pickup",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "4D", "Distribution Center"],
+  },
+  {
+    id: 40,
+    title: "Lead Assignment",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "4D", "Sales"],
+  },
+  {
+    id: 41,
+    title: "2023 Performance Cleanup",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "4D", "Information Technology"],
+  },
+  {
+    id: 42,
+    title: "Make Offer",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "Retool", "Javascript", "Sales"],
+  },
+  {
+    id: 43,
+    title: "Walking Taco Kiosk - Laptop Version",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "Retool", "Javascript", "Guest Services"],
+  },
+  {
+    id: 44,
+    title: "404 Admin Tool",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "Retool", "Information Technology"],
+  },
+  {
+    id: 45,
+    title: "Item Workflow",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "Retool", "Marketing"],
+  },
+  {
+    id: 46,
+    title: "Web Text Editor",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "Retool", "Marketing"],
+  },
+  {
+    id: 47,
+    title: "Product Notes",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "Retool", "Marketing"],
+  },
+
+  {
+    id: 48,
+    title: "Competitor Price Comparison",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "Retool", "Merchandising"],
+  },
+  {
+    id: 49,
+    title: "Press Release Admin Tool",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "Retool", "Marketing"],
+  },
+  {
+    id: 50,
+    title: "Vendor Logos",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "Retool", "Marketing"],
+  },
+  {
+    id: 51,
+    title: "Usability Tester Management Clean Up",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "Retool", "Information Technology"],
+  },
+  {
+    id: 52,
+    title: "B2B / TMS Clean Up",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "Retool", "Merchandising"],
+  },
+  {
+    id: 53,
+    title: "Returns Tracking",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "Retool", "Guitar Gallery"],
+  },
+  {
+    id: 54,
+    title: "Case Candy",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "Retool", "Guitar Gallery"],
+  },
+  {
+    id: 55,
+    title: "Case Fit Backfill",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "Retool", "Guitar Gallery"],
+  },
+  {
+    id: 56,
+    title: "Termination Script",
+    description: "", // TODO: Finish this
+    image: null, // TODO: Finish this
+    gitUrl: null,
+    tag: ["All", "Retool"], // TODO: Finish this
+  },
+  {
+    id: 57,
+    title: "Bonus Bucks User Interface",
+    description:
+      "After a period of managing Synchrony bonus bucks promotions, I sought to relinquish responsibility for these initiatives. To achieve this, I developed an application in my spare time to automate the process, thereby reducing my personal involvement in the weekly task management while promotions were ongoing. Upon completion, I presented the application to my superiors and key stakeholders, and we subsequently transitioned the responsibility from the Information Technology department to the Marketing department.",
+    image: "images/projects/57.png",
+    url: null,
+    gitUrl: null,
+    tag: ["All", "4D", "Marketing"],
+  },
 ];
-
-
