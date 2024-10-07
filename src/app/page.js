@@ -9,8 +9,15 @@ export default function Home() {
       <Navbar />
       <div className="container mt-24 mx-auto px-12 py-4">
         <HeroSection />
-        <AboutSection />
-        <ProjectsSection />
+        <div id="about" className="anchor">
+          <AboutSection />
+        </div>
+        <div id="projects" className="anchor">
+          <ProjectsSection />
+        </div>
+        <div id="contact" className="anchor">
+          {/* <ContactSection />  */}
+        </div>
       </div>
     </main>
   );

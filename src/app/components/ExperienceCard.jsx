@@ -4,29 +4,27 @@ import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import { useState } from "react";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 
-function calculateTimeSpent(dateRange) {
-  let startDate, endDate;
-
+const parseDateRange = (dateRange) => {
   if (dateRange.includes("-")) {
-    [startDate, endDate] = dateRange.split(" - ");
+    return dateRange.split(" - ");
   } else if (dateRange.includes("Since")) {
-    startDate = dateRange.replace("Since ", "");
-    endDate = new Date().toLocaleString("default", {
-      month: "short",
-      year: "numeric",
-    });
+    return [
+      dateRange.replace("Since ", ""),
+      new Date().toLocaleString("default", { month: "long", year: "numeric" }),
+    ];
   } else {
-    startDate = dateRange;
-    endDate = new Date().toLocaleString("default", {
-      month: "short",
-      year: "numeric",
-    });
+    return [
+      dateRange,
+      new Date().toLocaleString("default", { month: "long", year: "numeric" }),
+    ];
   }
+};
 
+const calculateTimeSpent = (dateRange) => {
+  const [startDate, endDate] = parseDateRange(dateRange);
   const start = new Date(startDate);
   const end = new Date(endDate);
-  const diffTime = Math.abs(end - start);
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  const diffDays = Math.round((end - start) / (1000 * 3600 * 24));
   const years = Math.floor(diffDays / 365);
   const months = Math.floor((diffDays % 365) / 30);
   const days = Math.floor((diffDays % 365) % 30);
@@ -38,7 +36,7 @@ function calculateTimeSpent(dateRange) {
   } else if (months > 0) {
     return `${months} mo${months > 1 ? "s" : ""}.`;
   }
-}
+};
 
 const ExperienceCard = ({
   title,
@@ -65,7 +63,6 @@ const ExperienceCard = ({
       </div>
       <p className="text-orange-700 mb-3 font-bold">{jobTitle}</p>
       <p className="text-gray-200">{description}</p>
-      {console.log(accordionItems)}
 
       {accordionItems?.length > 0 && (
         <Accordion>
