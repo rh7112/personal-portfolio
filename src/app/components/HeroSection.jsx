@@ -6,47 +6,69 @@ import { TypeAnimation } from "react-type-animation";
 import { FaMale } from "react-icons/fa";
 import { BsFillKeyboardFill } from "react-icons/bs";
 import { GiFishingHook } from "react-icons/gi";
+import AccordionCard from "./AccordionCard";
 
 const HeroSection = () => {
+  const handleDownload = (filePath) => {
+    const link = document.createElement("a");
+    link.href = filePath;
+    link.download = "ryan-hurd-resume.pdf";
+    link.click();
+  };
+
   return (
     <section>
-      <div className="grid grid-cols-1 sm:grid-cols-12">
-        <div className="col-span-7 place-self-center text-center sm:text-left">
+      <div className="grid grid-cols-1 sm:grid-cols-12 place-items-">
+        <div className="col-span-6 text-left sm:text-left place-self-start mt-20">
           <h1 className="text-white mb-4 text-4xl sm:text-5xl lg:text-6xl front-extrabold">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-700  to-green-700">
-              Hello, Im{" "}
+              Hello, I&apos;m
             </span>
             <br />
             <TypeAnimation
               sequence={[
                 "Ryan Hurd",
                 5000,
-                "a Father",
-                1500,
-                "a Software Engineer",
-                1500,
-                "a Fisherman",
-                1500,
-                "an Amateur Chef",
-                1500,
-                "a Gamer",
-                1500,
+                "A Husband",
+                1250,
+                "A Father",
+                1250,
+                "A Software Engineer",
+                1250,
+                "A Home Cook",
+                1250,
+                "A Baker",
+                1250,
+                "An Amateur Mixologist",
+                1250,
+                "A Plex Server Administrator",
+                1250,
+                "A Gamer",
+                1250,
+                "An Angler",
+                1250,
+                "A Pickleball-er",
+                1250,
+                "A Bowler",
+                1250,
+                "A Bass Guitarist",
+                1250,
               ]}
               wrapper="span"
               speed={50}
               repeat={Infinity}
             />
           </h1>
-          {/* <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
-            Software Developer
-          </p> */}
           <div>
             <button className="px-6 py-3 w-full sm:w-fit rounded-full mr-4 bg-gradient-to-br from-orange-700 via-blue-400 to-green-700 hover:bg-slate-200 text-black">
               Hire Me
             </button>
-            <button className="px-1 py-1 w-full sm:w-fit rounded-full bg-gradient-to-br from-orange-700 via-blue-400 to-green-700 hover:bg-slate-800 text-white  mt-3">
+            <button
+              className="px-1 py-1 w-full sm:w-fit rounded-full bg-gradient-to-br from-orange-700 via-blue-400 to-green-700 hover:bg-slate-800 text-white  mt-3"
+              onClick={() => handleDownload("/documents/ryan-hurd-resume.pdf")}
+            >
               <span className="block bg-[#121212] hover:bg-slate-800 rounded-full px-5 py-2">
-                Download CV
+                Download Resume
               </span>
             </button>
           </div>

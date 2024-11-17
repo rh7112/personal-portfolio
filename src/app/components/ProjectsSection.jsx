@@ -12,7 +12,7 @@ const projectsData = [
     image: "/images/projects/1.png",
     url: null,
     gitUrl: null,
-    tag: ["All", "Retool", "Guest Services"],
+    tag: ["All", "Retool", "Javascript", "Guest Services"],
   },
   {
     id: 2,
@@ -29,7 +29,7 @@ const projectsData = [
     title: "TTR's Tax Exemption Certification Management System (ECMS)",
     description:
       "Designed and developed the Tax Exemption Certification Management System to automate tax exemption data intake from schools, churches, and other organizations. This solution saved the tax team approximately two people's worth of hours per week.",
-    image: "",
+    image: "images/projects/3.png",
     url: "https://ttrecms.com/about",
     gitUrl: null,
     tag: ["All", "4D", "Accounting", "Python", "Sales"],
@@ -49,7 +49,7 @@ const projectsData = [
     title: "In-House Credit Freezing/Thawing",
     description:
       "Modified the underlying logic to 'freeze' credits on customer accounts, complying with Indiana's updated laws. This change enabled the accounting team to efficiently manage credits and improve financial accuracy.",
-    image: "",
+    image: "images/projects/5.png",
     url: null,
     gitUrl: null,
     tag: ["All", "4D", "Accounting"],
@@ -62,7 +62,7 @@ const projectsData = [
     image: "/images/projects/6.png",
     url: null,
     gitUrl: null,
-    tag: ["All", "Retool", "Merchandising"],
+    tag: ["All", "Retool", "Javascript", "Merchandising"],
   },
   {
     id: 7,
@@ -82,7 +82,7 @@ const projectsData = [
     image: "/images/projects/8.png",
     url: null,
     gitUrl: null,
-    tag: ["All", "Retool", "Marketing"],
+    tag: ["All", "Retool", "Javascript", "Marketing"],
   },
   {
     id: 9,
@@ -99,7 +99,7 @@ const projectsData = [
     title: "Personal Portfolio",
     description:
       "Built this portfolio to expand my knowledge of technologies like NextJS, React, and Node. This project showcases my skills and experience in web development and technology stacks.",
-    image: "",
+    image: "images/projects/10.png",
     url: "/",
     gitUrl: "https://github.com/rh7112/personal-portfolio",
     tag: ["All", "NextJS", "Node"],
@@ -119,10 +119,40 @@ const projectsData = [
     title: "Website Development - Final Project",
     description:
       "My final project for website development in Spring 2018 was a website for Black's Concrete Construction, a former employer. Built using HTML5 and CSS3, it was a functional site that showcased the company's services and projects, despite being a basic design.",
-    image: null,
+    image: "images/projects/12.png",
     url: null,
     gitUrl: "https://github.com/rh7112/website-development-final-project",
     tag: ["All", "HTML5", "CSS3"],
+  },
+  {
+    id: 13,
+    title: "Inventory Variances",
+    description:
+      "This Retool app helps the Music Store to track variances in the inventory they hold. The application displays the item id, variance amount, notes, and other useful information for those in the Music Store to help them maintain their stock.",
+    image: "images/projects/13.png",
+    url: null,
+    gitUrl: "",
+    tag: ["All", "Retool", "Javascript", "Music Store"],
+  },
+  {
+    id: 14,
+    title: "End of Day Notes",
+    description:
+      "This application provided those working the Guitar Gallery with a way to provide notes to those who were on the alternate shift of the ongoings of the day. This application was built using the Retool platform. ",
+    image: "images/projects/14.png",
+    url: null,
+    gitUrl: "",
+    tag: ["All", "Retool", "Javascript", "Guitar Gallery"],
+  },
+  {
+    id: 15,
+    title: "Gitlab Permissions Lookup",
+    description:
+      "The Application and Platform Support teams were often contacted about 'who owns what Gitlab repository.' This issue was brought up to the Retool team, and I ultimately built out an applicaiton that uses the Gitlab REST API to pull project information, owners, etc. I displayed this information to the user and allowed them to send emails to owners and maintainers, to avoid the back and forth with other teams.",
+    image: "images/projects/15.png",
+    url: null,
+    gitUrl: "",
+    tag: ["All", "Retool", "Javascript", "Information Technology"],
   },
 ];
 
@@ -187,8 +217,14 @@ const ProjectsSection = () => {
         />
         <ProjectTag
           onClick={handleTagChange}
-          name="Retool"
-          isSelected={tag === "Retool"}
+          name="Music Store"
+          isSelected={tag === "Music Store"}
+          department={true}
+        />
+        <ProjectTag
+          onClick={handleTagChange}
+          name="Javascript"
+          isSelected={tag === "Javascript"}
           department={false}
         />
         <ProjectTag
