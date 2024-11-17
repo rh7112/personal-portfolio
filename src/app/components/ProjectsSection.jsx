@@ -100,7 +100,7 @@ const projectsData = [
     description:
       "Built this portfolio to expand my knowledge of technologies like NextJS, React, and Node. This project showcases my skills and experience in web development and technology stacks.",
     image: "images/projects/10.png",
-    url: "/",
+    url: "https://ryan.hurd.cc",
     gitUrl: "https://github.com/rh7112/personal-portfolio",
     tag: ["All", "NextJS", "Node"],
   },
