@@ -9,7 +9,7 @@ const projectsData = [
     title: "Sweetwater Turkey Handout Application (ReTurkey)",
     description:
       "Developed a Retool application for Sweetwater's Guest Services team to efficiently distribute turkeys (and gift cards) to employees during Thanksgiving. This streamlined process improved employee satisfaction and reduced administrative tasks.",
-    image: "https://rh7112.github.io/personal-portfolio/images/projects/1.png",
+    image: "/images/projects/1.png",
     url: null,
     gitUrl: null,
     tag: ["All", "Retool", "Guest Services"],
@@ -19,7 +19,7 @@ const projectsData = [
     title: "Gear Exchange - BrainTree by Paypal Implementation",
     description:
       "Integrated BrainTree payment processing into Gear Exchange, enabling secure and seamless transactions. This implementation enhanced the overall user experience and increased sales conversions.",
-    image: "https://rh7112.github.io/personal-portfolio/images/projects/2.png",
+    image: "/images/projects/2.png",
     url: "https://www.sweetwater.com/used",
     gitUrl: null,
     tag: ["All", "4D", "BrainTree", "Gear Exchange"],
@@ -59,7 +59,7 @@ const projectsData = [
     title: "Price Management Platform",
     description:
       "Developed the Price Management Platform to help Merchandising determine optimal competitor pricing strategies. This tool analyzes statistics to identify 'winning prices' and inform pricing decisions.",
-    image: "https://rh7112.github.io/personal-portfolio/images/projects/6.png",
+    image: "/images/projects/6.png",
     url: null,
     gitUrl: null,
     tag: ["All", "Retool", "Merchandising"],
@@ -69,7 +69,7 @@ const projectsData = [
     title: "Personalized Tile Promotions",
     description:
       "Created personalized tile promotions to enhance user recommendations on Sweetwater.com. These promotions leverage browsing history to improve the user experience and increase engagement.",
-    image: "https://rh7112.github.io/personal-portfolio/images/projects/7.png",
+    image: "/images/projects/7.png",
     url: null,
     gitUrl: null,
     tag: ["All", "4D", "Marketing"],
@@ -79,7 +79,7 @@ const projectsData = [
     title: "Search Miner",
     description:
       "Developed the Search Miner tool to help a select group of users analyze Sweetwater.com search results. This tool improves website health, SEO, and various other aspects of the online presence.",
-    image: "https://rh7112.github.io/personal-portfolio/images/projects/8.png",
+    image: "/images/projects/8.png",
     url: null,
     gitUrl: null,
     tag: ["All", "Retool", "Marketing"],
@@ -89,7 +89,7 @@ const projectsData = [
     title: "DementiaTrack",
     description:
       "My senior capstone project, DementiaTrack, aimed to diagnose patients using sensor data from activities like sleep, daily activity, movement, and bathroom activities. This research project explored the potential of sensor-based diagnosis.",
-    image: "https://rh7112.github.io/personal-portfolio/images/projects/9.png",
+    image: "/images/projects/9.png",
     url: null,
     gitUrl: "https://github.com/Memotexe/DementiaTrack",
     tag: ["All", "React", "Python", "Node"],
@@ -109,7 +109,7 @@ const projectsData = [
     title: "Mentor Managing Application",
     description:
       "This was an 'Orbital' class at Sweetwater, we conducted weekly mob coding sessions to build an application that enables mentees to select mentors for a set period. This process aimed to facilitate learning and skill acquisition in areas that might not have been explored otherwise.",
-    image: "https://rh7112.github.io/personal-portfolio/images/projects/11.png",
+    image: "/images/projects/11.png",
     url: null,
     gitUrl: null,
     tag: ["All", "C#", ".Net", "Information Technology"],
