@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export && touch ./out/.nojekyll && echo 'www.ryan.hurd.cc' > ./out/CNAME && gh-pages -d out -t true",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "export": "next export"
