@@ -52,7 +52,7 @@ const HeroSection = () => {
         <div className="col-span-6 text-left sm:text-left place-self-start mt-20">
           <h1 className="text-white mb-4 text-4xl sm:text-5xl lg:text-6xl front-extrabold">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-700  to-green-700">
-              Hello, I&apos;m
+              Hello, I&apos;m!
             </span>
             <br />
             <TypeAnimation sequence={sequence} speed={50} repeat={Infinity} />
