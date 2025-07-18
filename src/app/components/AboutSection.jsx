@@ -20,9 +20,9 @@ import {
   SiRetool,
   Si4D,
   SiBraintree,
-  SiCsharp,
   SiDotnet,
 } from "react-icons/si";
+import { TbBrandCSharp } from "react-icons/tb"
 import { TbBrandCpp, TbBrandNextjs } from "react-icons/tb";
 import { BsRegex } from "react-icons/bs";
 import { GrGraphQl } from "react-icons/gr";
@@ -155,7 +155,7 @@ const TAB_DATA = [
         {SkillCard(GrGraphQl, "GraphQL", "Beginner")}
         {SkillCard(TbBrandNextjs, "NextJS", "Beginner")}
         {SkillCard(SiNextui, "NextUI", "Beginner")}
-        {SkillCard(SiCsharp, "C#", "Beginner")}
+        {SkillCard(TbBrandCSharp, "C#", "Beginner")}
         {SkillCard(SiDotnet, ".Net", "Beginner")}
       </div>
     ),
