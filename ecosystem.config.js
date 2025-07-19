@@ -3,7 +3,7 @@ module.exports = {
     {
       name: "personal-portfolio",
       cwd: "/mnt/nas/rh25170/Documents/personal-portfolio",
-      script: "npm",
+      script: "/usr/local/bin/npm",
       args: "start",
       watch: false,
       env: {
