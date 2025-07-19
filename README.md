@@ -86,3 +86,4 @@ This project is licensed under the MIT License. See `LICENSE` for details.
 * In-House Credit photo by <a href="https://unsplash.com/@leekos">Kostiantyn Li</a> on <a href="https://unsplash.com/photos/a-house-made-out-of-money-on-a-white-background-1sCXwVoqKAw">Unsplash</a>
 * Search Miner photo by <a href="https://unsplash.com/@rlldied">Valeria Nikitina</a> on <a href="https://unsplash.com/photos/a-close-up-of-a-button-on-a-wall-n99YXHGyQj8">Unsplash</a>
 * Personal Portfolio photo by <a href="https://unsplash.com/@ilyapavlov">Ilya Pavlov</a> on <a href="https://unsplash.com/photos/monitor-showing-java-programming-OqtafYT5kTw">Unsplash</a>
+* Mentor Management Photo by <a href="https://unsplash.com/@gettyimages">Getty Images</a> on <a href="https://unsplash.com/photos/group-of-people-analysis-business-accounting-working-with-individual-income-tax-return-accounting-concept-discussion-meeting-concept-iquyJ5GbsEg">Unsplash</a>
