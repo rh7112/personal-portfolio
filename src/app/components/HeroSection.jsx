@@ -3,10 +3,6 @@
 import React from "react";
 import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
-import { FaMale } from "react-icons/fa";
-import { BsFillKeyboardFill } from "react-icons/bs";
-import { GiFishingHook } from "react-icons/gi";
-import AccordionCard from "./AccordionCard";
 
 const HeroSection = () => {
   const handleDownload = (filePath) => {
@@ -29,27 +25,23 @@ const HeroSection = () => {
               sequence={[
                 "Ryan Hurd",
                 5000,
-                "A Husband",
+                "Father",
                 1250,
-                "A Father",
+                "Husband",
                 1250,
-                "A Software Engineer",
+                "Software Engineer",
                 1250,
-                "A Home Cook",
+                "Retool Specialist",
                 1250,
-                "A Baker",
+                "Builder of Internal Tools",
                 1250,
-                "A Plex Server Administrator",
+                "Problem Solver",
                 1250,
-                "A Gamer",
+                "Home Cook",
                 1250,
-                "An Angler",
+                "Angler",
                 1250,
-                "A Pickleball Amateur",
-                1250,
-                "A Bowler",
-                1250,
-                "A Bass Guitarist",
+                "Plex Server Enthusiast",
                 1250,
               ]}
               wrapper="span"

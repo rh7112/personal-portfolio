@@ -1,6 +1,5 @@
 "use client";
 import React, { useTransition, useState } from "react";
-import Image from "next/image";
 import TabButton from "./TabButton";
 import {
   FaDatabase,
@@ -19,7 +18,6 @@ import {
   SiNextui,
   SiRetool,
   Si4D,
-  SiBraintree,
   SiDotnet,
 } from "react-icons/si";
 import { TbBrandCSharp } from "react-icons/tb";
@@ -198,6 +196,7 @@ const TAB_DATA = [
 
 const AboutSection = () => {
   const [tab, setTab] = useState("experience");
+
   const [isPending, startTransition] = useTransition();
 
   const handleTabChange = (id) => {

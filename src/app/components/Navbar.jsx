@@ -22,7 +22,7 @@ const navLinks = [
   },
 ];
 
-const Navbar = () => {
+export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   return (
@@ -64,6 +64,4 @@ const Navbar = () => {
       {navbarOpen ? <MenuOverlay links={navLinks} /> : null}
     </nav>
   );
-};
-
-export default Navbar;
+}
