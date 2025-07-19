@@ -1,4 +1,3 @@
-js
 module_exports = {
 	apps: [
 		{
