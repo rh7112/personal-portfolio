@@ -20,9 +20,9 @@ import {
   SiRetool,
   Si4D,
   SiBraintree,
-  SiCsharp,
   SiDotnet,
 } from "react-icons/si";
+import { TbBrandCSharp } from "react-icons/tb";
 import { TbBrandCpp, TbBrandNextjs } from "react-icons/tb";
 import { BsRegex } from "react-icons/bs";
 import { GrGraphQl } from "react-icons/gr";
@@ -100,7 +100,7 @@ const TAB_DATA = [
           title="Sweetwater Sound Inc."
           dateRange="Since May 2021"
           jobTitle="Software Engineer"
-          description="In my time at Sweetwater I've spent time on the Production Support team, MATH Pod (Maintenance, Accounting, Tax, and Human Resource), Customer Experience Pod (demisemihemidemisemiquaver), and Retool Pod. I've gained a breadth of software engineering knowledge throughout my tenure at Sweetwater. See the sections below for more details on each team!"
+          description="In my time at Sweetwater I've spent time on the Production Support team, MATH Pod (Maintenance, Accounting, Tax, and Human Resource), Customer Experience Pod, and Retool Pod. I've gained a breadth of software engineering knowledge throughout my tenure at Sweetwater. See the sections below for more details on each team!"
           accordionItems={sweetwaterAccordionItems}
         />
         <ExperienceCard
@@ -155,7 +155,7 @@ const TAB_DATA = [
         {SkillCard(GrGraphQl, "GraphQL", "Beginner")}
         {SkillCard(TbBrandNextjs, "NextJS", "Beginner")}
         {SkillCard(SiNextui, "NextUI", "Beginner")}
-        {SkillCard(SiCsharp, "C#", "Beginner")}
+        {SkillCard(TbBrandCSharp, "C#", "Beginner")}
         {SkillCard(SiDotnet, ".Net", "Beginner")}
       </div>
     ),
@@ -208,16 +208,7 @@ const AboutSection = () => {
 
   return (
     <section className="text-white">
-      <div className="md:grid md:grid-cols-2 gap-8 py-8 px04 xl:gap-16 sm:py-16 xl:px-16">
-        <Image
-          src={
-            "/images/ryan-pfp.png"
-          }
-          alt="Ryan Hurd's profile picture"
-          width={500}
-          height={500}
-        />
-
+      <div className="md:grid md:grid-cols-1 gap-8 py-8 px04 xl:gap-16 sm:py-16 xl:px-16">
         <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
           <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
           <p className="text-base lg:text-lg">
