@@ -154,6 +154,36 @@ const projectsData = [
     gitUrl: "",
     tag: ["All", "Retool", "Javascript", "Information Technology"],
   },
+  {
+    id: 16,
+    title: "Sweetwater Crescendo Café Kiosk",
+    description:
+      "The original café management system used by staff was slow, unreliable, and difficult to maintain. I took ownership of rebuilding the application in Retool, redesigning the interface for clarity and speed, integrating live order data, and optimizing performance. The new version significantly improved usability for café staff and reduced support overhead for the engineering team.",
+    image: "images/projects/16.jpg",
+    url: null,
+    gitUrl: "",
+    tag: ["All", "Retool", "Javascript", "Kiosks"],
+  },
+  {
+    id: 17,
+    title: "Wavelengths Salon & Spa Kiosk",
+    description:
+      "I supported the existing codebase for Wavelengths Salon and Spa’s internal platform, assisting with maintenance and incremental improvements. Though I was not the sole developer, I helped address usability issues, resolved bugs, and provided suggestions for enhancing the application’s functionality.",
+    image: "images/projects/17.png",
+    url: null,
+    gitUrl: "",
+    tag: ["All", "Retool", "Javascript", "Kiosks"],
+  },
+  {
+    id: 18,
+    title: "Beverage Kiosks",
+    description:
+      "I contributed to the rewrite of the shared application used across multiple beverage kiosks, including Fermata North, Fermata South, Take 5, and Refresh. While not the sole developer, I assisted in improving functionality, refining the user interface, and ensuring the application could adapt dynamically based on kiosk context. My efforts supported a more consistent and maintainable experience across all locations.",
+    image: "images/projects/18.jpg",
+    url: null,
+    gitUrl: "",
+    tag: ["All", "Retool", "Javascript", "Kiosks"],
+  },
 ];
 
 const ProjectsSection = () => {
@@ -219,6 +249,12 @@ const ProjectsSection = () => {
           onClick={handleTagChange}
           name="Music Store"
           isSelected={tag === "Music Store"}
+          department={true}
+        />
+        <ProjectTag
+          onClick={handleTagChange}
+          name="Kiosks"
+          isSelected={tag === "Kiosks"}
           department={true}
         />
         <ProjectTag
