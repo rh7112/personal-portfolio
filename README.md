@@ -80,3 +80,4 @@ This project is licensed under the MIT License. See `LICENSE` for details.
 * Thanks to the Next.js, Tailwind CSS, and Hero UI communities for their amazing work and support.
 * Kiosk Photo by <a href="https://unsplash.com/@paul_siewert?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Paul Siewert</a> on <a href="https://unsplash.com/photos/a-display-case-filled-with-lots-of-drinks-QjFfLfa9qWA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 * Crescendo Photo by <a href="https://www.sweetwater.com/tour/40/crescendo_cafe">Sweetwater Sound</a>
+* Turkey Photo by <a href="https://unsplash.com/@heathergill">Paul Siewert</a> on <a href="https://unsplash.com/photos/a-group-of-chickens-in-a-fenced-in-area-o9vQS5XXaAM?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash">Unsplash</a>
