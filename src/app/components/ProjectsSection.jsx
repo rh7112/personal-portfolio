@@ -149,7 +149,7 @@ const projectsData = [
     title: "Gitlab Permissions Lookup",
     description:
       "The Application and Platform Support teams were often contacted about 'who owns what Gitlab repository.' This issue was brought up to the Retool team, and I ultimately built out an applicaiton that uses the Gitlab REST API to pull project information, owners, etc. I displayed this information to the user and allowed them to send emails to owners and maintainers, to avoid the back and forth with other teams.",
-    image: "images/projects/15.png",
+    image: "images/projects/15.jpg",
     url: null,
     gitUrl: "",
     tag: ["All", "Retool", "Javascript", "Information Technology"],
