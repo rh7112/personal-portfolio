@@ -19,7 +19,7 @@ const projectsData = [
     title: "Gear Exchange - BrainTree by Paypal Implementation",
     description:
       "Integrated BrainTree payment processing into Gear Exchange, enabling secure and seamless transactions. This implementation enhanced the overall user experience and increased sales conversions.",
-    image: "/images/projects/2.png",
+    image: "/images/projects/2.jpg",
     url: "https://www.sweetwater.com/used",
     gitUrl: null,
     tag: ["All", "4D", "BrainTree", "Gear Exchange"],
@@ -29,7 +29,7 @@ const projectsData = [
     title: "TTR's Tax Exemption Certification Management System (ECMS)",
     description:
       "Designed and developed the Tax Exemption Certification Management System to automate tax exemption data intake from schools, churches, and other organizations. This solution saved the tax team approximately two people's worth of hours per week.",
-    image: "images/projects/3.png",
+    image: "images/projects/3.jpg",
     url: "https://ttrecms.com/about",
     gitUrl: null,
     tag: ["All", "4D", "Accounting", "Python", "Sales"],
@@ -39,7 +39,7 @@ const projectsData = [
     title: "Consumer Audio",
     description:
       "Reworked the round-robin system for assigning customers to sales engineers, routing consumer audio inquiries to a dedicated team. This optimization reduced the workload on specialized sales engineers and increased Sweetwater's throughput.",
-    image: "images/projects/4.png",
+    image: "images/projects/4.jpg",
     url: "https://www.sweetwater.com/shop/home-audio-and-electronics/",
     gitUrl: null,
     tag: ["All", "4D", "Sales"],
@@ -69,7 +69,7 @@ const projectsData = [
     title: "Personalized Tile Promotions",
     description:
       "Created personalized tile promotions to enhance user recommendations on Sweetwater.com. These promotions leverage browsing history to improve the user experience and increase engagement.",
-    image: "/images/projects/7.png",
+    image: "/images/projects/7.jpg",
     url: null,
     gitUrl: null,
     tag: ["All", "4D", "Marketing"],
@@ -89,7 +89,7 @@ const projectsData = [
     title: "DementiaTrack",
     description:
       "My senior capstone project, DementiaTrack, aimed to diagnose patients using sensor data from activities like sleep, daily activity, movement, and bathroom activities. This research project explored the potential of sensor-based diagnosis.",
-    image: "/images/projects/9.png",
+    image: "/images/projects/9.jpg",
     url: null,
     gitUrl: "https://github.com/Memotexe/DementiaTrack",
     tag: ["All", "React", "Python", "Node"],
@@ -169,7 +169,7 @@ const projectsData = [
     title: "Wavelengths Salon & Spa Kiosk",
     description:
       "I supported the existing codebase for Wavelengths Salon and Spa’s internal platform, assisting with maintenance and incremental improvements. Though I was not the sole developer, I helped address usability issues, resolved bugs, and provided suggestions for enhancing the application’s functionality.",
-    image: "images/projects/17.png",
+    image: "images/projects/17.jpg",
     url: null,
     gitUrl: "",
     tag: ["All", "Retool", "Javascript", "Kiosks"],
