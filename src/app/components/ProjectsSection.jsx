@@ -26,9 +26,9 @@ const projectsData = [
   },
   {
     id: 3,
-    title: "TTR's Tax Exemption Certification Management System (ECMS)",
+    title: "Tax Exemption Certification Management System (ECMS)",
     description:
-      "Designed and developed the Tax Exemption Certification Management System to automate tax exemption data intake from schools, churches, and other organizations. This solution saved the tax team approximately two people's worth of hours per week.",
+      "Integrated TTR's Tax Exemption Certification Management System (ECMS) to automate the tax exemption certificate review process. These certificates are uploaded into ECMS from schools, churches, and other organizations. The implementation of ECMS saved the tax team approximately two people's worth of hours per week in work.",
     image: "images/projects/3.jpg",
     url: "https://ttrecms.com/about",
     gitUrl: null,
