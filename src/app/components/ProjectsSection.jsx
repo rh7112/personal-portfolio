@@ -88,7 +88,7 @@ const projectsData = [
     id: 9,
     title: "DementiaTrack",
     description:
-      "My senior capstone project, DementiaTrack, aimed to diagnose patients using sensor data from activities like sleep, daily activity, movement, and bathroom activities. This research project explored the potential of sensor-based diagnosis.",
+      "My senior capstone project, DementiaTrack, aimed not to diagnose, but gather and analyze patients using sensor data from activities like sleep (R.E.M. sleep, sundowning, etc.), daily activities (medication intake, teeth brushing, opening the fridge/oven, etc.), movement, and bathroom habits. This half-research, half- development project explored the potential of sensor-based information gathering and machine learning analysis on that data.",
     image: "/images/projects/9.jpg",
     url: null,
     gitUrl: "https://github.com/Memotexe/DementiaTrack",
