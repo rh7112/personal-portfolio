@@ -6,9 +6,9 @@ import ProjectTag from "./ProjectTag";
 const projectsData = [
   {
     id: 1,
-    title: "Sweetwater Turkey Handout Application (ReTurkey)",
+    title: "Turkey Handout Application",
     description:
-      "Developed a Retool application for Sweetwater's Guest Services team to efficiently distribute turkeys (and gift cards) to employees during Thanksgiving. This streamlined process improved employee satisfaction and reduced administrative tasks.",
+      "Developed a Retool application for Sweetwater's Guest Services team to efficiently distribute turkeys (and gift cards) to employees a week before Thanksgiving. This streamlined process improved employee satisfaction and reduced administrative tasks. This project went from an off the wall idea to a completion in three business days, before the kick-off meeting had occurred.",
     image: "/images/projects/1.png",
     url: null,
     gitUrl: null,
@@ -16,9 +16,9 @@ const projectsData = [
   },
   {
     id: 2,
-    title: "Gear Exchange - BrainTree by Paypal Implementation",
+    title: "Gear Exchange - BrainTree Implementation",
     description:
-      "Integrated BrainTree payment processing into Gear Exchange, enabling secure and seamless transactions. This implementation enhanced the overall user experience and increased sales conversions.",
+      "Integrated BrainTree (a PayPal company) payment processing into Gear Exchange, enabling secure and seamless transactions. This implementation played a key role in bringing the Gear Exchange platform to life. Gear Exchange made a million dollars in sales within a few months of it's release in 2021!",
     image: "/images/projects/2.jpg",
     url: "https://www.sweetwater.com/used",
     gitUrl: null,
