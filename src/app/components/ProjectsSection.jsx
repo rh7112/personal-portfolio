@@ -38,7 +38,7 @@ const projectsData = [
     id: 4,
     title: "Consumer Audio",
     description:
-      "Reworked the round-robin system for assigning customers to sales engineers, routing consumer audio inquiries to a dedicated team. This optimization reduced the workload on specialized sales engineers and increased Sweetwater's throughput.",
+      "Sweetwater wanted a dedicated team to handle less specialized audio equipment sales. These products include Bluetooth headphones, earbuds, speakers, acd the likes. To route these customers to the appropriate team, the round-robin system for assigning customers to sales engineers needed reworked. This optimization reduced the workload on sales engineers, thereby increasing Sweetwater's throughput.",
     image: "images/projects/4.jpg",
     url: "https://www.sweetwater.com/shop/home-audio-and-electronics/",
     gitUrl: null,
