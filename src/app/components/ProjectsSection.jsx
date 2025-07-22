@@ -58,7 +58,7 @@ const projectsData = [
     id: 6,
     title: "Price Management Platform",
     description:
-      "Developed the Price Management Platform to help Merchandising determine optimal competitor pricing strategies. This tool analyzes statistics to identify 'winning prices' and inform pricing decisions.",
+    "The Merchandising team required a tool for tracking competitor pricing to maintain competitiveness. Development of the application began in Marketing, but was later reassigned to the Retool team for refinement. The tech lead initially oversaw the project, which was subsequently handed off for further development. Over the course of six months, the application was developed and refined. Following its release, the company saw a significant increase in sales, exceeding $1 million within a few weeks.",
     image: "/images/projects/6.png",
     url: null,
     gitUrl: null,
