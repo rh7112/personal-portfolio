@@ -206,7 +206,7 @@ const projectsData = [
   },
   {
     id: 21,
-    title: "Accessible Website",
+    title: "Accessiblity Website",
     description:
       "As a part of Project Management at Purdue University, we were tasked with using Agile methodologies to take turns being a Scrum Master. This project involved the development of a website teaching about accessibility.",
     image: "images/projects/21.png",
@@ -217,12 +217,13 @@ const projectsData = [
   {
     id: 22,
     title: "Distribution Center - Cookout Giveaway",
-    description: "The Fort Wayne Distribution Center at Sweetwater needed a custom application to manage a employee engagement program. The app allowed employees to swipe their badges and choose from a selection of prizes. Employees had a week to enter, and then an admin would trigger the app to randomly select winners. At the company cookout, employees could swipe their badges to see if they'd won.",
+    description:
+      "The Fort Wayne Distribution Center at Sweetwater needed a custom application to manage a employee engagement program. The app allowed employees to swipe their badges and choose from a selection of prizes. Employees had a week to enter, and then an admin would trigger the app to randomly select winners. At the company cookout, employees could swipe their badges to see if they'd won.",
     image: "images/projects/22.png",
     url: null,
     gitUrl: "",
     tag: ["All", "Retool", "Javascript"],
-  }
+  },
 ];
 
 const ProjectsSection = () => {
