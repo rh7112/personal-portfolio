@@ -68,7 +68,7 @@ const projectsData = [
     id: 7,
     title: "Personalized Tile Promotions",
     description:
-    "Rewrote the Personalized Tile Promotions application into Retool. This is a subsection of the Sweetwater.com website to show individuals promotions based on their browsing history.",
+      "Rewrote the Personalized Tile Promotions application into Retool. This is a subsection of the Sweetwater.com website to show individuals promotions based on their browsing history.",
     image: "/images/projects/7.jpg",
     url: null,
     gitUrl: null,
@@ -98,7 +98,7 @@ const projectsData = [
     id: 10,
     title: "Personal Portfolio",
     description:
-      "Built this portfolio to expand my knowledge of technologies like NextJS, React, and Node. This project showcases my skills and experience in web development and technology stacks.",
+      "Built this portfolio to expand my knowledge of technologies like NextJS, React, Tailwind, Node, and PM2. This project showcases my skills and experience in web development and technology stacks.",
     image: "images/projects/10.png",
     url: "https://ryan.hurd.cc",
     gitUrl: "https://github.com/rh7112/personal-portfolio",
