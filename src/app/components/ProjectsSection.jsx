@@ -178,7 +178,7 @@ const projectsData = [
     id: 18,
     title: "Beverage Kiosks",
     description:
-      "I contributed to the rewrite of the shared application used across multiple beverage kiosks, including Fermata North, Fermata South, Take 5, and Refresh. While not the sole developer, I assisted in improving functionality, refining the user interface, and ensuring the application could adapt dynamically based on kiosk context. My efforts supported a more consistent and maintainable experience across all locations.",
+      "A comprehensive rewrite of the shared application used across multiple beverage kiosks, including Fermata North, Fermata South, Take 5, and Refresh, aimed to enhance functionality and user experience. Collaborative development efforts focused on refining the user interface and implementing dynamic adaptations based on kiosk context. The resulting application provides a more consistent and maintainable experience across all locations.",
     image: "images/projects/18.jpg",
     url: null,
     gitUrl: "",
