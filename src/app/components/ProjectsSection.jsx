@@ -184,6 +184,16 @@ const projectsData = [
     gitUrl: "",
     tag: ["All", "Retool", "Javascript", "Kiosks"],
   },
+  {
+    id: 19,
+    title: "Flashcards Android Application",
+    description:
+      "As part of the Software Engineering course at Purdue University, a comprehensive Flashcards application was developed utilizing Android Studio and Kotlin programming language. This project, completed in Spring 2020, presented an opportunity to refine skills in digital collaboration and agile development methodologies.",
+    image: "images/projects/19.png",
+    url: null,
+    gitUrl: "",
+    tag: ["All", "Android", "Kotlin"],
+  },
 ];
 
 const ProjectsSection = () => {
