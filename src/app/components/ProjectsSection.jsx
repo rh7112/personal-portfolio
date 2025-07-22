@@ -168,7 +168,7 @@ const projectsData = [
     id: 17,
     title: "Wavelengths Salon & Spa Kiosk",
     description:
-      "I supported the existing codebase for Wavelengths Salon and Spa’s internal platform, assisting with maintenance and incremental improvements. Though I was not the sole developer, I helped address usability issues, resolved bugs, and provided suggestions for enhancing the application’s functionality.",
+      "The Wavelengths Salon and Spa internal platform codebase received ongoing support and maintenance, with a focus on addressing usability issues, resolving bugs, and implementing incremental improvements. Collaborative efforts led to enhancements in application functionality, ensuring a more efficient and effective user experience.",
     image: "images/projects/17.jpg",
     url: null,
     gitUrl: "",
