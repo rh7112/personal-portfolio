@@ -48,7 +48,7 @@ const projectsData = [
     id: 5,
     title: "In-House Credit Freezing/Thawing",
     description:
-      "Modified the underlying logic to 'freeze' credits on customer accounts, complying with Indiana's updated laws. This change enabled the accounting team to efficiently manage credits and improve financial accuracy.",
+      "Indiana State Law changed regarding keeping credit balances on customer accounts. This project led to modifying the logic related to credits to \"freeze\" them to comply with these laws. This change enabled the accounting team to manage these credits and freeze/thaw them at will, improving financial accuracy.",
     image: "images/projects/5.png",
     url: null,
     gitUrl: null,
