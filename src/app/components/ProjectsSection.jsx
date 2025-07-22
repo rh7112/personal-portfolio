@@ -158,7 +158,7 @@ const projectsData = [
     id: 16,
     title: "Sweetwater Crescendo Café Kiosk",
     description:
-      "The original café management system used by staff was slow, unreliable, and difficult to maintain. I took ownership of rebuilding the application in Retool, redesigning the interface for clarity and speed, integrating live order data, and optimizing performance. The new version significantly improved usability for café staff and reduced support overhead for the engineering team.",
+      "The legacy café management system was plagued by performance issues, reliability problems, and maintenance challenges. A comprehensive rebuild was undertaken, leveraging Retool to create a modern, intuitive interface that prioritizes clarity and speed. Key enhancements included the integration of live order data and targeted performance optimizations. The revamped system has yielded substantial improvements in usability for café staff, while also reducing support burdens on the engineering team.",
     image: "images/projects/16.jpg",
     url: null,
     gitUrl: "",
