@@ -118,7 +118,7 @@ const projectsData = [
     id: 12,
     title: "Website Development - Final Project",
     description:
-      "My final project for website development in Spring 2018 was a website for Black's Concrete Construction, a former employer. Built using HTML5 and CSS3, it was a functional site that showcased the company's services and projects, despite being a basic design.",
+      "The final project for website development in Spring '18 was a website for Black's Concrete Construction, a former employer. Built using HTML5 and CSS3, it was a functional site that showcased the company's services and projects.",
     image: "images/projects/12.png",
     url: null,
     gitUrl: "https://github.com/rh7112/website-development-final-project",
@@ -128,7 +128,7 @@ const projectsData = [
     id: 13,
     title: "Inventory Variances",
     description:
-      "This Retool app helps the Music Store to track variances in the inventory they hold. The application displays the item id, variance amount, notes, and other useful information for those in the Music Store to help them maintain their stock.",
+      "This Retool app helps the Music Store to track variances in the inventory they hold. The application displays the relevant information for items in the Music Store to help the Music Store employees maintain it's stock.",
     image: "images/projects/13.png",
     url: null,
     gitUrl: "",
