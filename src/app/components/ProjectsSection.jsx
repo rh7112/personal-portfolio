@@ -102,7 +102,7 @@ const projectsData = [
     image: "images/projects/10.png",
     url: "https://ryan.hurd.cc",
     gitUrl: "https://github.com/rh7112/personal-portfolio",
-    tag: ["All", "NextJS", "Node"],
+    tag: ["All", "NextJS", "Node", "PM2", "React", "Tailwind"],
   },
   {
     id: 11,
@@ -138,7 +138,7 @@ const projectsData = [
     id: 14,
     title: "End of Day Notes",
     description:
-      "This application provided those working the Guitar Gallery with a way to provide notes to those who were on the alternate shift of the ongoings of the day. This application was built using the Retool platform. ",
+      "Empowering seamless communication at the Guitar Gallery! This innovative application, built on the Retool platform, revolutionized shift handovers by providing a centralized hub for team members to share crucial notes and updates, ensuring a smooth transition of daily activities.",
     image: "images/projects/14.png",
     url: null,
     gitUrl: "",
@@ -148,7 +148,7 @@ const projectsData = [
     id: 15,
     title: "Gitlab Permissions Lookup",
     description:
-      "The Application and Platform Support teams were often contacted about 'who owns what Gitlab repository.' This issue was brought up to the Retool team, and I ultimately built out an applicaiton that uses the Gitlab REST API to pull project information, owners, etc. I displayed this information to the user and allowed them to send emails to owners and maintainers, to avoid the back and forth with other teams.",
+      "A recurring inquiry from the Application and Platform Support teams regarding Gitlab repository ownership prompted the development of a solution. Leveraging the Gitlab REST API, an application was created to retrieve project information, including owners and maintainers. This data is presented to users, who can then directly email owners and maintainers, streamlining communication and reducing unnecessary back-and-forth with other teams",
     image: "images/projects/15.jpg",
     url: null,
     gitUrl: "",
@@ -214,6 +214,15 @@ const projectsData = [
     gitUrl: "",
     tag: ["All", "HTML5", "CSS3"],
   },
+  {
+    id: 22,
+    title: "Distribution Center - Cookout Giveaway",
+    description: "The Fort Wayne Distribution Center at Sweetwater needed a custom application to manage a employee engagement program. The app allowed employees to swipe their badges and choose from a selection of prizes. Employees had a week to enter, and then an admin would trigger the app to randomly select winners. At the company cookout, employees could swipe their badges to see if they'd won.",
+    image: "images/projects/22.png",
+    url: null,
+    gitUrl: "",
+    tag: ["All", "Retool", "Javascript"],
+  }
 ];
 
 const ProjectsSection = () => {
