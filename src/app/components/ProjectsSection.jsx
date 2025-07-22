@@ -106,9 +106,9 @@ const projectsData = [
   },
   {
     id: 11,
-    title: "Mentor Managing Application",
+    title: "Mentor Management Application",
     description:
-      "This was an 'Orbital' class at Sweetwater, we conducted weekly mob coding sessions to build an application that enables mentees to select mentors for a set period. This process aimed to facilitate learning and skill acquisition in areas that might not have been explored otherwise.",
+      "This was an 'Orbital' class at Sweetwater, we conducted weekly mob coding sessions to build an application that enables mentees to select mentors for a set period. This process aimed to facilitate learning and skill acquisition in areas of interest.",
     image: "/images/projects/11.png",
     url: null,
     gitUrl: null,
