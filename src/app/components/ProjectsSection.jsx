@@ -48,7 +48,7 @@ const projectsData = [
     id: 5,
     title: "In-House Credit Freezing/Thawing",
     description:
-      "Indiana State Law changed regarding keeping credit balances on customer accounts. This project led to modifying the logic related to credits to \"freeze\" them to comply with these laws. This change enabled the accounting team to manage these credits and freeze/thaw them at will, improving financial accuracy.",
+      'Indiana State Law changed regarding keeping credit balances on customer accounts. This project led to modifying the logic related to credits to "freeze" them to comply with these laws. This change enabled the accounting team to manage these credits and freeze/thaw them at will, improving financial accuracy.',
     image: "images/projects/5.png",
     url: null,
     gitUrl: null,
@@ -58,7 +58,7 @@ const projectsData = [
     id: 6,
     title: "Price Management Platform",
     description:
-    "The Merchandising team required a tool for tracking competitor pricing to maintain competitiveness. Development of the application began in Marketing, but was later reassigned to the Retool team for refinement. The tech lead initially oversaw the project, which was subsequently handed off for further development. Over the course of six months, the application was developed and refined. Following its release, the company saw a significant increase in sales, exceeding $1 million within a few weeks.",
+      "The Merchandising team needed a tool to track competitor pricing. The project was reassigned to the Retool team for refinement and developed over six months. After its release, the company saw a significant sales increase, exceeding $1 million within weeks.",
     image: "/images/projects/6.png",
     url: null,
     gitUrl: null,
@@ -68,7 +68,7 @@ const projectsData = [
     id: 7,
     title: "Personalized Tile Promotions",
     description:
-      "Created personalized tile promotions to enhance user recommendations on Sweetwater.com. These promotions leverage browsing history to improve the user experience and increase engagement.",
+    "Rewrote the Personalized Tile Promotions application into Retool. This is a subsection of the Sweetwater.com website to show individuals promotions based on their browsing history.",
     image: "/images/projects/7.jpg",
     url: null,
     gitUrl: null,
@@ -88,7 +88,7 @@ const projectsData = [
     id: 9,
     title: "DementiaTrack",
     description:
-      "My senior capstone project, DementiaTrack, aimed not to diagnose, but gather and analyze patients using sensor data from activities like sleep (R.E.M. sleep, sundowning, etc.), daily activities (medication intake, teeth brushing, opening the fridge/oven, etc.), movement, and bathroom habits. This half-research, half- development project explored the potential of sensor-based information gathering and machine learning analysis on that data.",
+      "DementiaTrack, my Purdue University senior capstone project, analyzed patient sensor data from daily activities like sleep, movement, and bathroom habits to explore the potential of sensor-based information gathering and machine learning analysis.",
     image: "/images/projects/9.jpg",
     url: null,
     gitUrl: "https://github.com/Memotexe/DementiaTrack",
