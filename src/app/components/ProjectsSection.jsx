@@ -194,6 +194,26 @@ const projectsData = [
     gitUrl: "",
     tag: ["All", "Android", "Kotlin"],
   },
+  {
+    id: 20,
+    title: "Phase 10 Dice",
+    description:
+      "The final project for CS101 at Ivy Tech involved the development of the Phase 10 Dice game in C++. This challenging assignment presented a steep learning curve, with many students encountering difficulties in the initial stages. However, through perseverance and dedication, valuable skills and knowledge were acquired, providing a significant learning experience.",
+    image: "images/projects/20.png",
+    url: null,
+    gitUrl: "",
+    tag: ["All", "C++"],
+  },
+  {
+    id: 21,
+    title: "Accessible Website",
+    description:
+      "As a part of Project Management at Purdue University, we were tasked with using Agile methodologies to take turns being a Scrum Master. This project involved the development of a website teaching about accessibility.",
+    image: "images/projects/21.png",
+    url: null,
+    gitUrl: "",
+    tag: ["All", "HTML5", "CSS3"],
+  },
 ];
 
 const ProjectsSection = () => {
