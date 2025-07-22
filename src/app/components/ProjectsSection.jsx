@@ -78,7 +78,7 @@ const projectsData = [
     id: 8,
     title: "Search Miner",
     description:
-      "Developed the Search Miner tool to help a select group of users analyze Sweetwater.com search results. This tool improves website health, SEO, and various other aspects of the online presence.",
+      "Developed the Search Miner tool to help our SEO Engineer analyze Sweetwater.com search results. This tool allows that individual to analyze search results and improve website health, SEO, and various other aspects of the online presence.",
     image: "/images/projects/8.png",
     url: null,
     gitUrl: null,
