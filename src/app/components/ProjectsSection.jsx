@@ -189,7 +189,7 @@ const projectsData = [
     title: "Flashcards Android Application",
     description:
       "As part of the Software Engineering course at Purdue University, a comprehensive Flashcards application was developed utilizing Android Studio and Kotlin programming language. This project, completed in Spring 2020, presented an opportunity to refine skills in digital collaboration and agile development methodologies.",
-    image: "images/projects/19.png",
+    image: "images/projects/19.jpg",
     url: null,
     gitUrl: "",
     tag: ["All", "Android", "Kotlin"],
@@ -199,7 +199,7 @@ const projectsData = [
     title: "Phase 10 Dice",
     description:
       "The final project for CS101 at Ivy Tech involved the development of the Phase 10 Dice game in C++. This challenging assignment presented a steep learning curve, with many students encountering difficulties in the initial stages. However, through perseverance and dedication, valuable skills and knowledge were acquired, providing a significant learning experience.",
-    image: "images/projects/20.png",
+    image: "images/projects/20.jpg",
     url: null,
     gitUrl: "",
     tag: ["All", "C++"],
@@ -209,7 +209,7 @@ const projectsData = [
     title: "Accessiblity Website",
     description:
       "As a part of Project Management at Purdue University, we were tasked with using Agile methodologies to take turns being a Scrum Master. This project involved the development of a website teaching about accessibility.",
-    image: "images/projects/21.png",
+    image: "images/projects/21.jpg",
     url: null,
     gitUrl: "",
     tag: ["All", "HTML5", "CSS3"],
@@ -219,7 +219,7 @@ const projectsData = [
     title: "Distribution Center - Cookout Giveaway",
     description:
       "The Fort Wayne Distribution Center at Sweetwater needed a custom application to manage a employee engagement program. The app allowed employees to swipe their badges and choose from a selection of prizes. Employees had a week to enter, and then an admin would trigger the app to randomly select winners. At the company cookout, employees could swipe their badges to see if they'd won.",
-    image: "images/projects/22.png",
+    image: "images/projects/22.jpg",
     url: null,
     gitUrl: "",
     tag: ["All", "Retool", "Javascript"],

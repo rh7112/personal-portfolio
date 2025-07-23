@@ -30,7 +30,6 @@ const SocialSection = () => {
             href="https://github.com/rh7112"
             target="_blank"
             rel="noopener noreferrer"
-            H
             title="GitHub Profile"
           >
             <TbBrandGithub size={30} color="#fff" />
