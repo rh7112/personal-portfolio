@@ -1,6 +1,6 @@
 # Personal Portfolio
 
-Testing webhookS.
+Testing webhook.
 
 A Next.js application showcasing my personal portfolio, built with Tailwind CSS and Hero UI. The application files are hosted on my Synology NAS server, while a Raspberry Pi 4 runs `pm2` to keep the site running!
 
