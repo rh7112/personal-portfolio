@@ -85,8 +85,7 @@ const sweetwaterAccordionItems = [
 
         description:
 
-            "As a member of the production support team, I focused on identifying and resolving bugs across various components of the Customer Relationship Management (CRM) system. This included occasional feature development, but primarily involved diagnosing and troubleshooting issues that impacted other departments at Sweetwater.",
-
+            "While part of the Production Support team, I handled various tasks improving Sweetwater's Customer Relationship Management (CRM) system, 4D. These tasks include bug fixes, permissions updates, and 'quick hits,' small bite-sized improvements to improve end-user's lives. I worked on performing code reviews, and learning the ins and outs of not only the CRM's system, but also the entire Sweetwater ecosystem. This was a team of seven to twelve.",
     },
 
     {
@@ -95,8 +94,7 @@ const sweetwaterAccordionItems = [
 
         description:
 
-            "In the MATH pod, I was responsible for developing the Exemption Certification Management System (ECMS), which aimed to reclaim at least one person-week of productivity for the tax team. I worked on integrating BrainTree with the CRM system's Gear Exchange platform, while two other developers concurrently developed the queueing system and Hyperwallet setup, respectively. Our individual components were then combined to form a cohesive solution, which ultimately generated $1 million in sales within a few months.",
-
+            "On the MATH Pod, we handled tasks related to the Maintenance, Accounting, Tax,and Human Resources departments. Some of the major projects I worked on during this time includes integrating TTR's Exemtpion Certification Management System, integrating Paypal's Braintree system into the Customer Relationship Management (CRM) system. I was taken under the wing of a wickedly smart Senior Engineer who mentored me on the complex logic related to the companies accounting systems. I worked on bug fixes in accounting logic, projects, and automating processes usually using Python. This was a team of two to three.",
     },
 
     {
@@ -105,7 +103,7 @@ const sweetwaterAccordionItems = [
 
         description:
 
-            "This pod focused on developing Customer Relationship Management (CRM) modules that enabled a seamless customer experience. Key projects included implementing In-House Credit Freezing/Thawing, Consumer Audio, and 'Lead Buckets' rewrites, as well as enhancing modules like Customer Emails, Invoices, and Quotes.",
+            "The MATH pod was dissolved and enveloped into the Customer Experience pod. This team was geared towards addressing areas of the Customer Relationship Management (CRM)  that are used in other employee's day-to-day workflows to impact customer's lives. This meant modules like Invoices, Quotes, Names, Customer Email, Inventory, and many more. Major projects on this team included rewriting the "lead bucket" (a round-robin queue) system for the Consumer Audio project In-House Credit Freezing/Thawing. I worked on projects, bug fixes, and attempting automate some of my day-to-day processes. This was a team of seven to ten.",
 
     },
 
@@ -115,7 +113,7 @@ const sweetwaterAccordionItems = [
 
         description:
 
-            "As part of the Retool team, I contributed to the development of dynamic internal tools, often with tight deadlines. Notable projects included the Turkey Handout application (ReTurkey), Search Miner, Personalized Tile Promotions, and the Price Management Platform, among others.",
+            "The Retool team was formed in the Fall of '22, and I was offered a spot on the team. We leveraged the Retool platform to build internal applications, varying from simple and easy, to entire multi-month projects. I contributed to projects like Price Management Platform, Wavelengths Salon & Spa kiosk rewrite and Beverage kiosk rewrite. I developed rewrite applications for the Crescendo Café kiosk, Search Miner, Personalized Tile Promotions. I developed new solutions for Web Text Editor, Turkey giveaway, DC Cookout giveaway. The deadlines on this team were often tight, but rhe work was much more rewarding. This was a team of two to three.",
 
     },
 
