@@ -85,7 +85,7 @@ const sweetwaterAccordionItems = [
 
         description:
 
-            "While part of the Production Support team, I handled various tasks improving Sweetwater's Customer Relationship Management (CRM) system, 4D. These tasks include bug fixes, permissions updates, and 'quick hits,' small bite-sized improvements to improve end-user's lives. I worked on performing code reviews, and learning the ins and outs of not only the CRM's system, but also the entire Sweetwater ecosystem. This was a team of seven to twelve.",
+            "While part of the Production Support team, I handled various tasks improving Sweetwater's Customer Relationship Management (CRM) system, 4D. These tasks include bug fixes, permissions updates, and \"quick hits,\" small bite-sized improvements to improve end-user's lives. I worked on performing code reviews, and learning the ins and outs of not only the CRM's system, but also the entire Sweetwater ecosystem. This was a team of seven to twelve.",
     },
 
     {
@@ -103,7 +103,7 @@ const sweetwaterAccordionItems = [
 
         description:
 
-            "The MATH pod was dissolved and enveloped into the Customer Experience pod. This team was geared towards addressing areas of the Customer Relationship Management (CRM)  that are used in other employee's day-to-day workflows to impact customer's lives. This meant modules like Invoices, Quotes, Names, Customer Email, Inventory, and many more. Major projects on this team included rewriting the "lead bucket" (a round-robin queue) system for the Consumer Audio project In-House Credit Freezing/Thawing. I worked on projects, bug fixes, and attempting automate some of my day-to-day processes. This was a team of seven to ten.",
+            "The MATH pod was dissolved and enveloped into the Customer Experience pod. This team was geared towards addressing areas of the Customer Relationship Management (CRM)  that are used in other employee's day-to-day workflows to impact customer's lives. This meant modules like Invoices, Quotes, Names, Customer Email, Inventory, and many more. Major projects on this team included rewriting the \"lead bucket\" (a round-robin queue) system for the Consumer Audio project In-House Credit Freezing/Thawing. I worked on projects, bug fixes, and attempting automate some of my day-to-day processes. This was a team of seven to ten.",
 
     },
 
