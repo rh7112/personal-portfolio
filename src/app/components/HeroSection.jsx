@@ -31,7 +31,7 @@ const HeroSection = () => {
                 1250,
                 "a Software Engineer",
                 1250,
-                "a Retool Specialist",
+                "a Retool Agency Plan Member",
                 1250,
                 "a Builder of Internal Tools",
                 1250,
