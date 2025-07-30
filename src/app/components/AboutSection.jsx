@@ -279,8 +279,7 @@ const TAB_DATA = [
 
             />
 
-            <
-            /div>
+            </div>
 
         ),
 
