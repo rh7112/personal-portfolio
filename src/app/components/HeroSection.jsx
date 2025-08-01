@@ -33,8 +33,6 @@ const HeroSection = () => {
                 1250,
                 "a Retool Agency Plan Member",
                 1250,
-                "a Builder of Internal Tools",
-                1250,
                 "a Problem Solver",
                 1250,
                 "a Home Cook",
