@@ -71,15 +71,37 @@ const AboutSection = () => {
     fetchData();
   }, []);
 
-//     return (
-//       <section className="text-white">
-//         <div className="md:grid md:grid-cols-1 gap-8 py-8 px04 xl:gap-16 sm:py-16 xl:px-16">
-//           <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
-//             <h2 className="text-4xl font-bold text-white mb-4"> About Me </h2>
+  return (
+    <section className="text-white">
+      <div className="md:grid md:grid-cols-1 gap-8 py-8 px04 xl:gap-16 sm:py-16 xl:px-16">
+        <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
+          <h2 className="text-4xl font-bold text-white mb-4"> About Me </h2>
 
           <p className="text-base lg:text-lg">
-            I’m a father and husband. Family is the foundation of everything I
-            do...
+            I’m a father and husband.Family is the foundation of everything I
+            do, and it’s what drives me to solve problems with care, intention,
+            and integrity— both in life and in code.
+            <br />
+            <br />
+            Professionally, I’m a software engineer with 4 + years of experience
+            building internal tools and business applications that make work
+            easier, faster, and more reliable.I specialize in full - stack
+            development with JavaScript, Python, SQL, and Retool, and I’ve
+            delivered high - impact solutions— from a price management platform
+            that boosted revenue by $4M, to system integrations that gave back
+            entire workdays to internal teams.
+            <br />
+            <br />
+            I thrive when bridging the gap between non - technical stakeholders
+            and clean, scalable code.I’ve worked in Agile, Scrum, Kanban, and
+            Waterfall environments, and I’m comfortable wearing multiple hats—
+            from frontend to backend, deployment to support.
+            <br />
+            <br />
+            When I’m not coding, you’ll probably find me cooking at home,
+            casting a line in a bass tournament or frozen lake, or tweaking my
+            Plex server just for fun.I value clarity, consistency, and building
+            tools that people actually enjoy using.
           </p>
 
           <div className="flex flex-row justify-start mt-8 flex-wrap gap-3">
