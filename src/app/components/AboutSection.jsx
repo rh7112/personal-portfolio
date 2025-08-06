@@ -9,11 +9,117 @@ import EducationCard from "./EducationCard";
 import { FaDatabase, FaPython, FaReact, FaNodeJs, FaGit } from "react-icons/fa";
 import { SiRetool, Si4D } from "react-icons/si";
 import { GiDiploma } from "react-icons/gi";
+import { IoLogoJavascript } from "react-icons/io";
+import { BsRegex } from "react-icons/bs";
+import { IoIosDocument } from "react-icons/io";
+import { TbBrandCpp } from "react-icons/tb";
+import { FaC, FaReact } from "react-icons/fa";
+import { SiJira } from "react-icons/si";
+import { SiDatadog } from "react-icons/si";
+import { GrGraphQl } from "react-icons/gr";
+import { TbBrandNextjs } from "react-icons/tb";
 
+
+const TAB_DATA = [
+  {
+    title: "Skills",
+
+    id: "skills",
+
+    content: (
+      <div className="grid auto-rows-fr lg:grid-cols-3 sm:grid-cols-2 gap-2">
+        {SkillCard(IoLogoJavascript, "Javascript", "Experienced")}
+
+        {SkillCard(SiRetool, "Retool", "Experienced")}
+
+        {SkillCard(FaDatabase, "SQL (MySQL, PostGreSQL)", "Experienced")}
+
+        {SkillCard(Si4D, "Fourth Dimensional Programming (4D)", "Experienced")}
+
+        {SkillCard(FaPython, "Python", "Experienced")}
+
+        {SkillCard(FaGit, "Git (Github, Gitlab)", "Experienced")}
+
+        {SkillCard(BsRegex, "Regex", "Experienced")}
+
+        {SkillCard(IoIosDocument, "Documentation", "Experienced")}
+
+        {SkillCard(IoLogoJavascript, "User-Interface Design", "Intermediate")}
+
+        {SkillCard(IoLogoJavascript, "User-Experience Design", "Intermediate")}
+
+        {SkillCard(TbBrandCpp, "C++", "Intermediate")}
+
+        {SkillCard(FaC, "C", "Intermediate")}
+
+        {SkillCard(SiJira, "Jira Query Language (JQL)", "Intermediate")}
+
+        {SkillCard(SiDatadog, "Datadog", "Intermediate")}
+
+        {SkillCard(FaReact, "React", "Beginner")}
+
+        {SkillCard(FaNodeJs, "Node", "Beginner")}
+
+        {SkillCard(GrGraphQl, "GraphQL", "Beginner")}
+
+        {SkillCard(TbBrandNextjs, "NextJS", "Beginner")}
+
+        {SkillCard(SiNextui, "NextUI", "Beginner")}
+
+        {SkillCard(TbBrandCSharp, "C#", "Beginner")}
+
+        {SkillCard(SiDotnet, ".Net", "Beginner")}
+      </div>
+    ),
+  },
+
+  {
+    title: "Education",
+
+    id: "education",
+
+    content: (
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <EducationCard
+          degree="Bachelor of Science in Computer Science"
+          institution="Purdue University - Fort Wayne"
+          icon={<FaUserGraduate size={24} color="#fff" />}
+        />
+
+        <EducationCard
+          degree="Associate of Science in Computer Science"
+          institution="Ivy Tech Community College"
+          icon={<FaGraduationCap size={24} color="#fff" />}
+        />
+
+        <EducationCard
+          degree="Core 40 - Academic Honors Diploma"
+          institution="Whitko High School"
+          icon={<GiDiploma size={24} color="#fff" />}
+        />
+      </div>
+    ),
+  },
+
+  {
+    title: "Certifications",
+
+    id: "certifications",
+
+    content: (
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <p className="bg-slate-800 rounded-lg shadow p-4 mb-4 flex items-center">
+          Python - Certified Entry - Level Python Programmer
+        </p>
+      </div>
+    ),
+  },
+];
 
 const AboutSection = () => {
   const [sweetwaterAccordionItems, setSweetwaterAccordionItems] = useState([]);
-  const [zimmerBiomentAccordionItems, setZimmerBiomentAccordionItems] = useState([]);
+  const [zimmerBiomentAccordionItems, setZimmerBiomentAccordionItems] =
+    useState([]);
   const [concreteAccordionItems, setConcreteAccordionItems] = useState([]);
   const [tab, setTab] = useState("experience");
   const [isPending, startTransition] = useTransition();
@@ -29,9 +135,9 @@ const AboutSection = () => {
       try {
         const res = await fetch("/api/about");
         const data = await res.json();
-        const sweetwaterItems = data.filter((item) => (item.company_id == 5));
-        const zimmerBiometItems = data.filter((item) => (item.company_id == 4));
-        const concreteItems = data.filter((item) => (item.company_id == 1));
+        const sweetwaterItems = data.filter((item) => item.company_id == 5);
+        const zimmerBiometItems = data.filter((item) => item.company_id == 4);
+        const concreteItems = data.filter((item) => item.company_id == 1);
         setSweetwaterAccordionItems(sweetwaterItems);
         setZimmerBiomentAccordionItems(zimmerBiometItems);
         setConcreteAccordionItems(concreteItems);
