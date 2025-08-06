@@ -10,44 +10,11 @@ import { FaDatabase, FaPython, FaReact, FaNodeJs, FaGit } from "react-icons/fa";
 import { SiRetool, Si4D } from "react-icons/si";
 import { GiDiploma } from "react-icons/gi";
 
-const zimmerBiomentAccordionItems = [
-  {
-    title: "Imaging Devices",
-    description:
-      "One of the key responsibilities in this role involved preparing newly delivered devices for deployment. This included installing company-approved operating images and software, configuring the machines, and storing them for future assignment. The process entailed unboxing devices, setting them up on designated racks, connecting them to the network, and utilizing the BIOS to configure settings. Once complete, devices were re-boxed and stored for later distribution.",
-  },
-  {
-    title: "Computer Assignment",
-    description:
-      "Following the imaging process, we prioritized customer requests and assigned machines accordingly. This involved recording the serial number, attributing the device to the correct user, and preparing it for either shipment or delivery to technicians at various locations in Warsaw, Indiana.",
-  },
-  {
-    title: "Computer Deliveries",
-    description:
-      "Assigned devices were delivered daily to Zimmer-Biomet buildings across town. I utilized a company vehicle to make these deliveries, typically around 3 p.m.",
-  },
-];
-
-const concreteAccordionItems = [
-  {
-    title: "Formwork",
-    description:
-      "Establishing a solid foundation is crucial in concrete construction. This involves carefully placing rebar and other strengthening materials, followed by the installation of forms to contain the concrete. We utilized a variety of form types, including 2x4s, Dee forms, wall forms, and basement forms, to ensure that the finished product met the customer's specifications.",
-  },
-  {
-    title: "Concrete Placement and Laboring",
-    description:
-      "Upon arrival of the concrete truck, our team sprang into action to ensure timely and efficient placement of the material. This involved wheelbarrowing concrete to the designated areas, achieving the optimal consistency and coverage. Additionally, this task included removing forms after the concrete had set, which sometimes occurred on the same day or after a few days. In some cases, this process also involved sealing or cutting the concrete to achieve the desired finish or to make relief cuts as needed.",
-  },
-  {
-    title: "Finishing Touches",
-    description:
-      "The final stage of the process involved achieving the desired aesthetic and functional finish. This included applying a high-gloss finish to garage floors, creating precise brush lines on sidewalks, and ensuring level bases on walls. For stamped concrete projects, this entailed adding external colorants, applying the stamp pattern, and tamping it down to achieve the desired texture and design.",
-  },
-];
 
 const AboutSection = () => {
   const [sweetwaterAccordionItems, setSweetwaterAccordionItems] = useState([]);
+  const [zimmerBiomentAccordionItems, setZimmerBiomentAccordionItems] = useState([]);
+  const [concreteAccordionItems, setConcreteAccordionItems] = useState([]);
   const [tab, setTab] = useState("experience");
   const [isPending, startTransition] = useTransition();
 
@@ -62,7 +29,13 @@ const AboutSection = () => {
       try {
         const res = await fetch("/api/about");
         const data = await res.json();
-        setSweetwaterAccordionItems(data);
+        const sweetwaterItems = data.filter((item) => (item.company_id == 5));
+        const zimmerBiometItems = data.filter((item) => (item.company_id == 4));
+        const concreteItems = data.filter((item) => (item.company_id == 1));
+        setSweetwaterAccordionItems(sweetwaterItems);
+        setZimmerBiomentAccordionItems(zimmerBiometItems);
+        setConcreteAccordionItems(concreteItems);
+        console.log("sweetwaterAccordionItems: ", data);
       } catch (err) {
         console.error("Failed to load data:", err);
       }
@@ -168,7 +141,7 @@ const AboutSection = () => {
                 />
 
                 <ExperienceCard
-                  title="Concrete Construction"
+                  title="Black's Concrete Construction"
                   startDate="06/01/2016"
                   endDate="02/01/2017"
                   jobTitle="Laborer"

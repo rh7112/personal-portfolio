@@ -15,11 +15,11 @@ function calculateTimeSpent(startDateStr, endDateStr) {
   const months = Math.floor((diffDays % 365) / 30);
 
   if (years > 0) {
-    return `${years} yr${years > 1 ? "s" : ""}. and ${months} mo${months !== 1 ? "s" : ""}.`;
+    return `${years} year${years > 1 ? "s" : ""}. and ${months} month${months !== 1 ? "s" : ""}`;
   } else if (months > 0) {
-    return `${months} mo${months !== 1 ? "s" : ""}.`;
+    return `${months} month${months !== 1 ? "s" : ""}`;
   } else {
-    return "Less than a month.";
+    return "Less than a month";
   }
 }
 
@@ -90,7 +90,7 @@ const ExperienceCard = ({
           <AccordionItem
             className="mt-2 bg-slate-700 text-blue-400"
             aria-label={titleLabels}
-            title={titleLabels[title] || ""}
+            title={titleLabels[title]}
             indicator={isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
             onPress={() => setIsOpen(!isOpen)}
           >

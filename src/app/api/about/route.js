@@ -2,7 +2,7 @@ import pool from "../../lib/db";
 
 export async function GET() {
   try {
-    const [rows] = await pool.query("SELECT * FROM sweetwater_teams");
+    const [rows] = await pool.query("SELECT * FROM accordion_items");
     return new Response(JSON.stringify(rows), {
       status: 200,
       headers: {
