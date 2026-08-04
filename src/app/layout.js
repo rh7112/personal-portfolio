@@ -13,17 +13,15 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "Ryan Hurd's Portfolio",
+  title: "Ryan Hurd | Software Engineer",
   description:
-    "This is the personal portfolio of Ryan Hurd, software engineer.",
+    "Portfolio site for Ryan Hurd, a software engineer focused on thoughtful tools and practical solutions.",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en" className="scroll-smooth">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
       </body>
     </html>
