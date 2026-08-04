@@ -46,7 +46,7 @@ const fallbackHomeData = {
         "Supported device deployment and IT operations while building a practical foundation in reliable systems and collaboration.",
     },
   ],
-  projectsHeading: "Selected work from Sweetwater and Packaging Personified.",
+  projectsHeading: "Some of my favorite projects.",
   featuredProjects: [
     {
       title: "Yield Report",
