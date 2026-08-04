@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#0f172a"/>
+  <rect x="80" y="120" width="1040" height="560" rx="32" fill="#111827" stroke="#38bdf8" stroke-width="4"/>
+  <rect x="120" y="170" width="220" height="28" rx="14" fill="#38bdf8" opacity="0.9"/>
+  <rect x="120" y="230" width="320" height="18" rx="9" fill="#e2e8f0" opacity="0.9"/>
+  <rect x="120" y="270" width="280" height="18" rx="9" fill="#64748b"/>
+  <rect x="120" y="320" width="360" height="18" rx="9" fill="#e2e8f0" opacity="0.85"/>
+  <rect x="120" y="360" width="300" height="18" rx="9" fill="#64748b"/>
+  <rect x="560" y="170" width="500" height="260" rx="24" fill="#020617" stroke="#334155"/>
+  <path d="M610 375L700 290L770 330L860 235L1020 305" stroke="#38bdf8" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <circle cx="610" cy="375" r="10" fill="#38bdf8"/>
+  <circle cx="700" cy="290" r="10" fill="#38bdf8"/>
+  <circle cx="770" cy="330" r="10" fill="#38bdf8"/>
+  <circle cx="860" cy="235" r="10" fill="#38bdf8"/>
+  <circle cx="1020" cy="305" r="10" fill="#38bdf8"/>
+  <rect x="560" y="470" width="500" height="140" rx="24" fill="#111827" stroke="#334155"/>
+  <rect x="600" y="512" width="200" height="18" rx="9" fill="#e2e8f0"/>
+  <rect x="600" y="548" width="140" height="18" rx="9" fill="#64748b"/>
+  <rect x="120" y="430" width="240" height="220" rx="24" fill="#111827" stroke="#334155"/>
+  <rect x="150" y="470" width="180" height="18" rx="9" fill="#38bdf8"/>
+  <rect x="150" y="510" width="140" height="18" rx="9" fill="#64748b"/>
+  <rect x="150" y="550" width="160" height="18" rx="9" fill="#64748b"/>
+  <text x="120" y="90" fill="#f8fafc" font-size="36" font-family="Arial, sans-serif">Yield Report</text>
+</svg>
