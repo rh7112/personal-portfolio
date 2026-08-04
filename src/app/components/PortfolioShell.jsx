@@ -15,8 +15,10 @@ export default function PortfolioShell({
   aboutBullets,
   experienceHeading,
   experienceHighlights,
+  employerHighlights,
   projectsHeading,
   featuredProjects,
+  projectHistory,
   contactHeading,
   contactBody,
   contactLinks,
@@ -38,6 +40,9 @@ export default function PortfolioShell({
             <Link href="#projects" className="transition hover:text-white">
               Work
             </Link>
+            <Link href="/blog" className="transition hover:text-white">
+              Blog
+            </Link>
             <Link href="#contact" className="transition hover:text-white">
               Contact
             </Link>
@@ -47,7 +52,7 @@ export default function PortfolioShell({
 
       <section id="top" className="mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-28">
         <div className="grid items-center gap-16 lg:grid-cols-[1.2fr_0.8fr]">
-          <div>
+          <div className="order-2 lg:order-1">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-sky-400">
               {heroEyebrow}
             </p>
@@ -71,7 +76,7 @@ export default function PortfolioShell({
             </div>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-2xl shadow-slate-950/50">
+          <div className="order-1 rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-2xl shadow-slate-950/50 lg:order-2">
             <div className="overflow-hidden rounded-2xl border border-white/10">
               <Image
                 src={heroImageSrc}
@@ -139,24 +144,63 @@ export default function PortfolioShell({
 
       <section id="projects" className="mx-auto max-w-6xl px-6 py-8 lg:px-8">
         <div className="rounded-3xl border border-white/10 bg-slate-900/60 p-8 lg:p-10">
-          <div className="flex items-end justify-between gap-4">
+          <div className="grid gap-6 lg:grid-cols-[1fr_1.2fr]">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-400">Selected work</p>
-              <h2 className="mt-2 text-3xl font-semibold text-white">{projectsHeading}</h2>
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-400">Employer focus</p>
+              <h3 className="mt-2 text-2xl font-semibold text-white">
+                A closer look at the teams and environments that shaped my work.
+              </h3>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-3">
+              {employerHighlights.map((employer) => (
+                <Link
+                  key={employer.slug}
+                  href={`/experience/${employer.slug}`}
+                  className="rounded-2xl border border-white/10 bg-slate-950/70 p-4 transition hover:border-sky-400"
+                >
+                  <p className="text-sm font-semibold text-white">{employer.title}</p>
+                  <p className="mt-2 text-sm leading-6 text-slate-300">{employer.blurb}</p>
+                </Link>
+              ))}
             </div>
           </div>
 
-          <div className="mt-8 grid gap-6 lg:grid-cols-3">
-            {featuredProjects.map((project) => (
-              <article key={project.title} className="overflow-hidden rounded-3xl border border-white/10 bg-slate-950/70">
-                <div className="relative h-48 w-full">
-                  <Image src={project.image} alt={project.title} fill className="object-cover" />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-white">{project.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-300">{project.summary}</p>
-                </div>
-              </article>
+          <div className="mt-10">
+            <div className="flex items-end justify-between gap-4">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-400">Selected work</p>
+                <h2 className="mt-2 text-3xl font-semibold text-white">{projectsHeading}</h2>
+              </div>
+            </div>
+
+            <div className="mt-8 grid gap-6 lg:grid-cols-3">
+              {featuredProjects.map((project) => (
+                <article key={project.title} className="overflow-hidden rounded-3xl border border-white/10 bg-slate-950/70">
+                  <div className="relative h-48 w-full">
+                    <Image src={project.image} alt={project.title} fill className="object-cover" />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold text-white">{project.title}</h3>
+                    <p className="mt-3 text-sm leading-7 text-slate-300">{project.summary}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 py-8 lg:px-8">
+        <div className="rounded-3xl border border-white/10 bg-slate-900/60 p-8 lg:p-10">
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-400">Project history</p>
+          <h3 className="mt-2 text-2xl font-semibold text-white">
+            A broad set of projects across operations, finance, commerce, and internal tools.
+          </h3>
+          <div className="mt-6 flex flex-wrap gap-3">
+            {projectHistory.map((item) => (
+              <span key={item} className="rounded-full border border-white/10 bg-slate-950/70 px-3 py-2 text-sm text-slate-300">
+                {item}
+              </span>
             ))}
           </div>
         </div>
