@@ -3,8 +3,27 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { FaArrowRight, FaEnvelope, FaFileAlt, FaGithub, FaLinkedin, FaPhoneAlt, FaBars, FaTimes } from "react-icons/fa";
+
+import {
+  FaArrowRight,
+  FaEnvelope,
+  FaFileAlt,
+  FaGithub,
+  FaLinkedin,
+  FaPhoneAlt,
+  FaBars,
+  FaTimes,
+} from "react-icons/fa";
 import { SiIndeed } from "react-icons/si";
+
+const icons = {
+  email: FaEnvelope,
+  phone: FaPhoneAlt,
+  github: FaGithub,
+  linkedin: FaLinkedin,
+  resume: FaFileAlt,
+  indeed: SiIndeed,
+};
 
 function getProjectChipClass(color) {
   switch (color) {
@@ -243,7 +262,7 @@ export default function PortfolioShell({
 
           <div className="mt-8 flex flex-wrap gap-3">
             {contactLinks.map((link) => {
-              const Icon = link.icon;
+              const Icon = icons[link.icon];
               return (
                 <a
                   key={link.label}
