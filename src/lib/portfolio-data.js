@@ -1,9 +1,25 @@
 import mysql from "mysql2/promise";
 
-const fallbackHomeData = {};
+const fallbackHomeData = {
+  heroEyebrow: null,
+  heroTitle: null,
+  heroBody: null,
+  quickFacts: null,
+  aboutTitle: null,
+  aboutBody: null,
+  aboutBullets: null,
+  experienceHeading: null,
+  experienceHighlights: null,
+  projectsHeading: null,
+  featuredProjects: null,
+  projectHistory: null,
+  projectHistory: null,
+  employerHighlights: null,
+  contactHeading: null,
+  contactBody: null,
+};
 
-// const fallbackHomeData =
-// {
+// const fallbackHomeData = {
 //   heroEyebrow: "Family-first • builder • software engineer",
 //   heroTitle:
 //     "I build practical internal tools that make teams faster, clearer, and more confident.",
@@ -72,30 +88,30 @@ const fallbackHomeData = {};
 //       image: "/images/projects/ppi-press-wip.svg",
 //     },
 //   ],
-//   // projectHistory: [
-//   //   "Donut Duty",
-//   //   "Synchrony Bonus Bucks promotions",
-//   //   "Bonus Bucks GUI",
-//   //   "ECMS tax certificate expiration workflow",
-//   //   "Marketplace payments cancellation handling",
-//   //   "Automated collection letters",
-//   //   "Stop UT/CA auto-processing",
-//   //   "Electronic delivery invoice splitting",
-//   //   "CRM performance improvements",
-//   //   "Press release admin tool",
-//   //   "Merchandising price comparison report",
-//   //   "Web text editor",
-//   //   "Make Offer Tool",
-//   //   "404 admin tool",
-//   //   "Retool termination script",
-//   //   "Usability Retool App",
-//   //   "FileMaker purchase order and quote tooling",
-//   //   "XChange management platform",
-//   //   "Store SEO content management",
-//   //   "Sales Engineer planning workspace",
-//   //   "Drumfest check-in scanner workflow",
-//   //   "Kiosk Manager",
-//   // ],
+//   projectHistory: [
+//     "Donut Duty",
+//     "Synchrony Bonus Bucks promotions",
+//     "Bonus Bucks GUI",
+//     "ECMS tax certificate expiration workflow",
+//     "Marketplace payments cancellation handling",
+//     "Automated collection letters",
+//     "Stop UT/CA auto-processing",
+//     "Electronic delivery invoice splitting",
+//     "CRM performance improvements",
+//     "Press release admin tool",
+//     "Merchandising price comparison report",
+//     "Web text editor",
+//     "Make Offer Tool",
+//     "404 admin tool",
+//     "Retool termination script",
+//     "Usability Retool App",
+//     "FileMaker purchase order and quote tooling",
+//     "XChange management platform",
+//     "Store SEO content management",
+//     "Sales Engineer planning workspace",
+//     "Drumfest check-in scanner workflow",
+//     "Kiosk Manager",
+//   ],
 //   projectHistory: await getProjectList(),
 
 //   employerHighlights: [
