@@ -212,6 +212,10 @@ async function getDatabaseConnection() {
   }
 }
 
+function normalizeDate(value) {
+  return value instanceof Date ? value.toISOString().slice(0, 10) : value;
+}
+
 function normalizeImagePath(image) {
   if (!image) {
     return "/images/projects/default-project.svg";
@@ -323,7 +327,7 @@ export async function getBlogPosts() {
       excerpt: row.excerpt,
       content: row.content,
       category: row.category,
-      publishedAt: row.publishedAt,
+      publishedAt: normalizeDate(row.publishedAt),
     }));
   } catch {
     return fallbackBlogPosts;
@@ -356,7 +360,7 @@ export async function getBlogPostBySlug(slug) {
       excerpt: row.excerpt,
       content: row.content,
       category: row.category,
-      publishedAt: row.publishedAt,
+      publishedAt: normalizeDate(row.publishedAt),
     };
   } catch {
     return fallbackBlogPosts.find((post) => post.slug === slug) ?? null;
