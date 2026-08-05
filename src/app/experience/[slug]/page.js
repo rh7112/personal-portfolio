@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import PortfolioShell from "../../components/PortfolioShell";
 import { FaArrowLeft, FaEnvelope, FaFileAlt, FaGithub, FaLinkedin, FaPhoneAlt } from "react-icons/fa";
 import { SiIndeed } from "react-icons/si";
 
@@ -149,11 +148,18 @@ export default function EmployerPage({ params }) {
 
       <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
         <div className="rounded-3xl border border-white/10 bg-slate-900/70 p-8 lg:p-10">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-400">Experience</p>
-          <h1 className="mt-3 text-4xl font-semibold text-white">{employer.name}</h1>
-          <p className="mt-3 text-lg text-slate-300">{employer.title} • {employer.date}</p>
-          <p className="mt-2 text-sm text-slate-400">{employer.location}</p>
-          <p className="mt-6 text-lg text-slate-300">{employer.heroBody}</p>
+          <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-400">Experience</p>
+              <h1 className="mt-3 text-4xl font-semibold text-white">{employer.name}</h1>
+              <p className="mt-3 text-lg text-slate-300">{employer.title} • {employer.date}</p>
+              <p className="mt-2 text-sm text-slate-400">{employer.location}</p>
+              <p className="mt-6 text-lg text-slate-300">{employer.heroBody}</p>
+            </div>
+            <div className="overflow-hidden rounded-2xl border border-white/10">
+              <Image src={employer.image || "/images/ryan_pfp.png"} alt={employer.name} width={1200} height={900} className="h-full w-full object-cover" />
+            </div>
+          </div>
         </div>
       </section>
 

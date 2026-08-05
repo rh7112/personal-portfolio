@@ -156,6 +156,28 @@ async function getDatabaseConnection() {
   }
 }
 
+function normalizeImagePath(image) {
+  if (!image) {
+    return "/images/projects/default-project.svg";
+  }
+
+  return image.startsWith("/") ? image : `/${image}`;
+}
+
+function normalizeProjectRows(rows) {
+  return rows.map((row) => ({
+    id: row.id,
+    title: row.title,
+    summary: row.summary,
+    image: normalizeImagePath(row.image),
+    company: row.company,
+    companySlug: row.company_slug || row.companySlug,
+    color: row.color || "sky",
+    featured: Boolean(row.featured),
+    published: Boolean(row.published),
+  }));
+}
+
 export async function getHomepageData() {
   const connection = await getDatabaseConnection();
 
@@ -181,12 +203,37 @@ export async function getHomepageData() {
       return accumulator;
     }, {});
 
+    const [projectRows] = await connection.query(
+      "SELECT id, title, summary, image, company, company_slug, color, featured, published FROM portfolio_projects WHERE published = 1 ORDER BY RAND() LIMIT 3"
+    );
+
     return {
       ...fallbackHomeData,
       ...parsedRows,
+      featuredProjects: normalizeProjectRows(projectRows?.length ? projectRows : fallbackHomeData.featuredProjects),
+      projectHistory: Array.isArray(parsedRows.projectHistory) ? parsedRows.projectHistory : fallbackHomeData.projectHistory,
     };
   } catch {
     return fallbackHomeData;
+  } finally {
+    await connection.end();
+  }
+}
+
+export async function getProjectList() {
+  const connection = await getDatabaseConnection();
+
+  if (!connection) {
+    return [];
+  }
+
+  try {
+    const [rows] = await connection.query(
+      "SELECT id, title, summary, image, company, company_slug, color, featured, published FROM portfolio_projects WHERE published = 1 ORDER BY title ASC"
+    );
+    return normalizeProjectRows(rows);
+  } catch {
+    return [];
   } finally {
     await connection.end();
   }
