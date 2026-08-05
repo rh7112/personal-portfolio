@@ -252,6 +252,11 @@ export default function PortfolioShell({
               description="A classic Minesweeper build in Retool, showing off custom component logic and state management."
               src="https://rh25170.retool.com/embedded/public/3098f072-da08-4876-b3aa-0f14f020ea8a"
             />
+            <RetoolEmbed
+              title="Debt Calculator"
+              description="A debt payoff planner built in Retool, using sample data to demonstrate snowball/avalanche-style payoff ordering."
+              src="https://rh25170.retool.com/embedded/public/96c4c2b3-ea63-4a91-8ef1-f00aa2497253"
+            />
           </div>
         </div>
       </section>
