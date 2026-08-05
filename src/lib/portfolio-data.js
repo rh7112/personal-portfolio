@@ -43,6 +43,26 @@ const fallbackHomeData = {
       image: "/images/projects/ppi-press-wip.svg",
     },
   ],
+  employerHighlights: [
+    {
+      title: "Packaging Personified",
+      blurb:
+        "Operations, compliance, and production tooling in a fast-moving manufacturing environment.",
+      slug: "packaging-personified",
+    },
+    {
+      title: "Sweetwater",
+      blurb:
+        "Cross-functional internal tools for support, accounting, and customer experience teams.",
+      slug: "sweetwater",
+    },
+    {
+      title: "Zimmer Biomet",
+      blurb:
+        "A grounded start in IT operations and dependable systems support.",
+      slug: "zimmer-biomet",
+    },
+  ],
   projectHistory: [
     "Donut Duty",
     "Synchrony Bonus Bucks promotions",
@@ -389,9 +409,6 @@ export async function getHomepageData() {
       featuredProjects: normalizeProjectRows(
         projectRows?.length ? projectRows : fallbackHomeData.featuredProjects,
       ),
-      projectHistory: Array.isArray(parsedRows.projectHistory)
-        ? parsedRows.projectHistory
-        : fallbackHomeData.projectHistory,
     };
   } catch (err) {
     console.error(err);
