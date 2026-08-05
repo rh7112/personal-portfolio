@@ -7,32 +7,32 @@ const contactLinks = [
   {
     label: "Email",
     href: "mailto:rh25170@gmail.com",
-    icon: FaEnvelope,
+    icon: <FaEnvelope />,
   },
   {
     label: "Phone",
     href: "tel:+13525800408",
-    icon: FaPhoneAlt,
+    icon: <FaPhoneAlt />,
   },
   {
     label: "GitHub",
     href: "https://github.com/rh7112",
-    icon: FaGithub,
+    icon: <FaGithub />,
   },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/ryan-lee-hurd/",
-    icon: FaLinkedin,
+    icon: <FaLinkedin />,
   },
   {
     label: "Resume",
     href: "/documents/ryan-hurd-resume.pdf",
-    icon: FaFileAlt,
+    icon: <FaFileAlt />,
   },
   {
     label: "Indeed",
     href: "https://profile.indeed.com/p/ryanh-sv25zg9",
-    icon: SiIndeed,
+    icon: <SiIndeed />,
   },
 ];
 
