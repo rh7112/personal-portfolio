@@ -1,143 +1,123 @@
 import mysql from "mysql2/promise";
 
 const fallbackHomeData = {
-  heroEyebrow: null,
-  heroTitle: null,
-  heroBody: null,
-  quickFacts: null,
-  aboutTitle: null,
-  aboutBody: null,
-  aboutBullets: null,
-  experienceHeading: null,
-  experienceHighlights: null,
-  projectsHeading: null,
-  featuredProjects: null,
-  projectHistory: null,
-  projectHistory: null,
-  employerHighlights: null,
-  contactHeading: null,
-  contactBody: null,
+  heroEyebrow: "Family-first • builder • software engineer",
+  heroTitle:
+    "I build practical internal tools that make teams faster, clearer, and more confident.",
+  heroBody:
+    "I’m Ryan Hurd, a software engineer focused on Retool, SQL-driven workflows, and operational tools that help people make better decisions with less friction.",
+  quickFacts: [
+    { label: "Current role", value: "Software Engineer" },
+    { label: "Experience", value: "5+ years building internal tools" },
+    { label: "Focus", value: "Retool, SQL, automation" },
+  ],
+  aboutTitle: "A calm, practical engineer with a strong product mindset.",
+  aboutBody:
+    "I enjoy turning messy processes into clear, reliable experiences. My work has centered on internal software, workflow automation, and cross-functional problem solving, with an emphasis on usability, maintainability, and measurable impact.",
+  aboutBullets: [
+    "Retool, PostgreSQL, SQL, and JavaScript for production and operations workflows",
+    "Clear, maintainable applications that balance speed, reliability, and usability",
+    "Collaboration with operations, accounting, compliance, and leadership teams",
+    "Training and mentoring others to use tools effectively and build with confidence",
+  ],
+  experienceHeading:
+    "Experience that spans engineering, operations, and teamwork.",
+  experienceHighlights: [
+    {
+      title: "Software Engineer",
+      company: "Packaging Personified, Inc.",
+      date: "Oct 2025–Present",
+      slug: "packaging-personified",
+      description:
+        "Building internal applications and operational tools for production, compliance, accounting, and leadership teams using Retool, PostgreSQL, SQL, and JavaScript.",
+    },
+    {
+      title: "Software Engineer",
+      company: "Sweetwater Sound",
+      date: "May 2021–Aug 2025",
+      slug: "sweetwater",
+      description:
+        "Delivered internal tools, workflow automations, and user-focused applications across support, accounting, customer experience, and Retool teams.",
+    },
+    {
+      title: "IT Intern",
+      company: "Zimmer Biomet",
+      date: "2020–2021",
+      slug: "zimmer-biomet",
+      description:
+        "Supported device deployment and IT operations while building a practical foundation in reliable systems and collaboration.",
+    },
+  ],
+  projectsHeading: "Some of my favorite projects.",
+  featuredProjects: [
+    {
+      title: "Yield Report",
+      summary:
+        "Built an operations reporting experience that surfaced production, material, and customer-job trends in a clearer, faster way for decision-making.",
+      image: "/images/projects/ppi-yield-report.svg",
+    },
+    {
+      title: "EPA Reporting",
+      summary:
+        "Consolidated reporting across multiple sources into a reliable workflow that supported compliance needs across several facilities.",
+      image: "/images/projects/ppi-epa-reporting.svg",
+    },
+    {
+      title: "Press WIP Optimization",
+      summary:
+        "Improved a production workflow by reducing friction and increasing throughput while preserving the reliability of the process.",
+      image: "/images/projects/ppi-press-wip.svg",
+    },
+  ],
+  projectHistory: [
+    "Donut Duty",
+    "Synchrony Bonus Bucks promotions",
+    "Bonus Bucks GUI",
+    "ECMS tax certificate expiration workflow",
+    "Marketplace payments cancellation handling",
+    "Automated collection letters",
+    "Stop UT/CA auto-processing",
+    "Electronic delivery invoice splitting",
+    "CRM performance improvements",
+    "Press release admin tool",
+    "Merchandising price comparison report",
+    "Web text editor",
+    "Make Offer Tool",
+    "404 admin tool",
+    "Retool termination script",
+    "Usability Retool App",
+    "FileMaker purchase order and quote tooling",
+    "XChange management platform",
+    "Store SEO content management",
+    "Sales Engineer planning workspace",
+    "Drumfest check-in scanner workflow",
+    "Kiosk Manager",
+  ],
+
+  employerHighlights: [
+    {
+      title: "Packaging Personified",
+      blurb:
+        "Operations, compliance, and production tooling in a fast-moving manufacturing environment.",
+      slug: "packaging-personified",
+    },
+    {
+      title: "Sweetwater",
+      blurb:
+        "Cross-functional internal tools for support, accounting, and customer experience teams.",
+      slug: "sweetwater",
+    },
+    {
+      title: "Zimmer Biomet",
+      blurb:
+        "A grounded start in IT operations and dependable systems support.",
+      slug: "zimmer-biomet",
+    },
+  ],
+  contactHeading: "Open to thoughtful opportunities and conversations.",
+  contactBody:
+    "If you are looking for someone who can bring calm execution, strong communication, and practical problem solving to a team, I would love to hear from you.",
 };
-
-// const fallbackHomeData = {
-//   heroEyebrow: "Family-first • builder • software engineer",
-//   heroTitle:
-//     "I build practical internal tools that make teams faster, clearer, and more confident.",
-//   heroBody:
-//     "I’m Ryan Hurd, a software engineer focused on Retool, SQL-driven workflows, and operational tools that help people make better decisions with less friction.",
-//   quickFacts: [
-//     { label: "Current role", value: "Software Engineer" },
-//     { label: "Experience", value: "5+ years building internal tools" },
-//     { label: "Focus", value: "Retool, SQL, automation" },
-//   ],
-//   aboutTitle: "A calm, practical engineer with a strong product mindset.",
-//   aboutBody:
-//     "I enjoy turning messy processes into clear, reliable experiences. My work has centered on internal software, workflow automation, and cross-functional problem solving, with an emphasis on usability, maintainability, and measurable impact.",
-//   aboutBullets: [
-//     "Retool, PostgreSQL, SQL, and JavaScript for production and operations workflows",
-//     "Clear, maintainable applications that balance speed, reliability, and usability",
-//     "Collaboration with operations, accounting, compliance, and leadership teams",
-//     "Training and mentoring others to use tools effectively and build with confidence",
-//   ],
-//   experienceHeading:
-//     "Experience that spans engineering, operations, and teamwork.",
-//   experienceHighlights: [
-//     {
-//       title: "Software Engineer",
-//       company: "Packaging Personified, Inc.",
-//       date: "Oct 2025–Present",
-//       slug: "packaging-personified",
-//       description:
-//         "Building internal applications and operational tools for production, compliance, accounting, and leadership teams using Retool, PostgreSQL, SQL, and JavaScript.",
-//     },
-//     {
-//       title: "Software Engineer",
-//       company: "Sweetwater Sound",
-//       date: "May 2021–Aug 2025",
-//       slug: "sweetwater",
-//       description:
-//         "Delivered internal tools, workflow automations, and user-focused applications across support, accounting, customer experience, and Retool teams.",
-//     },
-//     {
-//       title: "IT Intern",
-//       company: "Zimmer Biomet",
-//       date: "2020–2021",
-//       slug: "zimmer-biomet",
-//       description:
-//         "Supported device deployment and IT operations while building a practical foundation in reliable systems and collaboration.",
-//     },
-//   ],
-//   projectsHeading: "Some of my favorite projects.",
-//   featuredProjects: [
-//     {
-//       title: "Yield Report",
-//       summary:
-//         "Built an operations reporting experience that surfaced production, material, and customer-job trends in a clearer, faster way for decision-making.",
-//       image: "/images/projects/ppi-yield-report.svg",
-//     },
-//     {
-//       title: "EPA Reporting",
-//       summary:
-//         "Consolidated reporting across multiple sources into a reliable workflow that supported compliance needs across several facilities.",
-//       image: "/images/projects/ppi-epa-reporting.svg",
-//     },
-//     {
-//       title: "Press WIP Optimization",
-//       summary:
-//         "Improved a production workflow by reducing friction and increasing throughput while preserving the reliability of the process.",
-//       image: "/images/projects/ppi-press-wip.svg",
-//     },
-//   ],
-//   projectHistory: [
-//     "Donut Duty",
-//     "Synchrony Bonus Bucks promotions",
-//     "Bonus Bucks GUI",
-//     "ECMS tax certificate expiration workflow",
-//     "Marketplace payments cancellation handling",
-//     "Automated collection letters",
-//     "Stop UT/CA auto-processing",
-//     "Electronic delivery invoice splitting",
-//     "CRM performance improvements",
-//     "Press release admin tool",
-//     "Merchandising price comparison report",
-//     "Web text editor",
-//     "Make Offer Tool",
-//     "404 admin tool",
-//     "Retool termination script",
-//     "Usability Retool App",
-//     "FileMaker purchase order and quote tooling",
-//     "XChange management platform",
-//     "Store SEO content management",
-//     "Sales Engineer planning workspace",
-//     "Drumfest check-in scanner workflow",
-//     "Kiosk Manager",
-//   ],
-//   projectHistory: await getProjectList(),
-
-//   employerHighlights: [
-//     {
-//       title: "Packaging Personified",
-//       blurb:
-//         "Operations, compliance, and production tooling in a fast-moving manufacturing environment.",
-//       slug: "packaging-personified",
-//     },
-//     {
-//       title: "Sweetwater",
-//       blurb:
-//         "Cross-functional internal tools for support, accounting, and customer experience teams.",
-//       slug: "sweetwater",
-//     },
-//     {
-//       title: "Zimmer Biomet",
-//       blurb:
-//         "A grounded start in IT operations and dependable systems support.",
-//       slug: "zimmer-biomet",
-//     },
-//   ],
-//   contactHeading: "Open to thoughtful opportunities and conversations.",
-//   contactBody:
-//     "If you are looking for someone who can bring calm execution, strong communication, and practical problem solving to a team, I would love to hear from you.",
-// };
 
 const fallbackBlogPosts = [
   {
@@ -221,7 +201,8 @@ async function getDatabaseConnection() {
       password: PORTFOLIO_DB_PASSWORD,
       database: PORTFOLIO_DB_NAME,
     });
-  } catch {
+  } catch (err) {
+    console.error(err);
     return null;
   }
 }
@@ -252,6 +233,7 @@ export async function getHomepageData() {
   const connection = await getDatabaseConnection();
 
   if (!connection) {
+    console.log("Using fallbackHomeData because DB connection failed");
     return fallbackHomeData;
   }
 
@@ -287,7 +269,8 @@ export async function getHomepageData() {
         ? parsedRows.projectHistory
         : fallbackHomeData.projectHistory,
     };
-  } catch {
+  } catch (err) {
+    console.error(err);
     return fallbackHomeData;
   } finally {
     await connection.end();

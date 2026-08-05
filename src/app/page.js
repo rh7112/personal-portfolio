@@ -1,6 +1,6 @@
+export const dynamic = "force-dynamic";
+
 import PortfolioShell from "./components/PortfolioShell";
-import { FaEnvelope, FaFileAlt, FaGithub, FaLinkedin, FaPhoneAlt } from "react-icons/fa";
-import { SiIndeed } from "react-icons/si";
 import { getHomepageData } from "@/lib/portfolio-data";
 
 const contactLinks = [
