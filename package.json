@@ -21,7 +21,7 @@
     "framer-motion": "^11.9.0",
     "gh-pages": "^6.1.1",
     "mysql2": "^3.23.2",
-    "next": "15.4.2",
+    "next": "^16.3.0",
     "next-images": "^1.8.5",
     "npm-check": "^6.0.1",
     "react": "19.1.0",
