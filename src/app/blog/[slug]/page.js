@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { getBlogPostBySlug } from "@/lib/portfolio-data";
+import { getBlogPostBySlug, getBlogPosts } from "@/lib/portfolio-data";
 
 export async function generateStaticParams() {
-  return [{ slug: "building-clarity-with-retool" }, { slug: "why-i-still-love-sql" }];
+  const posts = await getBlogPosts();
+  return posts.map((post) => ({ slug: post.slug }));
 }
 
 export default async function BlogPostPage({ params }) {

@@ -22,33 +22,7 @@ const fallbackHomeData = {
   ],
   experienceHeading:
     "Experience that spans engineering, operations, and teamwork.",
-  experienceHighlights: [
-    {
-      title: "Software Engineer",
-      company: "Packaging Personified, Inc.",
-      date: "Oct 2025–Present",
-      slug: "packaging-personified",
-      description:
-        "Building internal applications and operational tools for production, compliance, accounting, and leadership teams using Retool, PostgreSQL, SQL, and JavaScript.",
-    },
-    {
-      title: "Software Engineer",
-      company: "Sweetwater Sound",
-      date: "May 2021–Aug 2025",
-      slug: "sweetwater",
-      description:
-        "Delivered internal tools, workflow automations, and user-focused applications across support, accounting, customer experience, and Retool teams.",
-    },
-    {
-      title: "IT Intern",
-      company: "Zimmer Biomet",
-      date: "2020–2021",
-      slug: "zimmer-biomet",
-      description:
-        "Supported device deployment and IT operations while building a practical foundation in reliable systems and collaboration.",
-    },
-  ],
-  projectsHeading: "Some of my favorite projects.",
+  projectsHeading: "Some of my projects.",
   featuredProjects: [
     {
       title: "Yield Report",
@@ -89,6 +63,31 @@ const fallbackHomeData = {
       slug: "zimmer-biomet",
     },
   ],
+  projectHistory: [
+    "Donut Duty",
+    "Synchrony Bonus Bucks promotions",
+    "Bonus Bucks GUI",
+    "ECMS tax certificate expiration workflow",
+    "Marketplace payments cancellation handling",
+    "Automated collection letters",
+    "Stop UT/CA auto-processing",
+    "Electronic delivery invoice splitting",
+    "CRM performance improvements",
+    "Press release admin tool",
+    "Merchandising price comparison report",
+    "Web text editor",
+    "Make Offer Tool",
+    "404 admin tool",
+    "Retool termination script",
+    "Usability Retool App",
+    "FileMaker purchase order and quote tooling",
+    "XChange management platform",
+    "Store SEO content management",
+    "Sales Engineer planning workspace",
+    "Drumfest check-in scanner workflow",
+    "Kiosk Manager",
+  ],
+
   contactHeading: "Open to thoughtful opportunities and conversations.",
   contactBody:
     "If you are looking for someone who can bring calm execution, strong communication, and practical problem solving to a team, I would love to hear from you.",
@@ -122,31 +121,159 @@ const fallbackEmployers = [
     slug: "packaging-personified",
     name: "Packaging Personified, Inc.",
     title: "Software Engineer",
-    dateRange: "Oct 2025 - Current",
-    location: "Remote",
+    startDate: "2025-10-01",
+    endDate: null,
+    location: "Warsaw, IN",
+    summary:
+      "Building internal Retool applications for production, compliance, accounting, and operations teams.",
     description:
-      "At Packaging Personified, I’ve focused on building Retool applications that connect production data, reporting needs, and operational workflows in a way that is fast, usable, and reliable.",
+      "Building internal Retool applications for production, compliance, accounting, and operations teams, including a Yield Report tool for tracking job performance and material usage, and consolidated EPA reporting for Illinois and Michigan compliance. Created reusable shared modules and delivered a 40%+ performance improvement to the Press WIP application while training managers and end users on Retool best practices.",
     sortOrder: 1,
+    highlights: [
+      "Developed and maintained internal applications using Retool, PostgreSQL, SQL, and JavaScript for production, compliance, accounting, and operations teams.",
+      "Built the Yield Report application to track company and customer job performance, material usage, production efficiency, and operational trends.",
+      "Consolidated spreadsheets and multiple data sources into EPA reporting tools supporting environmental compliance workflows for Illinois and Michigan facilities.",
+      "Created reusable tools, including a standardized Header Module and scalable Location Swap application, to improve consistency across Retool applications.",
+      "Optimized applications and automated workflows for performance, reliability, and usability, including improving Press WIP processing speed by more than 40%.",
+      "Trained managers, developers, company owners, and end users on Retool functionality, application workflows, and development best practices.",
+    ],
+    caseStudies: [
+      {
+        title: "Yield Report",
+        summary:
+          "A reporting tool for tracking production and customer performance trends using operational data from multiple sources.",
+        image: "/images/projects/ppi-yield-report.svg",
+      },
+      {
+        title: "EPA Reporting",
+        summary:
+          "A compliance-oriented reporting workflow that combines spreadsheets and source data into a more maintainable reporting experience.",
+        image: "/images/projects/ppi-epa-reporting.svg",
+      },
+      {
+        title: "Press WIP Optimization",
+        summary:
+          "A performance-focused workflow improvement project that reduced processing time and simplified day-to-day operations.",
+        image: "/images/projects/ppi-press-wip.svg",
+      },
+    ],
   },
   {
     slug: "sweetwater-sound",
     name: "Sweetwater Sound",
     title: "Software Engineer",
-    dateRange: "May 2021 - Aug 2025",
+    startDate: "2021-05-01",
+    endDate: "2025-08-01",
     location: "Fort Wayne, IN",
+    summary:
+      "Delivered internal tools, workflow automations, and revenue-driving platforms across accounting, commerce, and merchandising.",
     description:
-      "At Sweetwater, I worked across multiple engineering pods and learned how to deliver solutions that balanced speed, reliability, and a strong user experience.",
+      "Sole developer of Avalara's Exemption Certificate Management System, saving the tax team 160+ hours of manual validation per month, and integrated PayPal's Braintree system into the CRM to help launch Gear Exchange, which generated over $1M in sales within months. Also built a dynamic Price Management Platform that drove $4M in revenue in under a month, alongside daily-use internal tools across departments.",
     sortOrder: 2,
+    highlights: [
+      "Sole developer on the implementation of Avalara's Exemption Certificate Management System (ECMS), saving the tax team the equivalent of 160+ hours of validating exemption certificates per month.",
+      "Integrated PayPal's GraphQL-based Braintree system into the CRM to help launch Gear Exchange, which saw over $1M in sales between users within its first few months.",
+      "Built and deployed a Price Management Platform used by merchandising to adjust pricing dynamically, resulting in $4M in increased revenue in under a month.",
+      "Provided a Turkey Handout application for Sweetwater's Thanksgiving giveaway within 72 hours, allowing the campus events team to hand out turkeys and gift cards to 2,500 employees.",
+      "Contributed to internal software development by designing scalable features, debugging production issues, and delivering tools used daily across multiple departments.",
+    ],
+    caseStudies: [
+      {
+        title: "Turkey Handout App",
+        summary: "A fast-turnaround internal tool that made holiday employee gifting easier and more organized.",
+        image: "/images/projects/1.png",
+      },
+      {
+        title: "Gear Exchange",
+        summary: "Helped support commerce workflows and secure payment integration for a rapidly growing platform.",
+        image: "/images/projects/2.jpg",
+      },
+      {
+        title: "DementiaTrack",
+        summary: "A capstone project that combined thoughtful software design with practical analytics.",
+        image: "/images/projects/9.jpg",
+      },
+    ],
   },
   {
     slug: "zimmer-biomet",
     name: "Zimmer Biomet",
-    title: "IT Intern",
-    dateRange: "Oct 2020 - Aug 2021",
-    location: "Fort Wayne, IN",
+    title: "Information Technology Intern",
+    startDate: "2020-10-01",
+    endDate: "2021-05-01",
+    location: "Warsaw, IN",
+    summary: "Supported device deployment and IT operations across campuses in the Warsaw area.",
     description:
-      "During my internship, I supported device deployment and IT operations while building a strong foundation in reliable systems and teamwork.",
+      "Imaged and deployed company devices, issued laptops and accessories, and performed hardware upgrades for onboarding and refresh cycles. Delivered devices to campuses across the Warsaw area as part of IT operations support.",
     sortOrder: 3,
+    highlights: [
+      "Imaged and prepared company devices with software for deployment.",
+      "Issued laptops, accessories, and performed hardware upgrades for onboarding and refreshing hardware.",
+      "Used a company vehicle to deliver devices to various campuses in the Warsaw area.",
+    ],
+    caseStudies: [
+      {
+        title: "Device Deployment Support",
+        summary: "Helped prepare and configure systems for company use in a structured, detail-focused workflow.",
+        image: "/images/projects/zimmer-biomet.jpg",
+      },
+    ],
+  },
+  {
+    slug: "census-bureau",
+    name: "United States Census Bureau",
+    title: "Post-Enumeration Surveyor",
+    startDate: "2020-01-01",
+    endDate: "2020-10-01",
+    location: "Warsaw, IN",
+    summary: "Collected population data door-to-door for the U.S. Census Bureau's Post-Enumeration Survey.",
+    description:
+      "Conducted in-person interviews to collect population data for the Post-Enumeration Survey, ensuring census accuracy while complying with strict federal confidentiality guidelines. Maintained detailed activity logs and navigated difficult resident interactions with calm, professional de-escalation.",
+    sortOrder: 4,
+    highlights: [
+      "Performed interviews at addresses within assigned blocks to collect population data as part of the Post-Enumeration Survey, ensuring census accuracy.",
+      "Complied with strict federal guidelines and confidentiality rules for gathering demographic and housing information.",
+      "Recorded information using a government-issued laptop, maintaining hour logs, mileage, and case activity.",
+      "Navigated difficult or uncooperative situations by calmly diffusing tensions with hesitant or hostile residents.",
+    ],
+    caseStudies: [],
+  },
+  {
+    slug: "staples",
+    name: "Staples",
+    title: "Technology Sales Associate",
+    startDate: "2018-06-01",
+    endDate: "2019-05-01",
+    location: "Warsaw, IN",
+    summary: "Helped customers find the right technology products as a top-performing sales associate.",
+    description:
+      "Assessed customer needs and guided them to the right technology products, consistently ranking as the top store in Northern Indiana for several consecutive weeks. Stayed current on promotions and product launches to support sales goals.",
+    sortOrder: 5,
+    highlights: [
+      "Asked customers pertinent questions to assess and determine their needs, guiding them to the correct product.",
+      "Answered questions, explained product features, and gave honest input based on customer needs.",
+      "Used Staples sales strategies to become the number one store in Northern Indiana for several weeks straight.",
+      "Stayed up to date on weekly promotions and product launches to best support customers and hit sales goals.",
+    ],
+    caseStudies: [],
+  },
+  {
+    slug: "blacks-concrete-construction",
+    name: "Black's Concrete Construction",
+    title: "Concrete Laborer",
+    startDate: "2016-06-01",
+    endDate: "2017-03-01",
+    location: "Warsaw, IN",
+    summary: "Handled nearly every phase of residential concrete work on a small, hands-on crew.",
+    description:
+      "Worked as part of a small 2-3 person crew handling nearly every phase of residential concrete work, including driving the company truck, forming, pouring, finishing, cutting, cleaning, sealing, and stamping. Gained hands-on versatility and a strong work ethic from taking on broad responsibility within a lean, close-knit team.",
+    sortOrder: 6,
+    highlights: [
+      "Drove the company truck and handled nearly every phase of residential concrete work on a lean 2-3 person crew.",
+      "Performed forming, pouring, finishing, cutting, cleaning, sealing, and stamping across a wide range of jobs.",
+      "Gained hands-on versatility and a strong work ethic from taking on broad responsibility within a small, close-knit team.",
+    ],
+    caseStudies: [],
   },
 ];
 
@@ -189,6 +316,39 @@ async function getDatabaseConnection() {
 
 function normalizeDate(value) {
   return value instanceof Date ? value.toISOString().slice(0, 10) : value;
+}
+
+function formatMonthYear(value) {
+  if (!value) {
+    return null;
+  }
+
+  const date = value instanceof Date ? value : new Date(value);
+  return date.toLocaleDateString("en-US", { month: "short", year: "numeric" });
+}
+
+function formatDateRange(startDate, endDate) {
+  const start = formatMonthYear(startDate);
+  if (!start) {
+    return null;
+  }
+
+  return `${start} – ${endDate ? formatMonthYear(endDate) : "Present"}`;
+}
+
+function normalizeEmployerRow(row) {
+  return {
+    slug: row.slug,
+    name: row.name,
+    title: row.title,
+    startDate: normalizeDate(row.start_date ?? row.startDate),
+    endDate: normalizeDate(row.end_date ?? row.endDate),
+    dateRange: formatDateRange(row.start_date ?? row.startDate, row.end_date ?? row.endDate),
+    location: row.location,
+    summary: row.summary,
+    description: row.description,
+    sortOrder: row.sort_order ?? row.sortOrder,
+  };
 }
 
 function normalizeImagePath(image) {
@@ -345,29 +505,71 @@ export async function getEmployers() {
   const connection = await getDatabaseConnection();
 
   if (!connection) {
-    return fallbackEmployers;
+    return fallbackEmployers.map(normalizeEmployerRow);
   }
 
   try {
     const [rows] = await connection.query(
-      "SELECT slug, name, title, date_range, location, description, sort_order FROM portfolio_employers",
+      "SELECT slug, name, title, start_date, end_date, location, summary, description, sort_order FROM portfolio_employers ORDER BY sort_order ASC",
     );
 
     if (!rows?.length) {
-      return fallbackEmployers;
+      return fallbackEmployers.map(normalizeEmployerRow);
     }
 
-    return rows.map((row) => ({
-      slug: row.slug,
-      name: row.name,
-      title: row.title,
-      dateRange: row.date_range,
-      location: row.location,
-      description: row.description,
-      sortOrder: row.sort_order,
-    }));
-  } catch {
-    return fallbackEmployers;
+    return rows.map(normalizeEmployerRow);
+  } catch (err) {
+    console.error(`Employer query failed: ${err.code || ""} ${err.message}`);
+    return fallbackEmployers.map(normalizeEmployerRow);
+  } finally {
+    await connection.end();
+  }
+}
+
+export async function getEmployerBySlug(slug) {
+  const connection = await getDatabaseConnection();
+
+  if (!connection) {
+    const fallback = fallbackEmployers.find((employer) => employer.slug === slug);
+    return fallback ? { ...normalizeEmployerRow(fallback), highlights: fallback.highlights, caseStudies: fallback.caseStudies } : null;
+  }
+
+  try {
+    const [rows] = await connection.query(
+      "SELECT id, slug, name, title, start_date, end_date, location, summary, description FROM portfolio_employers WHERE slug = ? LIMIT 1",
+      [slug],
+    );
+
+    if (!rows?.length) {
+      const fallback = fallbackEmployers.find((employer) => employer.slug === slug);
+      return fallback ? { ...normalizeEmployerRow(fallback), highlights: fallback.highlights, caseStudies: fallback.caseStudies } : null;
+    }
+
+    const [row] = rows;
+
+    const [highlightRows] = await connection.query(
+      "SELECT highlight FROM portfolio_employer_highlights WHERE employer_id = ? ORDER BY sort_order ASC",
+      [row.id],
+    );
+
+    const [caseStudyRows] = await connection.query(
+      "SELECT title, summary, image FROM portfolio_employer_case_studies WHERE employer_id = ? ORDER BY sort_order ASC",
+      [row.id],
+    );
+
+    return {
+      ...normalizeEmployerRow(row),
+      highlights: highlightRows.map((highlightRow) => highlightRow.highlight),
+      caseStudies: caseStudyRows.map((caseStudyRow) => ({
+        title: caseStudyRow.title,
+        summary: caseStudyRow.summary,
+        image: normalizeImagePath(caseStudyRow.image),
+      })),
+    };
+  } catch (err) {
+    console.error(`Employer query failed: ${err.code || ""} ${err.message}`);
+    const fallback = fallbackEmployers.find((employer) => employer.slug === slug);
+    return fallback ? { ...normalizeEmployerRow(fallback), highlights: fallback.highlights, caseStudies: fallback.caseStudies } : null;
   } finally {
     await connection.end();
   }

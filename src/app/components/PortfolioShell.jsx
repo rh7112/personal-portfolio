@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 
 import {
   FaArrowRight,
@@ -11,8 +10,6 @@ import {
   FaGithub,
   FaLinkedin,
   FaPhoneAlt,
-  FaBars,
-  FaTimes,
 } from "react-icons/fa";
 import { SiIndeed } from "react-icons/si";
 
@@ -49,8 +46,7 @@ export default function PortfolioShell({
   aboutBody,
   aboutBullets,
   experienceHeading,
-  experienceHighlights,
-  employerHighlights,
+  employers,
   projectsHeading,
   featuredProjects,
   projects,
@@ -58,64 +54,8 @@ export default function PortfolioShell({
   contactBody,
   contactLinks,
 }) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100">
-      <nav className="sticky top-0 z-20 border-b border-white/10 bg-slate-950/80 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
-          <Link href="/" className="text-lg font-semibold uppercase tracking-[0.2em] text-white">
-            Ryan Hurd
-          </Link>
-          <div className="hidden items-center gap-4 text-sm text-slate-300 md:flex">
-            <Link href="#about" className="transition hover:text-white">
-              About
-            </Link>
-            <Link href="#experience" className="transition hover:text-white">
-              Experience
-            </Link>
-            <Link href="#projects" className="transition hover:text-white">
-              Work
-            </Link>
-            <Link href="/blog" className="transition hover:text-white">
-              Blog
-            </Link>
-            <Link href="#contact" className="transition hover:text-white">
-              Contact
-            </Link>
-          </div>
-          <button
-            type="button"
-            className="inline-flex items-center justify-center rounded-full border border-white/10 p-2 text-slate-200 md:hidden"
-            onClick={() => setMobileMenuOpen((open) => !open)}
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <FaTimes /> : <FaBars />}
-          </button>
-        </div>
-        {mobileMenuOpen && (
-          <div className="border-t border-white/10 px-6 py-4 md:hidden">
-            <div className="flex flex-col gap-3 text-sm text-slate-300">
-              <Link href="#about" className="transition hover:text-white" onClick={() => setMobileMenuOpen(false)}>
-                About
-              </Link>
-              <Link href="#experience" className="transition hover:text-white" onClick={() => setMobileMenuOpen(false)}>
-                Experience
-              </Link>
-              <Link href="#projects" className="transition hover:text-white" onClick={() => setMobileMenuOpen(false)}>
-                Work
-              </Link>
-              <Link href="/blog" className="transition hover:text-white" onClick={() => setMobileMenuOpen(false)}>
-                Blog
-              </Link>
-              <Link href="#contact" className="transition hover:text-white" onClick={() => setMobileMenuOpen(false)}>
-                Contact
-              </Link>
-            </div>
-          </div>
-        )}
-      </nav>
-
       <section id="top" className="mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-28">
         <div className="grid items-center gap-16 lg:grid-cols-[1.2fr_0.8fr]">
           <div className="order-2 lg:order-1">
@@ -197,12 +137,12 @@ export default function PortfolioShell({
         </div>
 
         <div className="mt-8 grid gap-6 lg:grid-cols-3">
-          {experienceHighlights.map((item) => (
-            <Link key={item.slug} href={`/experience/${item.slug}`} className="rounded-3xl border border-white/10 bg-slate-900/70 p-6 transition hover:border-sky-400 hover:bg-slate-800/90">
-              <p className="text-sm text-sky-400">{item.date}</p>
-              <h3 className="mt-2 text-xl font-semibold text-white">{item.title}</h3>
-              <p className="mt-1 text-sm text-slate-400">{item.company}</p>
-              <p className="mt-4 text-sm leading-7 text-slate-300">{item.description}</p>
+          {employers.map((employer) => (
+            <Link key={employer.slug} href={`/experience/${employer.slug}`} className="rounded-3xl border border-white/10 bg-slate-900/70 p-6 transition hover:border-sky-400 hover:bg-slate-800/90">
+              <p className="text-sm text-sky-400">{employer.dateRange}</p>
+              <h3 className="mt-2 text-xl font-semibold text-white">{employer.title}</h3>
+              <p className="mt-1 text-sm text-slate-400">{employer.name}</p>
+              <p className="mt-4 text-sm leading-7 text-slate-300">{employer.summary}</p>
             </Link>
           ))}
         </div>

@@ -1,5 +1,6 @@
 import PortfolioShell from "./components/PortfolioShell";
-import { getHomepageData, getProjectList } from "@/lib/portfolio-data";
+import { getHomepageData, getProjectList, getEmployers } from "@/lib/portfolio-data";
+
 
 const contactLinks = [
   {
@@ -35,8 +36,8 @@ const contactLinks = [
 ];
 
 export default async function Home() {
-  const [homeData, projects] = await Promise.all([getHomepageData(), getProjectList()]);
-
+  const [homeData, projects, employers] = await Promise.all([getHomepageData(), getProjectList(), getEmployers()]);
+  
   return (
     <PortfolioShell
       heroEyebrow={homeData.heroEyebrow}
@@ -49,8 +50,7 @@ export default async function Home() {
       aboutBody={homeData.aboutBody}
       aboutBullets={homeData.aboutBullets}
       experienceHeading={homeData.experienceHeading}
-      experienceHighlights={homeData.experienceHighlights}
-      employerHighlights={homeData.employerHighlights}
+      employers={employers.slice(0, 3)}
       projectsHeading={homeData.projectsHeading}
       featuredProjects={homeData.featuredProjects}
       projects={projects}
