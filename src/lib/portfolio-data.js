@@ -2,7 +2,8 @@ import mysql from "mysql2/promise";
 
 const fallbackHomeData = {
   heroEyebrow: "Family-first • builder • software engineer",
-  heroTitle: "I build practical internal tools that make teams faster, clearer, and more confident.",
+  heroTitle:
+    "I build practical internal tools that make teams faster, clearer, and more confident.",
   heroBody:
     "I’m Ryan Hurd, a software engineer focused on Retool, SQL-driven workflows, and operational tools that help people make better decisions with less friction.",
   quickFacts: [
@@ -19,7 +20,8 @@ const fallbackHomeData = {
     "Collaboration with operations, accounting, compliance, and leadership teams",
     "Training and mentoring others to use tools effectively and build with confidence",
   ],
-  experienceHeading: "Experience that spans engineering, operations, and teamwork.",
+  experienceHeading:
+    "Experience that spans engineering, operations, and teamwork.",
   experienceHighlights: [
     {
       title: "Software Engineer",
@@ -67,44 +69,49 @@ const fallbackHomeData = {
       image: "/images/projects/ppi-press-wip.svg",
     },
   ],
-  projectHistory: [
-    "Donut Duty",
-    "Synchrony Bonus Bucks promotions",
-    "Bonus Bucks GUI",
-    "ECMS tax certificate expiration workflow",
-    "Marketplace payments cancellation handling",
-    "Automated collection letters",
-    "Stop UT/CA auto-processing",
-    "Electronic delivery invoice splitting",
-    "CRM performance improvements",
-    "Press release admin tool",
-    "Merchandising price comparison report",
-    "Web text editor",
-    "Make Offer Tool",
-    "404 admin tool",
-    "Retool termination script",
-    "Usability Retool App",
-    "FileMaker purchase order and quote tooling",
-    "XChange management platform",
-    "Store SEO content management",
-    "Sales Engineer planning workspace",
-    "Drumfest check-in scanner workflow",
-    "Kiosk Manager",
-  ],
+  // projectHistory: [
+  //   "Donut Duty",
+  //   "Synchrony Bonus Bucks promotions",
+  //   "Bonus Bucks GUI",
+  //   "ECMS tax certificate expiration workflow",
+  //   "Marketplace payments cancellation handling",
+  //   "Automated collection letters",
+  //   "Stop UT/CA auto-processing",
+  //   "Electronic delivery invoice splitting",
+  //   "CRM performance improvements",
+  //   "Press release admin tool",
+  //   "Merchandising price comparison report",
+  //   "Web text editor",
+  //   "Make Offer Tool",
+  //   "404 admin tool",
+  //   "Retool termination script",
+  //   "Usability Retool App",
+  //   "FileMaker purchase order and quote tooling",
+  //   "XChange management platform",
+  //   "Store SEO content management",
+  //   "Sales Engineer planning workspace",
+  //   "Drumfest check-in scanner workflow",
+  //   "Kiosk Manager",
+  // ],
+  projectHistory: await getProjectList(),
+
   employerHighlights: [
     {
       title: "Packaging Personified",
-      blurb: "Operations, compliance, and production tooling in a fast-moving manufacturing environment.",
+      blurb:
+        "Operations, compliance, and production tooling in a fast-moving manufacturing environment.",
       slug: "packaging-personified",
     },
     {
       title: "Sweetwater",
-      blurb: "Cross-functional internal tools for support, accounting, and customer experience teams.",
+      blurb:
+        "Cross-functional internal tools for support, accounting, and customer experience teams.",
       slug: "sweetwater",
     },
     {
       title: "Zimmer Biomet",
-      blurb: "A grounded start in IT operations and dependable systems support.",
+      blurb:
+        "A grounded start in IT operations and dependable systems support.",
       slug: "zimmer-biomet",
     },
   ],
@@ -136,10 +143,54 @@ const fallbackBlogPosts = [
   },
 ];
 
-async function getDatabaseConnection() {
-  const { PORTFOLIO_DB_HOST, PORTFOLIO_DB_PORT, PORTFOLIO_DB_USER, PORTFOLIO_DB_PASSWORD, PORTFOLIO_DB_NAME } = process.env;
+const fallbackEmployers = [
+  {
+    slug: "packaging-personified",
+    name: "Packaging Personified, Inc.",
+    title: "Software Engineer",
+    dateRange: "Oct 2025 - Current",
+    location: "Remote",
+    description:
+      "At Packaging Personified, I’ve focused on building Retool applications that connect production data, reporting needs, and operational workflows in a way that is fast, usable, and reliable.",
+    sortOrder: 1,
+  },
+  {
+    slug: "sweetwater-sound",
+    name: "Sweetwater Sound",
+    title: "Software Engineer",
+    dateRange: "May 2021 - Aug 2025",
+    location: "Fort Wayne, IN",
+    description:
+      "At Sweetwater, I worked across multiple engineering pods and learned how to deliver solutions that balanced speed, reliability, and a strong user experience.",
+    sortOrder: 2,
+  },
+  {
+    slug: "zimmer-biomet",
+    name: "Zimmer Biomet",
+    title: "IT Intern",
+    dateRange: "Oct 2020 - Aug 2021",
+    location: "Fort Wayne, IN",
+    description:
+      "During my internship, I supported device deployment and IT operations while building a strong foundation in reliable systems and teamwork.",
+    sortOrder: 3,
+  },
+];
 
-  if (!PORTFOLIO_DB_HOST || !PORTFOLIO_DB_USER || !PORTFOLIO_DB_PASSWORD || !PORTFOLIO_DB_NAME) {
+async function getDatabaseConnection() {
+  const {
+    PORTFOLIO_DB_HOST,
+    PORTFOLIO_DB_PORT,
+    PORTFOLIO_DB_USER,
+    PORTFOLIO_DB_PASSWORD,
+    PORTFOLIO_DB_NAME,
+  } = process.env;
+
+  if (
+    !PORTFOLIO_DB_HOST ||
+    !PORTFOLIO_DB_USER ||
+    !PORTFOLIO_DB_PASSWORD ||
+    !PORTFOLIO_DB_NAME
+  ) {
     return null;
   }
 
@@ -187,7 +238,7 @@ export async function getHomepageData() {
 
   try {
     const [rows] = await connection.query(
-      "SELECT `key`, `value` FROM portfolio_content WHERE scope = 'homepage' ORDER BY sort_order ASC"
+      "SELECT `key`, `value` FROM portfolio_content WHERE scope = 'homepage' ORDER BY sort_order ASC",
     );
 
     if (!rows?.length) {
@@ -204,14 +255,18 @@ export async function getHomepageData() {
     }, {});
 
     const [projectRows] = await connection.query(
-      "SELECT id, title, summary, image, company, company_slug, color, featured, published FROM portfolio_projects WHERE published = 1 ORDER BY RAND() LIMIT 3"
+      "SELECT id, title, summary, image, company, company_slug, color, featured, published FROM portfolio_projects WHERE published = 1 ORDER BY RAND() LIMIT 3",
     );
 
     return {
       ...fallbackHomeData,
       ...parsedRows,
-      featuredProjects: normalizeProjectRows(projectRows?.length ? projectRows : fallbackHomeData.featuredProjects),
-      projectHistory: Array.isArray(parsedRows.projectHistory) ? parsedRows.projectHistory : fallbackHomeData.projectHistory,
+      featuredProjects: normalizeProjectRows(
+        projectRows?.length ? projectRows : fallbackHomeData.featuredProjects,
+      ),
+      projectHistory: Array.isArray(parsedRows.projectHistory)
+        ? parsedRows.projectHistory
+        : fallbackHomeData.projectHistory,
     };
   } catch {
     return fallbackHomeData;
@@ -229,7 +284,7 @@ export async function getProjectList() {
 
   try {
     const [rows] = await connection.query(
-      "SELECT id, title, summary, image, company, company_slug, color, featured, published FROM portfolio_projects WHERE published = 1 ORDER BY title ASC"
+      "SELECT id, title, summary, image, company, company_slug, color, featured, published FROM portfolio_projects WHERE published = 1 ORDER BY title ASC",
     );
     return normalizeProjectRows(rows);
   } catch {
@@ -248,7 +303,7 @@ export async function getBlogPosts() {
 
   try {
     const [rows] = await connection.query(
-      "SELECT slug, title, excerpt, content, category, published_at AS publishedAt FROM blog_posts WHERE published_at IS NOT NULL ORDER BY published_at DESC, created_at DESC"
+      "SELECT slug, title, excerpt, content, category, published_at AS publishedAt FROM blog_posts WHERE published_at IS NOT NULL ORDER BY published_at DESC, created_at DESC",
     );
 
     if (!rows?.length) {
@@ -280,7 +335,7 @@ export async function getBlogPostBySlug(slug) {
   try {
     const [rows] = await connection.query(
       "SELECT slug, title, excerpt, content, category, published_at AS publishedAt FROM blog_posts WHERE slug = ? LIMIT 1",
-      [slug]
+      [slug],
     );
 
     if (!rows?.length) {
@@ -298,6 +353,38 @@ export async function getBlogPostBySlug(slug) {
     };
   } catch {
     return fallbackBlogPosts.find((post) => post.slug === slug) ?? null;
+  } finally {
+    await connection.end();
+  }
+}
+
+export async function getEmployers() {
+  const connection = await getDatabaseConnection();
+
+  if (!connection) {
+    return fallbackEmployers;
+  }
+
+  try {
+    const [rows] = await connection.query(
+      "SELECT slug, name, title, date_range, location, description, sort_order FROM portfolio_employers",
+    );
+
+    if (!rows?.length) {
+      return fallbackEmployers;
+    }
+
+    return rows.map((row) => ({
+      slug: row.slug,
+      name: row.name,
+      title: row.title,
+      dateRange: row.date_range,
+      location: row.location,
+      description: row.description,
+      sortOrder: row.sort_order,
+    }));
+  } catch {
+    return fallbackEmployers;
   } finally {
     await connection.end();
   }
