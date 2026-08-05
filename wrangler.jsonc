@@ -3,8 +3,21 @@
   "name": "personal-portfolio",
   "compatibility_date": "2026-08-05",
   "observability": {
-    "enabled": true
+    "enabled": false,
+    "head_sampling_rate": 1,
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1,
+      "persist": true,
+      "invocation_logs": true,
+    },
+    "traces": {
+      "enabled": false,
+      "persist": true,
+      "head_sampling_rate": 1
+    }
   },
+
   "routes": [
     {
       "pattern": "ryan.hurd.cc",
