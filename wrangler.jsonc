@@ -2,6 +2,16 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "personal-portfolio",
   "compatibility_date": "2026-08-05",
+  "observability": {
+    "enabled": true
+  },
+  "routes": [
+    {
+      "pattern": "ryan.hurd.cc",
+      "zone_name": "hurd.cc",
+      "custom_domain": true
+    }
+  ],
   "assets": {
     "directory": "out"
   }

@@ -184,12 +184,17 @@ async function getDatabaseConnection() {
     PORTFOLIO_DB_NAME,
   } = process.env;
 
-  if (
-    !PORTFOLIO_DB_HOST ||
-    !PORTFOLIO_DB_USER ||
-    !PORTFOLIO_DB_PASSWORD ||
-    !PORTFOLIO_DB_NAME
-  ) {
+  const missing = Object.entries({
+    PORTFOLIO_DB_HOST,
+    PORTFOLIO_DB_USER,
+    PORTFOLIO_DB_PASSWORD,
+    PORTFOLIO_DB_NAME,
+  })
+    .filter(([, value]) => !value)
+    .map(([key]) => key);
+
+  if (missing.length) {
+    console.log(`Skipping DB connection, missing env vars: ${missing.join(", ")}`);
     return null;
   }
 
@@ -202,7 +207,7 @@ async function getDatabaseConnection() {
       database: PORTFOLIO_DB_NAME,
     });
   } catch (err) {
-    console.error(err);
+    console.error(`DB connection failed: ${err.code || ""} ${err.message}`);
     return null;
   }
 }
