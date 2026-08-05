@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-
 import PortfolioShell from "./components/PortfolioShell";
 import { getHomepageData } from "@/lib/portfolio-data";
 
