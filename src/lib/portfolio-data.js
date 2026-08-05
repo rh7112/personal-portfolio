@@ -69,31 +69,6 @@ const fallbackHomeData = {
       image: "/images/projects/ppi-press-wip.svg",
     },
   ],
-  projectHistory: [
-    "Donut Duty",
-    "Synchrony Bonus Bucks promotions",
-    "Bonus Bucks GUI",
-    "ECMS tax certificate expiration workflow",
-    "Marketplace payments cancellation handling",
-    "Automated collection letters",
-    "Stop UT/CA auto-processing",
-    "Electronic delivery invoice splitting",
-    "CRM performance improvements",
-    "Press release admin tool",
-    "Merchandising price comparison report",
-    "Web text editor",
-    "Make Offer Tool",
-    "404 admin tool",
-    "Retool termination script",
-    "Usability Retool App",
-    "FileMaker purchase order and quote tooling",
-    "XChange management platform",
-    "Store SEO content management",
-    "Sales Engineer planning workspace",
-    "Drumfest check-in scanner workflow",
-    "Kiosk Manager",
-  ],
-
   employerHighlights: [
     {
       title: "Packaging Personified",
@@ -274,9 +249,6 @@ export async function getHomepageData() {
       featuredProjects: normalizeProjectRows(
         projectRows?.length ? projectRows : fallbackHomeData.featuredProjects,
       ),
-      projectHistory: Array.isArray(parsedRows.projectHistory)
-        ? parsedRows.projectHistory
-        : fallbackHomeData.projectHistory,
     };
   } catch (err) {
     console.error(err);

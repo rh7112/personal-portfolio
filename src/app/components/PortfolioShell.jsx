@@ -53,7 +53,7 @@ export default function PortfolioShell({
   employerHighlights,
   projectsHeading,
   featuredProjects,
-  projectHistory,
+  projects,
   contactHeading,
   contactBody,
   contactLinks,
@@ -245,9 +245,13 @@ export default function PortfolioShell({
             A broad set of projects across operations, finance, commerce, and internal tools.
           </h3>
           <div className="mt-6 flex flex-wrap gap-3">
-            {projectHistory.map((item) => (
-              <span key={item} className="rounded-full border border-white/10 bg-slate-950/70 px-3 py-2 text-sm text-slate-300">
-                {item}
+            {projects.map((project) => (
+              <span
+                key={project.id}
+                title={project.company}
+                className={`rounded-full border px-3 py-2 text-sm ${getProjectChipClass(project.color)}`}
+              >
+                {project.title}
               </span>
             ))}
           </div>
