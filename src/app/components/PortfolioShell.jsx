@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
+import RetoolEmbed from "./RetoolEmbed";
+
 import {
   FaArrowRight,
   FaEnvelope,
@@ -234,6 +236,22 @@ export default function PortfolioShell({
                 </div>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 py-8 lg:px-8">
+        <div className="rounded-3xl border border-white/10 bg-slate-900/60 p-8 lg:p-10">
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-400">Try it live</p>
+          <h3 className="mt-2 text-2xl font-semibold text-white">
+            Interactive Retool apps you can try right now.
+          </h3>
+          <div className="mt-8 grid gap-6 lg:grid-cols-2">
+            <RetoolEmbed
+              title="Minesweeper"
+              description="A classic Minesweeper build in Retool, showing off custom component logic and state management."
+              src="https://rh25170.retool.com/embedded/public/3098f072-da08-4876-b3aa-0f14f020ea8a"
+            />
           </div>
         </div>
       </section>
