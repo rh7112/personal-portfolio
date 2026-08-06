@@ -26,45 +26,39 @@ const icons = {
 };
 
 // Non-employer companies that only show up in project history (school
-// coursework, this site itself) -- not real jobs, so no portfolio_employers
+// coursework, personal projects) -- not real jobs, so no portfolio_employers
 // row, just a stable fallback color.
 const nonEmployerCompanyColors = {
-  "purdue-university": { color: "orange" },
-  "ivy-tech": { color: "orange" },
-  "personal-projects": { color: "orange" },
+  "purdue-university": "orange",
+  "ivy-tech": "orange",
+  "personal-projects": "orange",
 };
 
-const swatchDotClass = {
-  red: "bg-red-500 ring-1 ring-stone-900/10 dark:ring-white/20",
-  blue: "bg-blue-500 ring-1 ring-stone-900/10 dark:ring-white/20",
-  emerald: "bg-emerald-500 ring-1 ring-stone-900/10 dark:ring-white/20",
-  amber: "bg-amber-500 ring-1 ring-stone-900/10 dark:ring-white/20",
-  orange: "bg-orange-500 ring-1 ring-stone-900/10 dark:ring-white/20",
-  black: "bg-black ring-2 ring-stone-400 dark:ring-stone-500",
-  white: "bg-white ring-2 ring-stone-400 dark:ring-stone-500",
-};
-
-function resolveCompanyColors(companySlug, employers) {
+function resolveCompanyColor(companySlug, employers) {
   const employer = employers.find((item) => item.slug === companySlug);
   if (employer?.color) {
-    return { color: employer.color, secondaryColor: employer.secondaryColor };
+    return employer.color;
   }
   return nonEmployerCompanyColors[companySlug] ?? null;
 }
 
-function CompanySwatch({ color, secondaryColor }) {
-  if (!color) {
-    return null;
+function getCompanyCardClass(color) {
+  switch (color) {
+    case "red":
+      return "border-red-600/30 bg-red-500/10 dark:border-red-500/30 dark:bg-red-500/10";
+    case "blue":
+      return "border-blue-600/30 bg-blue-500/10 dark:border-blue-500/30 dark:bg-blue-500/10";
+    case "emerald":
+      return "border-emerald-600/30 bg-emerald-500/10 dark:border-emerald-500/30 dark:bg-emerald-500/10";
+    case "amber":
+      return "border-amber-600/30 bg-amber-500/10 dark:border-amber-500/30 dark:bg-amber-500/10";
+    case "black":
+      return "border-stone-900/30 bg-stone-900/5 dark:border-white/30 dark:bg-white/10";
+    case "orange":
+      return "border-orange-600/30 bg-orange-500/10 dark:border-orange-500/30 dark:bg-orange-500/10";
+    default:
+      return "border-stone-900/10 bg-white/80 dark:border-white/10 dark:bg-stone-900/70";
   }
-
-  return (
-    <span className="inline-flex shrink-0 items-center gap-1" aria-hidden="true">
-      <span className={`inline-block h-2.5 w-2.5 rounded-full ${swatchDotClass[color] || "bg-stone-400"}`} />
-      {secondaryColor && (
-        <span className={`inline-block h-2.5 w-2.5 rounded-full ${swatchDotClass[secondaryColor] || "bg-stone-400"}`} />
-      )}
-    </span>
-  );
 }
 
 export default function PortfolioShell({
@@ -173,14 +167,11 @@ export default function PortfolioShell({
             <Link
               key={employer.slug}
               href={`/experience/${employer.slug}`}
-              className="rounded-3xl border border-stone-900/10 bg-white/80 p-6 transition hover:border-orange-600 hover:bg-stone-100 dark:border-white/10 dark:bg-stone-900/70 dark:hover:border-orange-400 dark:hover:bg-stone-800/90"
+              className={`rounded-3xl border p-6 transition hover:-translate-y-0.5 hover:shadow-md ${getCompanyCardClass(employer.color)}`}
             >
               <p className="text-sm text-orange-700 dark:text-orange-400">{employer.dateRange}</p>
               <h3 className="mt-2 text-xl font-semibold text-stone-900 dark:text-white">{employer.title}</h3>
-              <p className="mt-1 flex items-center gap-2 text-sm text-stone-500 dark:text-stone-400">
-                <CompanySwatch color={employer.color} secondaryColor={employer.secondaryColor} />
-                {employer.name}
-              </p>
+              <p className="mt-1 text-sm text-stone-500 dark:text-stone-400">{employer.name}</p>
               <p className="mt-4 text-sm leading-7 text-stone-600 dark:text-stone-300">{employer.summary}</p>
             </Link>
           ))}
@@ -198,23 +189,20 @@ export default function PortfolioShell({
 
           <div className="mt-8 grid gap-6 lg:grid-cols-3">
             {featuredProjects.map((project) => {
-              const companyColors = resolveCompanyColors(project.companySlug, employers);
+              const companyColor = resolveCompanyColor(project.companySlug, employers);
               return (
                 <article
                   key={project.title}
-                  className="overflow-hidden rounded-3xl border border-stone-900/10 bg-stone-100/70 dark:border-white/10 dark:bg-stone-950/70"
+                  className={`overflow-hidden rounded-3xl border ${getCompanyCardClass(companyColor)}`}
                 >
                   <div className="relative h-48 w-full">
                     <Image src={project.image} alt={project.title} fill className="object-cover" />
                   </div>
                   <div className="p-6">
-                    <div className="flex items-center justify-between gap-3">
-                      <h3 className="text-xl font-semibold text-stone-900 dark:text-white">{project.title}</h3>
-                      <span className="inline-flex items-center gap-1.5 rounded-full border border-stone-900/10 bg-white/80 px-2.5 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-stone-600 dark:border-white/10 dark:bg-stone-800/70 dark:text-stone-300">
-                        <CompanySwatch color={companyColors?.color} secondaryColor={companyColors?.secondaryColor} />
-                        {project.company}
-                      </span>
-                    </div>
+                    <h3 className="text-xl font-semibold text-stone-900 dark:text-white">{project.title}</h3>
+                    <p className="mt-1 text-xs uppercase tracking-[0.2em] text-stone-500 dark:text-stone-400">
+                      {project.company}
+                    </p>
                     <p className="mt-3 text-sm leading-7 text-stone-600 dark:text-stone-300">{project.summary}</p>
                     {project.techStack && (
                       <p className="mt-3 text-xs uppercase tracking-[0.15em] text-stone-500 dark:text-stone-400">
@@ -258,14 +246,13 @@ export default function PortfolioShell({
           </h3>
           <div className="mt-6 flex flex-wrap gap-3">
             {projects.map((project) => {
-              const companyColors = resolveCompanyColors(project.companySlug, employers);
+              const companyColor = resolveCompanyColor(project.companySlug, employers);
               return (
                 <span
                   key={project.id}
                   title={project.company}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-stone-900/10 bg-stone-100/70 px-3 py-2 text-sm text-stone-700 dark:border-white/10 dark:bg-stone-900/70 dark:text-stone-200"
+                  className={`rounded-full border px-3 py-2 text-sm text-stone-700 dark:text-stone-200 ${getCompanyCardClass(companyColor)}`}
                 >
-                  <CompanySwatch color={companyColors?.color} secondaryColor={companyColors?.secondaryColor} />
                   {project.title}
                 </span>
               );
