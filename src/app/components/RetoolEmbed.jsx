@@ -6,7 +6,7 @@ export default function RetoolEmbed({ title, description, src }) {
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <div className="overflow-hidden rounded-3xl border border-stone-900/10 bg-stone-100/70 dark:border-white/10 dark:bg-stone-950/70">
+    <div className="min-w-0 w-full overflow-hidden rounded-3xl border border-stone-900/10 bg-stone-100/70 dark:border-white/10 dark:bg-stone-950/70">
       <div className="p-6">
         <h3 className="text-xl font-semibold text-stone-900 dark:text-white">{title}</h3>
         <p className="mt-3 text-sm leading-7 text-stone-600 dark:text-stone-300">{description}</p>
@@ -21,14 +21,14 @@ export default function RetoolEmbed({ title, description, src }) {
         )}
       </div>
       {loaded && (
-        <iframe
-          src={src}
-          title={title}
-          width="100%"
-          height="800"
-          loading="lazy"
-          className="block border-0"
-        />
+        <div className="w-full overflow-x-auto">
+          <iframe
+            src={src}
+            title={title}
+            loading="lazy"
+            className="block h-[800px] w-full max-w-full border-0"
+          />
+        </div>
       )}
     </div>
   );

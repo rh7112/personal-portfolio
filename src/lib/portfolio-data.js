@@ -414,7 +414,7 @@ export async function getHomepageData() {
     }, {});
 
     const [projectRows] = await connection.query(
-      "SELECT id, title, summary, image, company, company_slug, color, featured, published FROM portfolio_projects WHERE published = 1 ORDER BY RAND() LIMIT 3",
+      "SELECT id, title, summary, image, company, company_slug, color, featured, published FROM portfolio_projects WHERE published = 1 AND featured = 1 ORDER BY RAND() LIMIT 3",
     );
 
     return {
@@ -441,7 +441,7 @@ export async function getProjectList() {
 
   try {
     const [rows] = await connection.query(
-      "SELECT id, title, summary, image, company, company_slug, color, featured, published FROM portfolio_projects WHERE published = 1 ORDER BY title ASC",
+      "SELECT id, title, summary, image, company, company_slug, color, featured, published FROM portfolio_projects WHERE published = 1 AND featured = 0 ORDER BY title ASC",
     );
     return normalizeProjectRows(rows);
   } catch {
