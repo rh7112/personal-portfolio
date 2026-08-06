@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { FaBars, FaChevronDown, FaTimes } from "react-icons/fa";
 
-const navLinkClass = "transition hover:text-white";
+const navLinkClass = "transition hover:text-stone-900 dark:hover:text-white";
 
 export default function SiteHeader({ employers = [] }) {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -32,13 +32,13 @@ export default function SiteHeader({ employers = [] }) {
   }
 
   return (
-    <header className="sticky top-0 z-20 border-b border-white/10 bg-slate-950/80 backdrop-blur">
+    <header className="sticky top-0 z-20 border-b border-stone-900/10 bg-stone-50/80 backdrop-blur dark:border-white/10 dark:bg-stone-950/80">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
-        <Link href="/" className="text-lg font-semibold uppercase tracking-[0.2em] text-white">
+        <Link href="/" className="text-lg font-semibold uppercase tracking-[0.2em] text-stone-900 dark:text-white">
           Ryan Hurd
         </Link>
 
-        <div className="hidden items-center gap-4 text-sm text-slate-300 md:flex">
+        <div className="hidden items-center gap-4 text-sm text-stone-600 dark:text-stone-300 md:flex">
           <Link href="/#about" className={navLinkClass}>
             About
           </Link>
@@ -61,7 +61,7 @@ export default function SiteHeader({ employers = [] }) {
             {workOpen && employers.length > 0 && (
               <div
                 role="menu"
-                className="absolute left-0 top-full mt-2 w-64 rounded-2xl border border-white/10 bg-slate-900/95 p-2 shadow-xl backdrop-blur"
+                className="absolute left-0 top-full mt-2 w-64 rounded-2xl border border-stone-900/10 bg-white/95 p-2 shadow-xl backdrop-blur dark:border-white/10 dark:bg-stone-900/95"
                 onFocus={openWork}
                 onBlur={scheduleCloseWork}
               >
@@ -70,7 +70,7 @@ export default function SiteHeader({ employers = [] }) {
                     key={employer.slug}
                     href={`/experience/${employer.slug}`}
                     role="menuitem"
-                    className="block rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/5 hover:text-white"
+                    className="block rounded-xl px-3 py-2 text-sm text-stone-600 transition hover:bg-stone-900/5 hover:text-stone-900 dark:text-stone-300 dark:hover:bg-white/5 dark:hover:text-white"
                     onClick={() => setWorkOpen(false)}
                   >
                     {employer.name}
@@ -90,7 +90,7 @@ export default function SiteHeader({ employers = [] }) {
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-full border border-white/10 p-2 text-slate-200 md:hidden"
+          className="inline-flex items-center justify-center rounded-full border border-stone-900/10 p-2 text-stone-700 dark:border-white/10 dark:text-stone-200 md:hidden"
           onClick={() => setMobileOpen((open) => !open)}
           aria-label="Toggle menu"
         >
@@ -99,8 +99,8 @@ export default function SiteHeader({ employers = [] }) {
       </div>
 
       {mobileOpen && (
-        <div className="border-t border-white/10 px-6 py-4 md:hidden">
-          <div className="flex flex-col gap-3 text-sm text-slate-300">
+        <div className="border-t border-stone-900/10 px-6 py-4 dark:border-white/10 md:hidden">
+          <div className="flex flex-col gap-3 text-sm text-stone-600 dark:text-stone-300">
             <Link href="/#about" className={navLinkClass} onClick={() => setMobileOpen(false)}>
               About
             </Link>
@@ -119,12 +119,12 @@ export default function SiteHeader({ employers = [] }) {
                 <FaChevronDown className={`text-xs transition-transform ${mobileWorkOpen ? "rotate-180" : ""}`} />
               </button>
               {mobileWorkOpen && (
-                <div className="mt-2 flex flex-col gap-2 border-l border-white/10 pl-4">
+                <div className="mt-2 flex flex-col gap-2 border-l border-stone-900/10 pl-4 dark:border-white/10">
                   {employers.map((employer) => (
                     <Link
                       key={employer.slug}
                       href={`/experience/${employer.slug}`}
-                      className="text-slate-400 transition hover:text-white"
+                      className="text-stone-500 transition hover:text-stone-900 dark:text-stone-400 dark:hover:text-white"
                       onClick={() => setMobileOpen(false)}
                     >
                       {employer.name}
