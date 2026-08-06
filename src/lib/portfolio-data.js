@@ -452,6 +452,20 @@ export async function getProjectList() {
   }
 }
 
+function parseDetails(value) {
+  if (!value) {
+    return null;
+  }
+  if (typeof value === "object") {
+    return value;
+  }
+  try {
+    return JSON.parse(value);
+  } catch {
+    return null;
+  }
+}
+
 export async function getBlogPosts() {
   const connection = await getDatabaseConnection();
 
@@ -461,7 +475,7 @@ export async function getBlogPosts() {
 
   try {
     const [rows] = await connection.query(
-      "SELECT slug, title, excerpt, content, category, published_at AS publishedAt FROM blog_posts WHERE published_at IS NOT NULL ORDER BY published_at DESC, created_at DESC",
+      "SELECT slug, title, excerpt, content, category, published_at AS publishedAt FROM blog_posts WHERE type = 'article' AND published_at IS NOT NULL ORDER BY published_at DESC, created_at DESC",
     );
 
     if (!rows?.length) {
@@ -492,7 +506,7 @@ export async function getBlogPostBySlug(slug) {
 
   try {
     const [rows] = await connection.query(
-      "SELECT slug, title, excerpt, content, category, published_at AS publishedAt FROM blog_posts WHERE slug = ? LIMIT 1",
+      "SELECT slug, title, excerpt, content, category, published_at AS publishedAt FROM blog_posts WHERE type = 'article' AND slug = ? LIMIT 1",
       [slug],
     );
 
@@ -511,6 +525,75 @@ export async function getBlogPostBySlug(slug) {
     };
   } catch {
     return fallbackBlogPosts.find((post) => post.slug === slug) ?? null;
+  } finally {
+    await connection.end();
+  }
+}
+
+function normalizeRecipeRow(row) {
+  const details = parseDetails(row.details) || {};
+  return {
+    slug: row.slug,
+    title: row.title,
+    excerpt: row.excerpt,
+    content: row.content,
+    category: row.category,
+    publishedAt: normalizeDate(row.publishedAt),
+    servings: details.servings ?? null,
+    prepMinutes: details.prepMinutes ?? null,
+    cookMinutes: details.cookMinutes ?? null,
+    difficulty: details.difficulty ?? null,
+    image: details.image ?? null,
+    sourceNote: details.sourceNote ?? null,
+    ingredients: details.ingredients ?? [],
+    steps: details.steps ?? [],
+    notes: details.notes ?? [],
+    pairsWith: details.pairsWith ?? [],
+  };
+}
+
+export async function getRecipes() {
+  const connection = await getDatabaseConnection();
+
+  if (!connection) {
+    return [];
+  }
+
+  try {
+    const [rows] = await connection.query(
+      "SELECT slug, title, excerpt, content, category, published_at AS publishedAt, details FROM blog_posts WHERE type = 'recipe' AND published_at IS NOT NULL ORDER BY published_at DESC, created_at DESC",
+    );
+
+    return rows.map(normalizeRecipeRow);
+  } catch (err) {
+    console.error(`Recipes query failed: ${err.code || ""} ${err.message}`);
+    return [];
+  } finally {
+    await connection.end();
+  }
+}
+
+export async function getRecipeBySlug(slug) {
+  const connection = await getDatabaseConnection();
+
+  if (!connection) {
+    return null;
+  }
+
+  try {
+    const [rows] = await connection.query(
+      "SELECT slug, title, excerpt, content, category, published_at AS publishedAt, details FROM blog_posts WHERE type = 'recipe' AND slug = ? LIMIT 1",
+      [slug],
+    );
+
+    if (!rows?.length) {
+      return null;
+    }
+
+    return normalizeRecipeRow(rows[0]);
+  } catch (err) {
+    console.error(`Recipe query failed: ${err.code || ""} ${err.message}`);
+    return null;
   } finally {
     await connection.end();
   }

@@ -18,7 +18,11 @@ export default async function BlogPage() {
             Notes, recipes, and reflections from the road.
           </h1>
           <p className="mt-5 text-lg text-stone-600 dark:text-stone-300">
-            This space is meant to hold ideas that are too long for a quick note but still worth sharing. It is a simple home for thoughts, lessons, and the occasional recipe.
+            This space is meant to hold ideas that are too long for a quick note but still worth sharing. Looking for something to cook? Check out the{" "}
+            <Link href="/recipes" className="font-semibold text-orange-700 hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300">
+              recipes
+            </Link>{" "}
+            section instead.
           </p>
         </div>
 
