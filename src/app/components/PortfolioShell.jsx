@@ -31,7 +31,7 @@ const icons = {
 const nonEmployerCompanyColors = {
   "purdue-university": { color: "orange" },
   "ivy-tech": { color: "orange" },
-  "personal-portfolio": { color: "orange" },
+  "personal-projects": { color: "orange" },
 };
 
 const swatchDotClass = {
@@ -216,6 +216,11 @@ export default function PortfolioShell({
                       </span>
                     </div>
                     <p className="mt-3 text-sm leading-7 text-stone-600 dark:text-stone-300">{project.summary}</p>
+                    {project.techStack && (
+                      <p className="mt-3 text-xs uppercase tracking-[0.15em] text-stone-500 dark:text-stone-400">
+                        {project.techStack}
+                      </p>
+                    )}
                   </div>
                 </article>
               );
