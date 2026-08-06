@@ -15,8 +15,8 @@ export default function BuyMeACoffeeButton() {
         borderColor: "#000000",
       }}
     >
-      <span aria-hidden="true">☕</span>
-      Buy me a bad idea
+      <span aria-hidden="true">💖</span>
+      Fund my bad ideas!
     </a>
   );
 }
