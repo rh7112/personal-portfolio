@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import BuyMeACoffeeButton from "./BuyMeACoffeeButton";
 import RetoolEmbed from "./RetoolEmbed";
 
 import {
@@ -30,7 +31,7 @@ const icons = {
 const nonEmployerCompanyColors = {
   "purdue-university": { color: "orange" },
   "ivy-tech": { color: "orange" },
-  "personal-portfolio": { color: "orange" },
+  "personal-projects": { color: "orange" },
 };
 
 const swatchDotClass = {
@@ -215,6 +216,11 @@ export default function PortfolioShell({
                       </span>
                     </div>
                     <p className="mt-3 text-sm leading-7 text-stone-600 dark:text-stone-300">{project.summary}</p>
+                    {project.techStack && (
+                      <p className="mt-3 text-xs uppercase tracking-[0.15em] text-stone-500 dark:text-stone-400">
+                        {project.techStack}
+                      </p>
+                    )}
                   </div>
                 </article>
               );
@@ -229,7 +235,7 @@ export default function PortfolioShell({
           <h3 className="mt-2 text-2xl font-semibold text-stone-900 dark:text-white">
             Interactive Retool apps you can try right now.
           </h3>
-          <div className="mt-8 grid gap-6 lg:grid-cols-2">
+          <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
             <RetoolEmbed
               title="Minesweeper"
               description="A classic Minesweeper build in Retool, showing off custom component logic and state management."
@@ -289,6 +295,10 @@ export default function PortfolioShell({
                 </a>
               );
             })}
+          </div>
+
+          <div className="mt-6">
+            <BuyMeACoffeeButton />
           </div>
         </div>
       </section>
