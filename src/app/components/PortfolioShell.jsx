@@ -79,6 +79,8 @@ export default function PortfolioShell({
   aboutBullets,
   experienceHeading,
   employers,
+  education,
+  certifications,
   projectsHeading,
   featuredProjects,
   projects,
@@ -186,6 +188,57 @@ export default function PortfolioShell({
           ))}
         </div>
       </section>
+
+      <section id="education" className="mx-auto max-w-6xl px-6 py-8 lg:px-8">
+        <div className="rounded-3xl border border-stone-900/10 bg-white/70 p-8 dark:border-white/10 dark:bg-stone-900/60 lg:p-10">
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-700 dark:text-orange-400">Education</p>
+          <h2 className="mt-2 text-3xl font-semibold text-stone-900 dark:text-white">Where it started.</h2>
+
+          <div className="mt-8 grid gap-6 lg:grid-cols-3">
+            {education.map((item) => (
+              <div
+                key={item.slug}
+                className="rounded-2xl border border-stone-900/10 bg-stone-100/70 p-6 dark:border-white/10 dark:bg-stone-950/70"
+              >
+                <p className="text-sm text-orange-700 dark:text-orange-400">{item.dateRange}</p>
+                <h3 className="mt-2 text-lg font-semibold text-stone-900 dark:text-white">{item.institution}</h3>
+                {item.degree && <p className="mt-1 text-sm text-stone-600 dark:text-stone-300">{item.degree}</p>}
+                {item.location && <p className="mt-1 text-sm text-stone-500 dark:text-stone-400">{item.location}</p>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {certifications.length > 0 && (
+        <section id="certifications" className="mx-auto max-w-6xl px-6 py-8 lg:px-8">
+          <div className="rounded-3xl border border-stone-900/10 bg-white/70 p-8 dark:border-white/10 dark:bg-stone-900/60 lg:p-10">
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-700 dark:text-orange-400">Certifications</p>
+            <h2 className="mt-2 text-3xl font-semibold text-stone-900 dark:text-white">Credentials I've earned.</h2>
+
+            <div className="mt-8 grid gap-6 lg:grid-cols-3">
+              {certifications.map((cert) => {
+                const CertTag = cert.credentialUrl ? "a" : "div";
+                return (
+                  <CertTag
+                    key={cert.slug}
+                    {...(cert.credentialUrl
+                      ? { href: cert.credentialUrl, target: "_blank", rel: "noreferrer" }
+                      : {})}
+                    className="rounded-2xl border border-stone-900/10 bg-stone-100/70 p-6 dark:border-white/10 dark:bg-stone-950/70"
+                  >
+                    {cert.dateEarnedDisplay && (
+                      <p className="text-sm text-orange-700 dark:text-orange-400">{cert.dateEarnedDisplay}</p>
+                    )}
+                    <h3 className="mt-2 text-lg font-semibold text-stone-900 dark:text-white">{cert.name}</h3>
+                    {cert.issuer && <p className="mt-1 text-sm text-stone-500 dark:text-stone-400">{cert.issuer}</p>}
+                  </CertTag>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section id="projects" className="mx-auto max-w-6xl px-6 py-8 lg:px-8">
         <div className="rounded-3xl border border-stone-900/10 bg-white/70 p-8 dark:border-white/10 dark:bg-stone-900/60 lg:p-10">

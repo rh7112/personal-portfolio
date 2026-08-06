@@ -289,6 +289,47 @@ const fallbackEmployers = [
   },
 ];
 
+const fallbackEducation = [
+  {
+    slug: "whitko",
+    institution: "Whitko Community High School",
+    degree: "High School Diploma",
+    startDate: "2011-08-01",
+    endDate: "2016-05-01",
+    location: "South Whitley, IN",
+    sortOrder: 1,
+  },
+  {
+    slug: "ivy-tech",
+    institution: "Ivy Tech Community College",
+    degree: "Associate of Science, Computer Science",
+    startDate: "2017-01-01",
+    endDate: "2019-05-01",
+    location: "Warsaw/Fort Wayne, IN",
+    sortOrder: 2,
+  },
+  {
+    slug: "purdue-fort-wayne",
+    institution: "Purdue University Fort Wayne",
+    degree: "Bachelor of Science, Computer Science",
+    startDate: "2019-08-01",
+    endDate: "2021-05-01",
+    location: "Fort Wayne, IN",
+    sortOrder: 3,
+  },
+];
+
+const fallbackCertifications = [
+  {
+    slug: "python-pcep",
+    name: "Python PCEP Certification",
+    issuer: "Python Institute",
+    dateEarned: "2021-09-01",
+    credentialUrl: null,
+    sortOrder: 1,
+  },
+];
+
 async function getDatabaseConnection() {
   const {
     PORTFOLIO_DB_HOST,
@@ -585,6 +626,84 @@ export async function getEmployerBySlug(slug) {
     console.error(`Employer query failed: ${err.code || ""} ${err.message}`);
     const fallback = fallbackEmployers.find((employer) => employer.slug === slug);
     return fallback ? { ...normalizeEmployerRow(fallback), highlights: fallback.highlights, caseStudies: fallback.caseStudies } : null;
+  } finally {
+    await connection.end();
+  }
+}
+
+function normalizeEducationRow(row) {
+  const startDate = row.start_date ?? row.startDate;
+  const endDate = row.end_date ?? row.endDate;
+  return {
+    slug: row.slug,
+    institution: row.institution,
+    degree: row.degree,
+    startDate: normalizeDate(startDate),
+    endDate: normalizeDate(endDate),
+    dateRange: formatDateRange(startDate, endDate),
+    location: row.location,
+    sortOrder: row.sort_order ?? row.sortOrder,
+  };
+}
+
+export async function getEducation() {
+  const connection = await getDatabaseConnection();
+
+  if (!connection) {
+    return fallbackEducation.map(normalizeEducationRow);
+  }
+
+  try {
+    const [rows] = await connection.query(
+      "SELECT slug, institution, degree, start_date, end_date, location, sort_order FROM portfolio_education ORDER BY sort_order ASC",
+    );
+
+    if (!rows?.length) {
+      return fallbackEducation.map(normalizeEducationRow);
+    }
+
+    return rows.map(normalizeEducationRow);
+  } catch (err) {
+    console.error(`Education query failed: ${err.code || ""} ${err.message}`);
+    return fallbackEducation.map(normalizeEducationRow);
+  } finally {
+    await connection.end();
+  }
+}
+
+function normalizeCertificationRow(row) {
+  const dateEarned = row.date_earned ?? row.dateEarned;
+  return {
+    slug: row.slug,
+    name: row.name,
+    issuer: row.issuer,
+    dateEarned: normalizeDate(dateEarned),
+    dateEarnedDisplay: formatMonthYear(dateEarned),
+    credentialUrl: row.credential_url ?? row.credentialUrl ?? null,
+    sortOrder: row.sort_order ?? row.sortOrder,
+  };
+}
+
+export async function getCertifications() {
+  const connection = await getDatabaseConnection();
+
+  if (!connection) {
+    return fallbackCertifications.map(normalizeCertificationRow);
+  }
+
+  try {
+    const [rows] = await connection.query(
+      "SELECT slug, name, issuer, date_earned, credential_url, sort_order FROM portfolio_certifications ORDER BY sort_order ASC",
+    );
+
+    if (!rows?.length) {
+      return fallbackCertifications.map(normalizeCertificationRow);
+    }
+
+    return rows.map(normalizeCertificationRow);
+  } catch (err) {
+    console.error(`Certifications query failed: ${err.code || ""} ${err.message}`);
+    return fallbackCertifications.map(normalizeCertificationRow);
   } finally {
     await connection.end();
   }
