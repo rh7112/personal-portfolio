@@ -86,6 +86,9 @@ export default function SiteHeader({ employers = [] }) {
           <Link href="/blog" className={navLinkClass}>
             Blog
           </Link>
+          <Link href="/recipes" className={navLinkClass}>
+            Recipes
+          </Link>
           <Link href="/#contact" className={navLinkClass}>
             Contact
           </Link>
@@ -142,6 +145,9 @@ export default function SiteHeader({ employers = [] }) {
 
             <Link href="/blog" className={navLinkClass} onClick={() => setMobileOpen(false)}>
               Blog
+            </Link>
+            <Link href="/recipes" className={navLinkClass} onClick={() => setMobileOpen(false)}>
+              Recipes
             </Link>
             <Link href="/#contact" className={navLinkClass} onClick={() => setMobileOpen(false)}>
               Contact
