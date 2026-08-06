@@ -173,7 +173,7 @@ const fallbackEmployers = [
       "Sole developer of Avalara's Exemption Certificate Management System, saving the tax team 160+ hours of manual validation per month, and integrated PayPal's Braintree system into the CRM to help launch Gear Exchange, which generated over $1M in sales within months. Also built a dynamic Price Management Platform that drove $4M in revenue in under a month, alongside daily-use internal tools across departments.",
     sortOrder: 2,
     color: "red",
-    secondaryColor: "blue",
+    secondaryColor: null,
     highlights: [
       "Sole developer on the implementation of Avalara's Exemption Certificate Management System (ECMS), saving the tax team the equivalent of 160+ hours of validating exemption certificates per month.",
       "Integrated PayPal's GraphQL-based Braintree system into the CRM to help launch Gear Exchange, which saw over $1M in sales between users within its first few months.",
