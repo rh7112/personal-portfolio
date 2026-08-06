@@ -129,6 +129,8 @@ const fallbackEmployers = [
     description:
       "Building internal Retool applications for production, compliance, accounting, and operations teams, including a Yield Report tool for tracking job performance and material usage, and consolidated EPA reporting for Illinois and Michigan compliance. Created reusable shared modules and delivered a 40%+ performance improvement to the Press WIP application while training managers and end users on Retool best practices.",
     sortOrder: 1,
+    color: "emerald",
+    secondaryColor: null,
     highlights: [
       "Developed and maintained internal applications using Retool, PostgreSQL, SQL, and JavaScript for production, compliance, accounting, and operations teams.",
       "Built the Yield Report application to track company and customer job performance, material usage, production efficiency, and operational trends.",
@@ -170,6 +172,8 @@ const fallbackEmployers = [
     description:
       "Sole developer of Avalara's Exemption Certificate Management System, saving the tax team 160+ hours of manual validation per month, and integrated PayPal's Braintree system into the CRM to help launch Gear Exchange, which generated over $1M in sales within months. Also built a dynamic Price Management Platform that drove $4M in revenue in under a month, alongside daily-use internal tools across departments.",
     sortOrder: 2,
+    color: "red",
+    secondaryColor: "blue",
     highlights: [
       "Sole developer on the implementation of Avalara's Exemption Certificate Management System (ECMS), saving the tax team the equivalent of 160+ hours of validating exemption certificates per month.",
       "Integrated PayPal's GraphQL-based Braintree system into the CRM to help launch Gear Exchange, which saw over $1M in sales between users within its first few months.",
@@ -206,6 +210,8 @@ const fallbackEmployers = [
     description:
       "Imaged and deployed company devices, issued laptops and accessories, and performed hardware upgrades for onboarding and refresh cycles. Delivered devices to campuses across the Warsaw area as part of IT operations support.",
     sortOrder: 3,
+    color: "blue",
+    secondaryColor: null,
     highlights: [
       "Imaged and prepared company devices with software for deployment.",
       "Issued laptops, accessories, and performed hardware upgrades for onboarding and refreshing hardware.",
@@ -230,6 +236,8 @@ const fallbackEmployers = [
     description:
       "Conducted in-person interviews to collect population data for the Post-Enumeration Survey, ensuring census accuracy while complying with strict federal confidentiality guidelines. Maintained detailed activity logs and navigated difficult resident interactions with calm, professional de-escalation.",
     sortOrder: 4,
+    color: "red",
+    secondaryColor: "blue",
     highlights: [
       "Performed interviews at addresses within assigned blocks to collect population data as part of the Post-Enumeration Survey, ensuring census accuracy.",
       "Complied with strict federal guidelines and confidentiality rules for gathering demographic and housing information.",
@@ -249,6 +257,8 @@ const fallbackEmployers = [
     description:
       "Assessed customer needs and guided them to the right technology products, consistently ranking as the top store in Northern Indiana for several consecutive weeks. Stayed current on promotions and product launches to support sales goals.",
     sortOrder: 5,
+    color: "amber",
+    secondaryColor: null,
     highlights: [
       "Asked customers pertinent questions to assess and determine their needs, guiding them to the correct product.",
       "Answered questions, explained product features, and gave honest input based on customer needs.",
@@ -268,6 +278,8 @@ const fallbackEmployers = [
     description:
       "Worked as part of a small 2-3 person crew handling nearly every phase of residential concrete work, including driving the company truck, forming, pouring, finishing, cutting, cleaning, sealing, and stamping. Gained hands-on versatility and a strong work ethic from taking on broad responsibility within a lean, close-knit team.",
     sortOrder: 6,
+    color: "black",
+    secondaryColor: "white",
     highlights: [
       "Drove the company truck and handled nearly every phase of residential concrete work on a lean 2-3 person crew.",
       "Performed forming, pouring, finishing, cutting, cleaning, sealing, and stamping across a wide range of jobs.",
@@ -348,6 +360,8 @@ function normalizeEmployerRow(row) {
     summary: row.summary,
     description: row.description,
     sortOrder: row.sort_order ?? row.sortOrder,
+    color: row.color,
+    secondaryColor: row.secondary_color ?? row.secondaryColor,
   };
 }
 
@@ -510,7 +524,7 @@ export async function getEmployers() {
 
   try {
     const [rows] = await connection.query(
-      "SELECT slug, name, title, start_date, end_date, location, summary, description, sort_order FROM portfolio_employers ORDER BY sort_order ASC",
+      "SELECT slug, name, title, start_date, end_date, location, summary, description, sort_order, color, secondary_color FROM portfolio_employers ORDER BY sort_order ASC",
     );
 
     if (!rows?.length) {
@@ -536,7 +550,7 @@ export async function getEmployerBySlug(slug) {
 
   try {
     const [rows] = await connection.query(
-      "SELECT id, slug, name, title, start_date, end_date, location, summary, description FROM portfolio_employers WHERE slug = ? LIMIT 1",
+      "SELECT id, slug, name, title, start_date, end_date, location, summary, description, color, secondary_color FROM portfolio_employers WHERE slug = ? LIMIT 1",
       [slug],
     );
 
