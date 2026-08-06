@@ -70,9 +70,11 @@ export default async function EmployerPage({ params }) {
             <div className="mt-8 grid gap-6 lg:grid-cols-3">
               {employer.caseStudies.map((project) => (
                 <article key={project.title} className="overflow-hidden rounded-3xl border border-stone-900/10 bg-stone-100/70 dark:border-white/10 dark:bg-stone-950/70">
-                  <div className="relative h-48 w-full">
-                    <Image src={project.image} alt={project.title} fill className="object-cover" />
-                  </div>
+                  {project.image && (
+                    <div className="relative h-48 w-full">
+                      <Image src={project.image} alt={project.title} fill className="object-cover" />
+                    </div>
+                  )}
                   <div className="p-6">
                     <h3 className="text-xl font-semibold text-stone-900 dark:text-white">{project.title}</h3>
                     <p className="mt-3 text-sm leading-7 text-stone-600 dark:text-stone-300">{project.summary}</p>

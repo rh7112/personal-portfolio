@@ -42,3 +42,30 @@ body {
     text-wrap: balance;
   }
 }
+
+@media print {
+  @page {
+    size: letter;
+    margin: 0.75in;
+  }
+
+  header,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+  }
+
+  main {
+    background: #ffffff !important;
+  }
+
+  main * {
+    background: transparent !important;
+    color: #000000 !important;
+    border-color: #000000 !important;
+    box-shadow: none !important;
+  }
+}

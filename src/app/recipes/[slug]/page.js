@@ -1,5 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { getRecipeBySlug, getRecipes } from "@/lib/portfolio-data";
+import PrintRecipeButton from "@/app/components/PrintRecipeButton";
 
 export async function generateStaticParams() {
   const recipes = await getRecipes();
@@ -39,7 +41,7 @@ export default async function RecipePage({ params }) {
         <div className="mx-auto max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-700 dark:text-orange-400">Recipes</p>
           <h1 className="mt-3 text-4xl font-semibold text-stone-900 dark:text-white">Recipe not found.</h1>
-          <Link href="/recipes" className="mt-6 inline-flex text-orange-700 transition hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300">
+          <Link href="/recipes" className="no-print mt-6 inline-flex text-orange-700 transition hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300">
             Back to all recipes →
           </Link>
         </div>
@@ -61,23 +63,37 @@ export default async function RecipePage({ params }) {
   return (
     <main className="min-h-screen bg-stone-50 text-stone-900 dark:bg-stone-950 dark:text-stone-100">
       <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
-        <div className="rounded-3xl border border-stone-900/10 bg-white/80 p-8 dark:border-white/10 dark:bg-stone-900/70">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-700 dark:text-orange-400">{recipe.category}</p>
-          <h1 className="mt-3 text-4xl font-semibold text-stone-900 dark:text-white">{recipe.title}</h1>
-          <p className="mt-4 text-sm text-stone-500 dark:text-stone-400">Published {recipe.publishedAt}</p>
+        <div className="no-print flex flex-wrap items-center justify-between gap-4">
+          <Link href="/recipes" className="inline-flex items-center text-orange-700 transition hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300">
+            ← Back to all recipes
+          </Link>
+          <PrintRecipeButton />
+        </div>
 
-          {stats.length > 0 && (
-            <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-              {stats.map(([label, value]) => (
-                <div key={label} className="rounded-2xl border border-stone-900/10 bg-stone-100/70 p-3 text-center dark:border-white/10 dark:bg-stone-950/70">
-                  <p className="text-xs uppercase tracking-[0.2em] text-stone-500 dark:text-stone-400">{label}</p>
-                  <p className="mt-1 text-sm font-semibold text-stone-900 dark:text-white">{value}</p>
-                </div>
-              ))}
+        <div className="mt-6 overflow-hidden rounded-3xl border border-stone-900/10 bg-white/80 dark:border-white/10 dark:bg-stone-900/70">
+          {recipe.image && (
+            <div className="no-print relative h-64 w-full">
+              <Image src={recipe.image} alt={recipe.title} fill className="object-cover" />
             </div>
           )}
+          <div className="p-8">
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-700 dark:text-orange-400">{recipe.category}</p>
+            <h1 className="mt-3 text-4xl font-semibold text-stone-900 dark:text-white">{recipe.title}</h1>
+            <p className="mt-4 text-sm text-stone-500 dark:text-stone-400">Published {recipe.publishedAt}</p>
 
-          <p className="mt-6 whitespace-pre-line text-lg leading-8 text-stone-600 dark:text-stone-300">{recipe.content}</p>
+            {stats.length > 0 && (
+              <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                {stats.map(([label, value]) => (
+                  <div key={label} className="rounded-2xl border border-stone-900/10 bg-stone-100/70 p-3 text-center dark:border-white/10 dark:bg-stone-950/70">
+                    <p className="text-xs uppercase tracking-[0.2em] text-stone-500 dark:text-stone-400">{label}</p>
+                    <p className="mt-1 text-sm font-semibold text-stone-900 dark:text-white">{value}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <p className="mt-6 whitespace-pre-line text-lg leading-8 text-stone-600 dark:text-stone-300">{recipe.content}</p>
+          </div>
         </div>
 
         <div className="mt-8 grid gap-6 sm:grid-cols-2">
@@ -139,7 +155,7 @@ export default async function RecipePage({ params }) {
           </div>
         )}
 
-        <Link href="/recipes" className="mt-8 inline-flex text-orange-700 transition hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300">
+        <Link href="/recipes" className="no-print mt-8 inline-flex text-orange-700 transition hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300">
           Back to all recipes →
         </Link>
       </div>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { getRecipes } from "@/lib/portfolio-data";
 
@@ -39,16 +40,23 @@ export default async function RecipesPage() {
 
         <div className="grid gap-6 lg:grid-cols-2">
           {recipes.map((recipe) => (
-            <article key={recipe.slug} className="rounded-3xl border border-stone-900/10 bg-white/80 p-6 dark:border-white/10 dark:bg-stone-900/70">
-              <div className="flex items-center justify-between gap-4">
-                <p className="text-sm text-orange-700 dark:text-orange-400">{recipe.category}</p>
-                <p className="text-sm text-stone-500 dark:text-stone-400">{formatServings(recipe.servings)}</p>
+            <article key={recipe.slug} className="overflow-hidden rounded-3xl border border-stone-900/10 bg-white/80 dark:border-white/10 dark:bg-stone-900/70">
+              {recipe.image && (
+                <div className="relative h-40 w-full">
+                  <Image src={recipe.image} alt={recipe.title} fill className="object-cover" />
+                </div>
+              )}
+              <div className="p-6">
+                <div className="flex items-center justify-between gap-4">
+                  <p className="text-sm text-orange-700 dark:text-orange-400">{recipe.category}</p>
+                  <p className="text-sm text-stone-500 dark:text-stone-400">{formatServings(recipe.servings)}</p>
+                </div>
+                <h2 className="mt-4 text-2xl font-semibold text-stone-900 dark:text-white">{recipe.title}</h2>
+                <p className="mt-3 text-sm leading-7 text-stone-600 dark:text-stone-300">{recipe.excerpt}</p>
+                <Link href={`/recipes/${recipe.slug}`} className="mt-6 inline-flex items-center text-sm font-semibold text-orange-700 transition hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300">
+                  View recipe →
+                </Link>
               </div>
-              <h2 className="mt-4 text-2xl font-semibold text-stone-900 dark:text-white">{recipe.title}</h2>
-              <p className="mt-3 text-sm leading-7 text-stone-600 dark:text-stone-300">{recipe.excerpt}</p>
-              <Link href={`/recipes/${recipe.slug}`} className="mt-6 inline-flex items-center text-sm font-semibold text-orange-700 transition hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300">
-                View recipe →
-              </Link>
             </article>
           ))}
         </div>
