@@ -7,7 +7,6 @@ import {
   getProjectList,
 } from "@/lib/portfolio-data";
 
-
 const contactLinks = [
   {
     label: "Email",

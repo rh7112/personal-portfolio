@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#f5f0e6"/>
+  <rect x="40" y="40" width="1120" height="720" rx="28" fill="none" stroke="#c2410c" stroke-width="3" opacity="0.25"/>
+  
+    <path d="M600 240 C650 240 670 300 650 340 C680 360 670 410 620 410 C610 430 580 430 570 410 C530 405 520 360 550 340 C530 300 550 240 600 240 Z" fill="#ea580c" opacity="0.9"/>
+    <path d="M570 400 L555 440" stroke="#44403c" stroke-width="8" stroke-linecap="round"/>
+  
+  <text x="600" y="600" text-anchor="middle" fill="#44403c" font-size="40" font-family="Arial, sans-serif" font-weight="600">Smoked Turkey</text>
+  <text x="600" y="650" text-anchor="middle" fill="#c2410c" font-size="22" font-family="Arial, sans-serif" letter-spacing="2" opacity="0.85">PHOTO COMING SOON</text>
+</svg>

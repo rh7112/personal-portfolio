@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#f5f0e6"/>
+  <rect x="40" y="40" width="1120" height="720" rx="28" fill="none" stroke="#c2410c" stroke-width="3" opacity="0.25"/>
+  
+    <path d="M560 260 L640 260 L610 400 Q600 420 590 400 Z" fill="#ea580c" opacity="0.9"/>
+    <path d="M570 260 Q555 210 520 200 M600 258 Q600 200 600 180 M630 260 Q650 210 685 200" fill="none" stroke="#44403c" stroke-width="8" stroke-linecap="round" opacity="0.6"/>
+    <ellipse cx="600" cy="420" rx="140" ry="24" fill="#c2410c" opacity="0.25"/>
+  
+  <text x="600" y="600" text-anchor="middle" fill="#44403c" font-size="40" font-family="Arial, sans-serif" font-weight="600">Honey-Roasted Carrots with Farro</text>
+  <text x="600" y="650" text-anchor="middle" fill="#c2410c" font-size="22" font-family="Arial, sans-serif" letter-spacing="2" opacity="0.85">PHOTO COMING SOON</text>
+</svg>

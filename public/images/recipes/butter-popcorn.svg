@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#f5f0e6"/>
+  <rect x="40" y="40" width="1120" height="720" rx="28" fill="none" stroke="#c2410c" stroke-width="3" opacity="0.25"/>
+  
+    <path d="M520 300 L680 300 L660 420 L540 420 Z" fill="#ea580c" opacity="0.9"/>
+    <path d="M520 300 L540 260 L660 260 L680 300 Z" fill="#c2410c"/>
+    <circle cx="560" cy="260" r="16" fill="#f5f0e6"/>
+    <circle cx="600" cy="250" r="18" fill="#f5f0e6"/>
+    <circle cx="640" cy="262" r="16" fill="#f5f0e6"/>
+    <circle cx="580" cy="280" r="14" fill="#f5f0e6"/>
+    <circle cx="620" cy="280" r="14" fill="#f5f0e6"/>
+  
+  <text x="600" y="600" text-anchor="middle" fill="#44403c" font-size="40" font-family="Arial, sans-serif" font-weight="600">Butter Popcorn</text>
+  <text x="600" y="650" text-anchor="middle" fill="#c2410c" font-size="22" font-family="Arial, sans-serif" letter-spacing="2" opacity="0.85">PHOTO COMING SOON</text>
+</svg>

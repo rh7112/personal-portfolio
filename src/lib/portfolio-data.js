@@ -34,7 +34,7 @@ const fallbackHomeData = {
       title: "EPA Reporting",
       summary:
         "Consolidated reporting across multiple sources into a reliable workflow that supported compliance needs across several facilities.",
-      image: "/images/projects/ppi-epa-reporting.svg",
+      image: "/images/projects/ppi-epa-reporting-screenshot.png",
     },
     {
       title: "Press WIP Optimization",
@@ -150,7 +150,7 @@ const fallbackEmployers = [
         title: "EPA Reporting",
         summary:
           "A compliance-oriented reporting workflow that combines spreadsheets and source data into a more maintainable reporting experience.",
-        image: "/images/projects/ppi-epa-reporting.svg",
+        image: "/images/projects/ppi-epa-reporting-screenshot.png",
       },
       {
         title: "Press WIP Optimization",
@@ -185,17 +185,17 @@ const fallbackEmployers = [
       {
         title: "Turkey Handout App",
         summary: "A fast-turnaround internal tool that made holiday employee gifting easier and more organized.",
-        image: "/images/projects/1.png",
+        image: "/images/projects/turkey-handout.png",
       },
       {
         title: "Gear Exchange",
         summary: "Helped support commerce workflows and secure payment integration for a rapidly growing platform.",
-        image: "/images/projects/2.jpg",
+        image: "/images/projects/gear-exchange.jpg",
       },
       {
         title: "DementiaTrack",
         summary: "A capstone project that combined thoughtful software design with practical analytics.",
-        image: "/images/projects/9.jpg",
+        image: "/images/projects/dementiatrack.jpg",
       },
     ],
   },
@@ -221,7 +221,7 @@ const fallbackEmployers = [
       {
         title: "Device Deployment Support",
         summary: "Helped prepare and configure systems for company use in a structured, detail-focused workflow.",
-        image: "/images/projects/zimmer-biomet.jpg",
+        image: null,
       },
     ],
   },
@@ -293,7 +293,7 @@ const fallbackEducation = [
   {
     slug: "whitko",
     institution: "Whitko Community High School",
-    degree: "High School Diploma",
+    degree: "Core 40 – Academic Honors Diploma",
     startDate: "2011-08-01",
     endDate: "2016-05-01",
     location: "South Whitley, IN",
@@ -326,7 +326,39 @@ const fallbackCertifications = [
     issuer: "Python Institute",
     dateEarned: "2021-09-01",
     credentialUrl: null,
+    score: null,
+    expired: false,
     sortOrder: 1,
+  },
+  {
+    slug: "comptia-a-plus",
+    name: "CompTIA A+",
+    issuer: "CompTIA",
+    dateEarned: "2017-12-01",
+    credentialUrl: null,
+    score: "1880",
+    expired: true,
+    sortOrder: 2,
+  },
+  {
+    slug: "retool-platform-admin",
+    name: "Retool Platform Admin",
+    issuer: "Retool",
+    dateEarned: "2025-03-01",
+    credentialUrl: null,
+    score: null,
+    expired: false,
+    sortOrder: 3,
+  },
+  {
+    slug: "retool-platform-developer",
+    name: "Retool Platform Developer",
+    issuer: "Retool",
+    dateEarned: "2025-03-01",
+    credentialUrl: null,
+    score: null,
+    expired: false,
+    sortOrder: 4,
   },
 ];
 
@@ -376,8 +408,16 @@ function formatMonthYear(value) {
     return null;
   }
 
-  const date = value instanceof Date ? value : new Date(value);
-  return date.toLocaleDateString("en-US", { month: "short", year: "numeric" });
+  // Date-only strings ("YYYY-MM-DD") parse as UTC midnight, which can shift
+  // to the previous day/month once formatted in a non-UTC timezone. Build
+  // the date from local components instead so the displayed month always
+  // matches the calendar date, regardless of server timezone.
+  if (typeof value === "string") {
+    const [year, month, day] = value.split("-").map(Number);
+    return new Date(year, month - 1, day).toLocaleDateString("en-US", { month: "short", year: "numeric" });
+  }
+
+  return value.toLocaleDateString("en-US", { month: "short", year: "numeric" });
 }
 
 function formatDateRange(startDate, endDate) {
@@ -408,7 +448,7 @@ function normalizeEmployerRow(row) {
 
 function normalizeImagePath(image) {
   if (!image) {
-    return "/images/projects/default-project.svg";
+    return null;
   }
 
   return image.startsWith("/") ? image : `/${image}`;
@@ -763,6 +803,8 @@ function normalizeCertificationRow(row) {
     dateEarned: normalizeDate(dateEarned),
     dateEarnedDisplay: formatMonthYear(dateEarned),
     credentialUrl: row.credential_url ?? row.credentialUrl ?? null,
+    score: row.score ?? null,
+    expired: Boolean(row.expired),
     sortOrder: row.sort_order ?? row.sortOrder,
   };
 }
@@ -776,7 +818,7 @@ export async function getCertifications() {
 
   try {
     const [rows] = await connection.query(
-      "SELECT slug, name, issuer, date_earned, credential_url, sort_order FROM portfolio_certifications ORDER BY sort_order ASC",
+      "SELECT slug, name, issuer, date_earned, credential_url, score, expired, sort_order FROM portfolio_certifications ORDER BY sort_order ASC",
     );
 
     if (!rows?.length) {
