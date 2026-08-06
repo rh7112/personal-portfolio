@@ -45,6 +45,9 @@ export default function SiteHeader({ employers = [] }) {
           <Link href="/#experience" className={navLinkClass}>
             Experience
           </Link>
+          <Link href="/#education" className={navLinkClass}>
+            Education
+          </Link>
 
           <div className="relative" onMouseEnter={openWork} onMouseLeave={scheduleCloseWork}>
             <button
@@ -106,6 +109,9 @@ export default function SiteHeader({ employers = [] }) {
             </Link>
             <Link href="/#experience" className={navLinkClass} onClick={() => setMobileOpen(false)}>
               Experience
+            </Link>
+            <Link href="/#education" className={navLinkClass} onClick={() => setMobileOpen(false)}>
+              Education
             </Link>
 
             <div>

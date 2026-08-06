@@ -76,6 +76,31 @@ CREATE TABLE IF NOT EXISTS portfolio_employer_case_studies (
   FOREIGN KEY (employer_id) REFERENCES portfolio_employers(id) ON DELETE CASCADE
 );
 
+-- Standalone from portfolio_employers -- a degree isn't a job, so it gets
+-- its own homepage section rather than being folded into Experience.
+CREATE TABLE IF NOT EXISTS portfolio_education (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  slug VARCHAR(150) NOT NULL UNIQUE,
+  institution VARCHAR(255) NOT NULL,
+  degree VARCHAR(255) DEFAULT NULL,
+  start_date DATE NOT NULL,
+  end_date DATE NULL,
+  location VARCHAR(150) DEFAULT NULL,
+  sort_order INT DEFAULT 0,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS portfolio_certifications (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  slug VARCHAR(150) NOT NULL UNIQUE,
+  name VARCHAR(255) NOT NULL,
+  issuer VARCHAR(255) DEFAULT NULL,
+  date_earned DATE NULL,
+  credential_url VARCHAR(500) DEFAULT NULL,
+  sort_order INT DEFAULT 0,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 INSERT INTO portfolio_content (scope, `key`, `value`, sort_order) VALUES
 ('homepage', 'heroEyebrow', '"Family-first • software engineer • builder"', 1),
 ('homepage', 'heroTitle', '"I build practical internal tools that make teams faster, clearer, and more confident."', 2),
@@ -198,3 +223,12 @@ JOIN (
   UNION ALL SELECT 'sweetwater-sound', 'DementiaTrack', 'A capstone project that combined thoughtful software design with practical analytics.', '/images/projects/9.jpg', 3
   UNION ALL SELECT 'zimmer-biomet', 'Device Deployment Support', 'Helped prepare and configure systems for company use in a structured, detail-focused workflow.', '/images/projects/zimmer-biomet.jpg', 1
 ) c ON c.slug = e.slug;
+INSERT INTO portfolio_education (slug, institution, degree, start_date, end_date, location, sort_order) VALUES
+('whitko', 'Whitko Community High School', 'High School Diploma', '2011-08-01', '2016-05-01', 'South Whitley, IN', 1),
+('ivy-tech', 'Ivy Tech Community College', 'Associate of Science, Computer Science', '2017-01-01', '2019-05-01', 'Warsaw/Fort Wayne, IN', 2),
+('purdue-fort-wayne', 'Purdue University Fort Wayne', 'Bachelor of Science, Computer Science', '2019-08-01', '2021-05-01', 'Fort Wayne, IN', 3)
+ON DUPLICATE KEY UPDATE institution = VALUES(institution), degree = VALUES(degree), start_date = VALUES(start_date), end_date = VALUES(end_date), location = VALUES(location), sort_order = VALUES(sort_order);
+
+INSERT INTO portfolio_certifications (slug, name, issuer, date_earned, credential_url, sort_order) VALUES
+('python-pcep', 'Python PCEP Certification', 'Python Institute', '2021-09-01', NULL, 1)
+ON DUPLICATE KEY UPDATE name = VALUES(name), issuer = VALUES(issuer), date_earned = VALUES(date_earned), credential_url = VALUES(credential_url), sort_order = VALUES(sort_order);
