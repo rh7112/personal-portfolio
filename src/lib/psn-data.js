@@ -10,6 +10,13 @@ import {
 // returns null and the whole section is omitted rather than shown broken or
 // backed by fake data.
 async function getPsnAuthorization() {
+  // Separate from PSN_NPSSO being set -- lets the token be added ahead of
+  // time without the section going live until it's deliberately flipped on.
+  if (process.env.PSN_TROPHIES_ENABLED !== "true") {
+    console.log('Skipping PSN trophy fetch, PSN_TROPHIES_ENABLED is not "true"');
+    return null;
+  }
+
   const npsso = process.env.PSN_NPSSO;
 
   if (!npsso) {
