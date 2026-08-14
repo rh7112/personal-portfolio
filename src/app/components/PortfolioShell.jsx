@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import BuyMeACoffeeButton from "./BuyMeACoffeeButton";
+import NotTheOtherRyanHurd from "./NotTheOtherRyanHurd";
 import ProjectsCarousel from "./ProjectsCarousel";
 
 import {
@@ -129,6 +130,7 @@ export default function PortfolioShell({
   employers,
   education,
   certifications,
+  psnTrophies,
   projectsHeading,
   featuredProjects,
   projects,
@@ -157,6 +159,7 @@ export default function PortfolioShell({
               {heroTitle}
             </h1>
             <p className="mt-6 max-w-2xl text-lg text-stone-600 dark:text-stone-300">{heroBody}</p>
+            <NotTheOtherRyanHurd />
             <div className="mt-8 flex flex-wrap gap-4">
               <a
                 href="mailto:rh25170@gmail.com?subject=Hello%20Ryan"
@@ -348,6 +351,56 @@ export default function PortfolioShell({
                 );
               })}
             </div>
+          </div>
+        </section>
+      )}
+
+      {psnTrophies && (
+        <section id="hobbies" className="mx-auto max-w-6xl px-6 py-8 lg:px-8">
+          <div className="rounded-3xl border border-stone-900/10 bg-white/70 p-8 dark:border-white/10 dark:bg-stone-900/60 lg:p-10">
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-700 dark:text-orange-400">
+              Outside of work
+            </p>
+            <h2 className="mt-2 text-3xl font-semibold text-stone-900 dark:text-white">PlayStation trophies.</h2>
+            <p className="mt-3 text-stone-600 dark:text-stone-300">
+              Trophy level {psnTrophies.trophyLevel} ({psnTrophies.tierLabel}), {psnTrophies.progress}% of the way to
+              the next level.
+            </p>
+
+            <div className="mt-6 flex flex-wrap gap-3 text-sm">
+              <span className="rounded-full border border-stone-900/10 bg-stone-100/70 px-4 py-2 text-stone-700 dark:border-white/10 dark:bg-stone-950/70 dark:text-stone-200">
+                🏆 Platinum: {psnTrophies.earnedTrophies.platinum}
+              </span>
+              <span className="rounded-full border border-stone-900/10 bg-stone-100/70 px-4 py-2 text-stone-700 dark:border-white/10 dark:bg-stone-950/70 dark:text-stone-200">
+                🥇 Gold: {psnTrophies.earnedTrophies.gold}
+              </span>
+              <span className="rounded-full border border-stone-900/10 bg-stone-100/70 px-4 py-2 text-stone-700 dark:border-white/10 dark:bg-stone-950/70 dark:text-stone-200">
+                🥈 Silver: {psnTrophies.earnedTrophies.silver}
+              </span>
+              <span className="rounded-full border border-stone-900/10 bg-stone-100/70 px-4 py-2 text-stone-700 dark:border-white/10 dark:bg-stone-950/70 dark:text-stone-200">
+                🥉 Bronze: {psnTrophies.earnedTrophies.bronze}
+              </span>
+            </div>
+
+            {psnTrophies.recentTitles.length > 0 && (
+              <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {psnTrophies.recentTitles.map((title) => (
+                  <div
+                    key={title.id}
+                    className="flex items-center gap-3 rounded-2xl border border-stone-900/10 bg-stone-100/70 p-3 dark:border-white/10 dark:bg-stone-950/70"
+                  >
+                    {title.iconUrl && (
+                      // eslint-disable-next-line @next/next/no-img-element -- external PSN CDN icon, not a local asset
+                      <img src={title.iconUrl} alt="" className="h-12 w-12 shrink-0 rounded-lg object-cover" />
+                    )}
+                    <div className="min-w-0">
+                      <p className="truncate text-sm font-semibold text-stone-900 dark:text-white">{title.name}</p>
+                      <p className="text-xs text-stone-500 dark:text-stone-400">{title.progress}% complete</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </section>
       )}

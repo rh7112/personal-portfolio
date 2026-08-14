@@ -21,8 +21,9 @@ npm install
 3. Copy `.env.example` (or create `.env`) and fill in:
    - `PORTFOLIO_API_BASE_URL` — base URL of a running `portfolio-api` instance (e.g. `https://api.hurd.cc`), for homepage/projects/employers/education/certifications.
    - `PORTFOLIO_DB_*` — direct MariaDB connection, used only by blog posts/recipes for now.
+   - `PSN_NPSSO` — optional. PlayStation Network session token for the "Outside of work" trophies section (see `src/lib/psn-data.js` for how to get one). Leave blank to omit that section entirely.
 
-   Either (or both) can be omitted; the app falls back to hard-coded content for whatever's unreachable.
+   All of these can be omitted; the app falls back to hard-coded content (or hides the PSN section) for whatever's unreachable.
 
 4. Start the development server:
 

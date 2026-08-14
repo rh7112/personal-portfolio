@@ -9,6 +9,34 @@ export async function generateStaticParams() {
   return employers.map((employer) => ({ slug: employer.slug }));
 }
 
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const employer = await getEmployerBySlug(slug);
+
+  if (!employer) {
+    return { title: "Employer not found" };
+  }
+
+  const title = `${employer.title} at ${employer.name}`;
+
+  return {
+    title,
+    description: employer.summary,
+    alternates: { canonical: `/experience/${employer.slug}/` },
+    openGraph: {
+      type: "profile",
+      title,
+      description: employer.summary,
+      url: `/experience/${employer.slug}/`,
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description: employer.summary,
+    },
+  };
+}
+
 export default async function EmployerPage({ params }) {
   const { slug } = await params;
   const employer = await getEmployerBySlug(slug);

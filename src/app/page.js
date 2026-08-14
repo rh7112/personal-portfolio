@@ -6,6 +6,7 @@ import {
   getHomepageData,
   getProjectList,
 } from "@/lib/portfolio-data";
+import { getPsnTrophies } from "@/lib/psn-data";
 
 const contactLinks = [
   {
@@ -41,12 +42,13 @@ const contactLinks = [
 ];
 
 export default async function Home() {
-  const [homeData, projects, employers, education, certifications] = await Promise.all([
+  const [homeData, projects, employers, education, certifications, psnTrophies] = await Promise.all([
     getHomepageData(),
     getProjectList(),
     getEmployers(),
     getEducation(),
     getCertifications(),
+    getPsnTrophies(),
   ]);
 
   return (
@@ -64,6 +66,7 @@ export default async function Home() {
       employers={employers.slice(0, 3)}
       education={education}
       certifications={certifications}
+      psnTrophies={psnTrophies}
       projectsHeading={homeData.projectsHeading}
       featuredProjects={homeData.featuredProjects}
       projects={projects}

@@ -2,8 +2,14 @@ import Link from "next/link";
 import { getBlogPosts } from "@/lib/portfolio-data";
 
 export const metadata = {
-  title: "Blog | Ryan Hurd",
+  title: "Blog",
   description: "Notes, recipes, and reflections from Ryan Hurd.",
+  alternates: { canonical: "/blog/" },
+  openGraph: {
+    title: "Blog | Ryan Hurd",
+    description: "Notes, recipes, and reflections from Ryan Hurd.",
+    url: "/blog/",
+  },
 };
 
 export default async function BlogPage() {

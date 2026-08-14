@@ -3,8 +3,14 @@ import Link from "next/link";
 import { getRecipes } from "@/lib/portfolio-data";
 
 export const metadata = {
-  title: "Recipes | Ryan Hurd",
+  title: "Recipes",
   description: "Recipes from Ryan Hurd's kitchen and smoker -- pasta, pita, grain bowls, and low-and-slow BBQ.",
+  alternates: { canonical: "/recipes/" },
+  openGraph: {
+    title: "Recipes | Ryan Hurd",
+    description: "Recipes from Ryan Hurd's kitchen and smoker -- pasta, pita, grain bowls, and low-and-slow BBQ.",
+    url: "/recipes/",
+  },
 };
 
 function formatServings(servings) {

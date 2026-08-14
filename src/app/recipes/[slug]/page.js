@@ -8,6 +8,35 @@ export async function generateStaticParams() {
   return recipes.map((recipe) => ({ slug: recipe.slug }));
 }
 
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const recipe = await getRecipeBySlug(slug);
+
+  if (!recipe) {
+    return { title: "Recipe not found" };
+  }
+
+  return {
+    title: recipe.title,
+    description: recipe.excerpt,
+    alternates: { canonical: `/recipes/${recipe.slug}/` },
+    openGraph: {
+      type: "article",
+      title: recipe.title,
+      description: recipe.excerpt,
+      url: `/recipes/${recipe.slug}/`,
+      publishedTime: recipe.publishedAt ?? undefined,
+      images: recipe.image ? [{ url: recipe.image }] : undefined,
+    },
+    twitter: {
+      card: recipe.image ? "summary_large_image" : "summary",
+      title: recipe.title,
+      description: recipe.excerpt,
+      images: recipe.image ? [recipe.image] : undefined,
+    },
+  };
+}
+
 function formatServings(servings) {
   if (!servings) {
     return null;
