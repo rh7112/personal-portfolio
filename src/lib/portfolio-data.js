@@ -362,6 +362,53 @@ const fallbackCertifications = [
   },
 ];
 
+// portfolio-api serves this site's homepage/projects/employers/education/
+// certifications content (see ../portfolio-api). It may be unreachable at
+// build time (e.g. while it's still LAN-only on the Synology NAS and this
+// build runs on Cloudflare Pages) -- fetchFromApi returns null on any
+// failure so callers can fall back to hard-coded content, the same way
+// getDatabaseConnection returning null used to trigger the DB fallback.
+async function fetchFromApi(path) {
+  const baseUrl = process.env.PORTFOLIO_API_BASE_URL;
+
+  if (!baseUrl) {
+    console.log(`Skipping portfolio-api call to ${path}, missing PORTFOLIO_API_BASE_URL`);
+    return null;
+  }
+
+  try {
+    const response = await fetch(`${baseUrl.replace(/\/+$/, "")}${path}`, {
+      signal: AbortSignal.timeout(5000),
+    });
+
+    if (!response.ok) {
+      console.error(`portfolio-api request failed: ${response.status} ${path}`);
+      return null;
+    }
+
+    return await response.json();
+  } catch (err) {
+    console.error(`portfolio-api request failed: ${err.message} ${path}`);
+    return null;
+  }
+}
+
+// Fisher-Yates shuffle, used to replicate the old "ORDER BY RAND() LIMIT 3"
+// featured-project selection now that filtering happens via the API instead
+// of SQL.
+function pickRandom(items, count) {
+  const pool = [...items];
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  return pool.slice(0, count);
+}
+
+// blog_posts (articles/recipes) has moved to its own hurd_blog database,
+// served by the not-yet-live blog.hurd.cc -- getBlogPosts/getRecipes below
+// still query MariaDB directly until that site exists and /blog, /recipes
+// can be removed from here in favor of linking out.
 async function getDatabaseConnection() {
   const {
     PORTFOLIO_DB_HOST,
@@ -470,67 +517,32 @@ function normalizeProjectRows(rows) {
 }
 
 export async function getHomepageData() {
-  const connection = await getDatabaseConnection();
+  const content = await fetchFromApi("/api/v1/homepage");
 
-  if (!connection) {
-    console.log("Using fallbackHomeData because DB connection failed");
+  if (!content || !Object.keys(content).length) {
+    console.log("Using fallbackHomeData because portfolio-api was unreachable or empty");
     return fallbackHomeData;
   }
 
-  try {
-    const [rows] = await connection.query(
-      "SELECT `key`, `value` FROM portfolio_content WHERE scope = 'homepage' ORDER BY sort_order ASC",
-    );
+  const featuredPool = await fetchFromApi("/api/v1/projects?featured=true&published=true");
 
-    if (!rows?.length) {
-      return fallbackHomeData;
-    }
-
-    const parsedRows = rows.reduce((accumulator, row) => {
-      try {
-        accumulator[row.key] = JSON.parse(row.value);
-      } catch {
-        accumulator[row.key] = row.value;
-      }
-      return accumulator;
-    }, {});
-
-    const [projectRows] = await connection.query(
-      "SELECT id, title, summary, image, company, company_slug, color, tech_stack, featured, published FROM portfolio_projects WHERE published = 1 AND featured = 1 ORDER BY RAND() LIMIT 3",
-    );
-
-    return {
-      ...fallbackHomeData,
-      ...parsedRows,
-      featuredProjects: normalizeProjectRows(
-        projectRows?.length ? projectRows : fallbackHomeData.featuredProjects,
-      ),
-    };
-  } catch (err) {
-    console.error(err);
-    return fallbackHomeData;
-  } finally {
-    await connection.end();
-  }
+  return {
+    ...fallbackHomeData,
+    ...content,
+    featuredProjects: featuredPool?.length
+      ? normalizeProjectRows(pickRandom(featuredPool, 3))
+      : fallbackHomeData.featuredProjects,
+  };
 }
 
 export async function getProjectList() {
-  const connection = await getDatabaseConnection();
+  const projects = await fetchFromApi("/api/v1/projects?featured=false&published=true");
 
-  if (!connection) {
+  if (!projects) {
     return [];
   }
 
-  try {
-    const [rows] = await connection.query(
-      "SELECT id, title, summary, image, company, company_slug, color, tech_stack, featured, published FROM portfolio_projects WHERE published = 1 AND featured = 0 ORDER BY title ASC",
-    );
-    return normalizeProjectRows(rows);
-  } catch {
-    return [];
-  } finally {
-    await connection.end();
-  }
+  return normalizeProjectRows(projects);
 }
 
 function parseDetails(value) {
@@ -681,77 +693,32 @@ export async function getRecipeBySlug(slug) {
 }
 
 export async function getEmployers() {
-  const connection = await getDatabaseConnection();
+  const employers = await fetchFromApi("/api/v1/employers");
 
-  if (!connection) {
+  if (!employers?.length) {
     return fallbackEmployers.map(normalizeEmployerRow);
   }
 
-  try {
-    const [rows] = await connection.query(
-      "SELECT slug, name, title, start_date, end_date, location, summary, description, sort_order, color, secondary_color FROM portfolio_employers ORDER BY sort_order ASC",
-    );
-
-    if (!rows?.length) {
-      return fallbackEmployers.map(normalizeEmployerRow);
-    }
-
-    return rows.map(normalizeEmployerRow);
-  } catch (err) {
-    console.error(`Employer query failed: ${err.code || ""} ${err.message}`);
-    return fallbackEmployers.map(normalizeEmployerRow);
-  } finally {
-    await connection.end();
-  }
+  return employers.map(normalizeEmployerRow);
 }
 
 export async function getEmployerBySlug(slug) {
-  const connection = await getDatabaseConnection();
+  const employer = await fetchFromApi(`/api/v1/employers/${encodeURIComponent(slug)}`);
 
-  if (!connection) {
-    const fallback = fallbackEmployers.find((employer) => employer.slug === slug);
+  if (!employer) {
+    const fallback = fallbackEmployers.find((item) => item.slug === slug);
     return fallback ? { ...normalizeEmployerRow(fallback), highlights: fallback.highlights, caseStudies: fallback.caseStudies } : null;
   }
 
-  try {
-    const [rows] = await connection.query(
-      "SELECT id, slug, name, title, start_date, end_date, location, summary, description, color, secondary_color FROM portfolio_employers WHERE slug = ? LIMIT 1",
-      [slug],
-    );
-
-    if (!rows?.length) {
-      const fallback = fallbackEmployers.find((employer) => employer.slug === slug);
-      return fallback ? { ...normalizeEmployerRow(fallback), highlights: fallback.highlights, caseStudies: fallback.caseStudies } : null;
-    }
-
-    const [row] = rows;
-
-    const [highlightRows] = await connection.query(
-      "SELECT highlight FROM portfolio_employer_highlights WHERE employer_id = ? ORDER BY sort_order ASC",
-      [row.id],
-    );
-
-    const [caseStudyRows] = await connection.query(
-      "SELECT title, summary, image FROM portfolio_employer_case_studies WHERE employer_id = ? ORDER BY sort_order ASC",
-      [row.id],
-    );
-
-    return {
-      ...normalizeEmployerRow(row),
-      highlights: highlightRows.map((highlightRow) => highlightRow.highlight),
-      caseStudies: caseStudyRows.map((caseStudyRow) => ({
-        title: caseStudyRow.title,
-        summary: caseStudyRow.summary,
-        image: normalizeImagePath(caseStudyRow.image),
-      })),
-    };
-  } catch (err) {
-    console.error(`Employer query failed: ${err.code || ""} ${err.message}`);
-    const fallback = fallbackEmployers.find((employer) => employer.slug === slug);
-    return fallback ? { ...normalizeEmployerRow(fallback), highlights: fallback.highlights, caseStudies: fallback.caseStudies } : null;
-  } finally {
-    await connection.end();
-  }
+  return {
+    ...normalizeEmployerRow(employer),
+    highlights: employer.highlights ?? [],
+    caseStudies: (employer.caseStudies ?? []).map((caseStudy) => ({
+      title: caseStudy.title,
+      summary: caseStudy.summary,
+      image: normalizeImagePath(caseStudy.image),
+    })),
+  };
 }
 
 function normalizeEducationRow(row) {
@@ -770,28 +737,13 @@ function normalizeEducationRow(row) {
 }
 
 export async function getEducation() {
-  const connection = await getDatabaseConnection();
+  const education = await fetchFromApi("/api/v1/education");
 
-  if (!connection) {
+  if (!education?.length) {
     return fallbackEducation.map(normalizeEducationRow);
   }
 
-  try {
-    const [rows] = await connection.query(
-      "SELECT slug, institution, degree, start_date, end_date, location, sort_order FROM portfolio_education ORDER BY sort_order ASC",
-    );
-
-    if (!rows?.length) {
-      return fallbackEducation.map(normalizeEducationRow);
-    }
-
-    return rows.map(normalizeEducationRow);
-  } catch (err) {
-    console.error(`Education query failed: ${err.code || ""} ${err.message}`);
-    return fallbackEducation.map(normalizeEducationRow);
-  } finally {
-    await connection.end();
-  }
+  return education.map(normalizeEducationRow);
 }
 
 function normalizeCertificationRow(row) {
@@ -810,26 +762,11 @@ function normalizeCertificationRow(row) {
 }
 
 export async function getCertifications() {
-  const connection = await getDatabaseConnection();
+  const certifications = await fetchFromApi("/api/v1/certifications");
 
-  if (!connection) {
+  if (!certifications?.length) {
     return fallbackCertifications.map(normalizeCertificationRow);
   }
 
-  try {
-    const [rows] = await connection.query(
-      "SELECT slug, name, issuer, date_earned, credential_url, score, expired, sort_order FROM portfolio_certifications ORDER BY sort_order ASC",
-    );
-
-    if (!rows?.length) {
-      return fallbackCertifications.map(normalizeCertificationRow);
-    }
-
-    return rows.map(normalizeCertificationRow);
-  } catch (err) {
-    console.error(`Certifications query failed: ${err.code || ""} ${err.message}`);
-    return fallbackCertifications.map(normalizeCertificationRow);
-  } finally {
-    await connection.end();
-  }
+  return certifications.map(normalizeCertificationRow);
 }
