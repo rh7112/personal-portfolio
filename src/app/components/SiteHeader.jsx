@@ -83,12 +83,12 @@ export default function SiteHeader({ employers = [] }) {
             )}
           </div>
 
-          <Link href="/blog" className={navLinkClass}>
+          <a href="https://blog.hurd.cc/blog/" target="_blank" rel="noreferrer" className={navLinkClass}>
             Blog
-          </Link>
-          <Link href="/recipes" className={navLinkClass}>
+          </a>
+          <a href="https://blog.hurd.cc/recipes/" target="_blank" rel="noreferrer" className={navLinkClass}>
             Recipes
-          </Link>
+          </a>
           <Link href="/#contact" className={navLinkClass}>
             Contact
           </Link>
@@ -143,12 +143,24 @@ export default function SiteHeader({ employers = [] }) {
               )}
             </div>
 
-            <Link href="/blog" className={navLinkClass} onClick={() => setMobileOpen(false)}>
+            <a
+              href="https://blog.hurd.cc/blog/"
+              target="_blank"
+              rel="noreferrer"
+              className={navLinkClass}
+              onClick={() => setMobileOpen(false)}
+            >
               Blog
-            </Link>
-            <Link href="/recipes" className={navLinkClass} onClick={() => setMobileOpen(false)}>
+            </a>
+            <a
+              href="https://blog.hurd.cc/recipes/"
+              target="_blank"
+              rel="noreferrer"
+              className={navLinkClass}
+              onClick={() => setMobileOpen(false)}
+            >
               Recipes
-            </Link>
+            </a>
             <Link href="/#contact" className={navLinkClass} onClick={() => setMobileOpen(false)}>
               Contact
             </Link>

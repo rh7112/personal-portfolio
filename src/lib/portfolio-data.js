@@ -1,5 +1,3 @@
-import mysql from "mysql2/promise";
-
 const fallbackHomeData = {
   heroEyebrow: "Family-first • builder • software engineer",
   heroTitle:
@@ -92,29 +90,6 @@ const fallbackHomeData = {
   contactBody:
     "If you are looking for someone who can bring calm execution, strong communication, and practical problem solving to a team, I would love to hear from you.",
 };
-
-const fallbackBlogPosts = [
-  {
-    slug: "building-clarity-with-retool",
-    title: "Building clarity with Retool",
-    excerpt:
-      "A look at how thoughtful internal tooling helps teams move quickly without sacrificing reliability.",
-    content:
-      "Retool makes it possible to build practical systems quickly, but the real value comes from pairing fast iteration with clear constraints. I’ve learned that the best tools feel invisible to the people using them while still giving leadership a strong signal about what is happening day to day.\n\nThat balance is what I aim for in most of my work: a simple interface, a reliable workflow, and enough structure to support operations without creating unnecessary friction.",
-    category: "Engineering",
-    publishedAt: "2026-08-04",
-  },
-  {
-    slug: "why-i-still-love-sql",
-    title: "Why I still love SQL",
-    excerpt:
-      "A practical reminder that clear data structures save time and reduce risk across the whole organization.",
-    content:
-      "SQL is one of those tools that looks simple at first and becomes increasingly powerful the more you use it. It gives teams a way to ask hard questions with a small amount of syntax and a lot of clarity.\n\nWhen I’m working on reporting, automation, or operational analysis, I find that the time spent shaping the data carefully almost always pays off later. It reduces handoffs, improves trust, and makes the work easier to maintain.",
-    category: "Data",
-    publishedAt: "2026-08-03",
-  },
-];
 
 const fallbackEmployers = [
   {
@@ -405,46 +380,6 @@ function pickRandom(items, count) {
   return pool.slice(0, count);
 }
 
-// blog_posts (articles/recipes) has moved to its own hurd_blog database,
-// served by the not-yet-live blog.hurd.cc -- getBlogPosts/getRecipes below
-// still query MariaDB directly until that site exists and /blog, /recipes
-// can be removed from here in favor of linking out.
-async function getDatabaseConnection() {
-  const {
-    PORTFOLIO_DB_HOST,
-    PORTFOLIO_DB_PORT,
-    PORTFOLIO_DB_USER,
-    PORTFOLIO_DB_PASSWORD,
-    PORTFOLIO_DB_NAME,
-  } = process.env;
-
-  const missing = Object.entries({
-    PORTFOLIO_DB_HOST,
-    PORTFOLIO_DB_USER,
-    PORTFOLIO_DB_PASSWORD,
-    PORTFOLIO_DB_NAME,
-  })
-    .filter(([, value]) => !value)
-    .map(([key]) => key);
-
-  if (missing.length) {
-    console.log(`Skipping DB connection, missing env vars: ${missing.join(", ")}`);
-    return null;
-  }
-
-  try {
-    return await mysql.createConnection({
-      host: PORTFOLIO_DB_HOST,
-      port: Number(PORTFOLIO_DB_PORT || 3306),
-      user: PORTFOLIO_DB_USER,
-      password: PORTFOLIO_DB_PASSWORD,
-      database: PORTFOLIO_DB_NAME,
-    });
-  } catch (err) {
-    console.error(`DB connection failed: ${err.code || ""} ${err.message}`);
-    return null;
-  }
-}
 
 function normalizeDate(value) {
   return value instanceof Date ? value.toISOString().slice(0, 10) : value;
@@ -543,153 +478,6 @@ export async function getProjectList() {
   }
 
   return normalizeProjectRows(projects);
-}
-
-function parseDetails(value) {
-  if (!value) {
-    return null;
-  }
-  if (typeof value === "object") {
-    return value;
-  }
-  try {
-    return JSON.parse(value);
-  } catch {
-    return null;
-  }
-}
-
-export async function getBlogPosts() {
-  const connection = await getDatabaseConnection();
-
-  if (!connection) {
-    return fallbackBlogPosts;
-  }
-
-  try {
-    const [rows] = await connection.query(
-      "SELECT slug, title, excerpt, content, category, published_at AS publishedAt FROM blog_posts WHERE type = 'article' AND published_at IS NOT NULL ORDER BY published_at DESC, created_at DESC",
-    );
-
-    if (!rows?.length) {
-      return fallbackBlogPosts;
-    }
-
-    return rows.map((row) => ({
-      slug: row.slug,
-      title: row.title,
-      excerpt: row.excerpt,
-      content: row.content,
-      category: row.category,
-      publishedAt: normalizeDate(row.publishedAt),
-    }));
-  } catch {
-    return fallbackBlogPosts;
-  } finally {
-    await connection.end();
-  }
-}
-
-export async function getBlogPostBySlug(slug) {
-  const connection = await getDatabaseConnection();
-
-  if (!connection) {
-    return fallbackBlogPosts.find((post) => post.slug === slug) ?? null;
-  }
-
-  try {
-    const [rows] = await connection.query(
-      "SELECT slug, title, excerpt, content, category, published_at AS publishedAt FROM blog_posts WHERE type = 'article' AND slug = ? LIMIT 1",
-      [slug],
-    );
-
-    if (!rows?.length) {
-      return fallbackBlogPosts.find((post) => post.slug === slug) ?? null;
-    }
-
-    const [row] = rows;
-    return {
-      slug: row.slug,
-      title: row.title,
-      excerpt: row.excerpt,
-      content: row.content,
-      category: row.category,
-      publishedAt: normalizeDate(row.publishedAt),
-    };
-  } catch {
-    return fallbackBlogPosts.find((post) => post.slug === slug) ?? null;
-  } finally {
-    await connection.end();
-  }
-}
-
-function normalizeRecipeRow(row) {
-  const details = parseDetails(row.details) || {};
-  return {
-    slug: row.slug,
-    title: row.title,
-    excerpt: row.excerpt,
-    content: row.content,
-    category: row.category,
-    publishedAt: normalizeDate(row.publishedAt),
-    servings: details.servings ?? null,
-    prepMinutes: details.prepMinutes ?? null,
-    cookMinutes: details.cookMinutes ?? null,
-    difficulty: details.difficulty ?? null,
-    image: details.image ?? null,
-    sourceNote: details.sourceNote ?? null,
-    ingredients: details.ingredients ?? [],
-    steps: details.steps ?? [],
-    notes: details.notes ?? [],
-    pairsWith: details.pairsWith ?? [],
-  };
-}
-
-export async function getRecipes() {
-  const connection = await getDatabaseConnection();
-
-  if (!connection) {
-    return [];
-  }
-
-  try {
-    const [rows] = await connection.query(
-      "SELECT slug, title, excerpt, content, category, published_at AS publishedAt, details FROM blog_posts WHERE type = 'recipe' AND published_at IS NOT NULL ORDER BY published_at DESC, created_at DESC",
-    );
-
-    return rows.map(normalizeRecipeRow);
-  } catch (err) {
-    console.error(`Recipes query failed: ${err.code || ""} ${err.message}`);
-    return [];
-  } finally {
-    await connection.end();
-  }
-}
-
-export async function getRecipeBySlug(slug) {
-  const connection = await getDatabaseConnection();
-
-  if (!connection) {
-    return null;
-  }
-
-  try {
-    const [rows] = await connection.query(
-      "SELECT slug, title, excerpt, content, category, published_at AS publishedAt, details FROM blog_posts WHERE type = 'recipe' AND slug = ? LIMIT 1",
-      [slug],
-    );
-
-    if (!rows?.length) {
-      return null;
-    }
-
-    return normalizeRecipeRow(rows[0]);
-  } catch (err) {
-    console.error(`Recipe query failed: ${err.code || ""} ${err.message}`);
-    return null;
-  } finally {
-    await connection.end();
-  }
 }
 
 export async function getEmployers() {

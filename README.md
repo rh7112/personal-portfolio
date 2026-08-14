@@ -1,6 +1,6 @@
 # Personal Portfolio
 
-A Next.js application for my personal portfolio, styled with Tailwind CSS. Homepage content, projects, employers, education, and certifications are fetched at build time from [`portfolio-api`](https://github.com/rh7112/portfolio-api), a Go REST API backed by MariaDB. Blog posts and recipes still query MariaDB directly (see "Blog/recipes" below) until they move to `blog.hurd.cc`. Everything falls back to hard-coded defaults in [`src/lib/portfolio-data.js`](src/lib/portfolio-data.js) when its data source is unreachable.
+A Next.js application for my personal portfolio, styled with Tailwind CSS. Homepage content, projects, employers, education, and certifications are fetched at build time from [`portfolio-api`](https://github.com/rh7112/portfolio-api), a Go REST API backed by MariaDB. Everything falls back to hard-coded defaults in [`src/lib/portfolio-data.js`](src/lib/portfolio-data.js) when the API is unreachable. Blog posts and recipes have moved to a separate site, [blog.hurd.cc](https://blog.hurd.cc) — this repo just links out to it.
 
 ## Getting Started
 
@@ -20,10 +20,9 @@ npm install
 
 3. Copy `.env.example` (or create `.env`) and fill in:
    - `PORTFOLIO_API_BASE_URL` — base URL of a running `portfolio-api` instance (e.g. `https://api.hurd.cc`), for homepage/projects/employers/education/certifications.
-   - `PORTFOLIO_DB_*` — direct MariaDB connection, used only by blog posts/recipes for now.
    - `PSN_TROPHIES_ENABLED` / `PSN_NPSSO` — optional, for the "Outside of work" PlayStation trophies section (see `src/lib/psn-data.js` for how to get an NPSSO token). The section is off by default (`PSN_TROPHIES_ENABLED=false`/unset) even with a token present -- set it to `true` when ready to actually show it.
 
-   All of these can be omitted; the app falls back to hard-coded content (or hides the PSN section) for whatever's unreachable.
+   Both can be omitted; the app falls back to hard-coded content (or hides the PSN section) if unreachable.
 
 4. Start the development server:
 
@@ -38,19 +37,18 @@ npm run dev
 - **Next.js**: statically exported (`output: "export"`) React framework.
 - **Tailwind CSS**: utility-first CSS framework.
 - **portfolio-api**: Go REST API (MariaDB-backed) that serves homepage/projects/employers/education/certifications content at build time.
-- **MariaDB**: queried directly (not via the API) for blog posts/recipes only, for now.
 
 ## Deployment
 
-The site is statically exported (`npm run build` produces the `out/` directory) and deployed to Cloudflare Pages via Wrangler (see [`wrangler.jsonc`](wrangler.jsonc)), served at `ryan.hurd.cc`. The Cloudflare Pages project needs `PORTFOLIO_API_BASE_URL` and the `PORTFOLIO_DB_*` vars set in its environment for production builds to pull live content instead of falling back.
+The site is statically exported (`npm run build` produces the `out/` directory) and deployed to Cloudflare Pages via Wrangler (see [`wrangler.jsonc`](wrangler.jsonc)), served at `ryan.hurd.cc`. The Cloudflare Pages project needs `PORTFOLIO_API_BASE_URL` set in its environment for production builds to pull live content instead of falling back.
 
 Because content lives in a database rather than in the built HTML's source code, a scheduled GitHub Actions workflow ([`.github/workflows/scheduled-rebuild.yml`](.github/workflows/scheduled-rebuild.yml)) triggers a Cloudflare Pages rebuild hook hourly, so content edits show up on the site without a code push.
 
-Database schema and seed data live in [`docs/mariadb-setup.sql`](docs/mariadb-setup.sql), with incremental schema changes tracked in [`docs/migrations/`](docs/migrations). This covers the blog posts/recipes tables still queried directly; schema for everything served via `portfolio-api` now lives in that project instead.
+`docs/mariadb-setup.sql` seeds this site's tables directly against the shared MariaDB instance (content changes still get made there and run against the live DB); `../portfolio-api/schema.sql` is the source of truth for the API layer's own schema. Incremental schema changes are tracked in [`docs/migrations/`](docs/migrations).
 
 ## Blog/recipes
 
-`/blog` and `/recipes` still live in this repo and query MariaDB directly — they haven't moved to `portfolio-api` yet. They're slated to move to a separate site at `blog.hurd.cc` (not live yet), at which point these sections and their data-fetching code will be removed from here in favor of linking out.
+`/blog` and `/recipes` have moved to a separate site, [blog.hurd.cc](https://blog.hurd.cc) — the header nav links out to it directly rather than these sections living in this repo.
 
 ## Customization
 
