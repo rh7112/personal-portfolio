@@ -2,11 +2,38 @@
 
 import { useEffect, useState } from "react";
 
-// Real, verifiable other people who share this name -- not a joke list, an
-// actual disambiguation. Keep this to names that can be backed up (country
-// singer-songwriter; dream/sleep-paralysis researcher and author) rather
-// than guessing at others.
-const otherRyanHurds = ["the country singer", "the dream researcher"];
+// The first two are specific, verifiable public figures (country
+// singer-songwriter; dream/sleep-paralysis researcher and author). The rest
+// are bare occupation words pulled from real LinkedIn profiles that share
+// this name -- deliberately stripped of name, employer, and location so
+// nothing here identifies a specific private person, just the occupation.
+const otherRyanHurds = [
+  "the country singer",
+  "the dream researcher",
+  "a wealth management executive",
+  "a commercial real estate advisor",
+  "a trial attorney",
+  "a VFX artist",
+  "a band director",
+  "a basketball coach",
+  "a real estate investor",
+  "a mechanical technician",
+  "a photographer",
+  "a partnership lead",
+  "a recruitment director",
+  "a leadership coach",
+  "a public speaker",
+  "a personal banker",
+  "a student",
+  "a business lines consultant",
+  "a production shift supervisor",
+  "a process engineering analyst",
+  "a brand strategist",
+  "a business owner",
+  "a corrections counselor",
+  "a company president",
+  "a teacher",
+];
 
 export default function NotTheOtherRyanHurd() {
   const [index, setIndex] = useState(0);
@@ -27,12 +54,9 @@ export default function NotTheOtherRyanHurd() {
   return (
     <p className="mt-3 text-sm italic text-stone-500 dark:text-stone-400">
       Not{" "}
-      <span
-        className={`inline-block min-w-[9.5rem] transition-opacity duration-300 ${visible ? "opacity-100" : "opacity-0"}`}
-      >
-        {otherRyanHurds[index]}
+      <span className={`inline-block transition-opacity duration-300 ${visible ? "opacity-100" : "opacity-0"}`}>
+        {otherRyanHurds[index]}.
       </span>
-      .
     </p>
   );
 }
