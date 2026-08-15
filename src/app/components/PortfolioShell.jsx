@@ -62,25 +62,6 @@ function getCompanyCardClass(color) {
   }
 }
 
-function getCompanySwatchClass(color) {
-  switch (color) {
-    case "red":
-      return "bg-red-500";
-    case "blue":
-      return "bg-blue-500";
-    case "emerald":
-      return "bg-emerald-500";
-    case "amber":
-      return "bg-amber-500";
-    case "black":
-      return "bg-stone-900 dark:bg-white";
-    case "orange":
-      return "bg-orange-500";
-    default:
-      return "bg-sky-500";
-  }
-}
-
 // Order non-employer groups (school coursework, personal projects) after
 // real employers, which are ordered by their own sort_order.
 const nonEmployerGroupOrder = ["purdue-university", "ivy-tech", "personal-projects"];
@@ -265,15 +246,6 @@ export default function PortfolioShell({
           <h3 className="mt-2 text-2xl font-semibold text-stone-900 dark:text-white">
             A broad set of projects across operations, finance, commerce, and internal tools.
           </h3>
-
-          <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-stone-500 dark:text-stone-400">
-            {projectGroups.map((group) => (
-              <span key={group.slug} className="inline-flex items-center gap-1.5">
-                <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${getCompanySwatchClass(group.color)}`} />
-                {group.company}
-              </span>
-            ))}
-          </div>
 
           <div className="mt-8 space-y-6">
             {projectGroups.map((group) => (
