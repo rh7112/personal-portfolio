@@ -446,6 +446,7 @@ function normalizeProjectRows(rows) {
     companySlug: row.company_slug || row.companySlug,
     color: row.color || "sky",
     techStack: row.tech_stack ?? row.techStack ?? null,
+    link: row.link ?? null,
     featured: Boolean(row.featured),
     published: Boolean(row.published),
   }));

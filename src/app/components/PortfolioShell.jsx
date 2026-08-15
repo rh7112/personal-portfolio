@@ -255,15 +255,25 @@ export default function PortfolioShell({
                   {group.company}
                 </h4>
                 <div className="mt-3 flex flex-wrap gap-3">
-                  {group.items.map((project) => (
-                    <span
-                      key={project.id}
-                      title={project.company}
-                      className={`rounded-full border px-3 py-2 text-sm text-stone-700 dark:text-stone-200 ${getCompanyCardClass(group.color)}`}
-                    >
-                      {project.title}
-                    </span>
-                  ))}
+                  {group.items.map((project) => {
+                    const pillClassName = `rounded-full border px-3 py-2 text-sm text-stone-700 dark:text-stone-200 ${getCompanyCardClass(group.color)}`;
+                    return project.link ? (
+                      <a
+                        key={project.id}
+                        href={project.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        title={project.company}
+                        className={`${pillClassName} transition hover:border-orange-600 dark:hover:border-orange-400`}
+                      >
+                        {project.title}
+                      </a>
+                    ) : (
+                      <span key={project.id} title={project.company} className={pillClassName}>
+                        {project.title}
+                      </span>
+                    );
+                  })}
                 </div>
               </div>
             ))}
