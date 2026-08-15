@@ -9,7 +9,7 @@ To run this application locally, follow these steps:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/rh7112/personal-portfolio.git
+git clone https://github.com/rh7112/ryans-portfolio.git
 ```
 
 2. Install dependencies:
