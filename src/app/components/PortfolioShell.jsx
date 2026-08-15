@@ -9,6 +9,7 @@ import ProjectsCarousel from "./ProjectsCarousel";
 
 import {
   FaArrowRight,
+  FaCode,
   FaEnvelope,
   FaFileAlt,
   FaGithub,
@@ -400,8 +401,16 @@ export default function PortfolioShell({
             })}
           </div>
 
-          <div className="mt-6">
+          <div className="mt-6 flex flex-wrap items-center gap-4">
             <BuyMeACoffeeButton />
+            <a
+              href="https://api.hurd.cc/docs/"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs text-stone-500 transition hover:text-orange-700 dark:text-stone-400 dark:hover:text-orange-400"
+            >
+              <FaCode /> API Docs
+            </a>
           </div>
         </div>
       </section>
