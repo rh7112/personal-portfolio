@@ -53,7 +53,7 @@ export default function NotTheOtherRyanHurd() {
 
   return (
     <p className="mt-3 text-sm italic text-stone-500 dark:text-stone-400">
-      Not{" "}
+      There's more than one Ryan Hurd out there — I'm not the one who's{" "}
       <span className={`inline-block transition-opacity duration-300 ${visible ? "opacity-100" : "opacity-0"}`}>
         {otherRyanHurds[index]}.
       </span>
