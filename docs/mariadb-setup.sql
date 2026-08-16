@@ -101,8 +101,16 @@ INSERT INTO portfolio_content (scope, `key`, `value`, sort_order) VALUES
 ('homepage', 'heroBody', '"I’m Ryan Hurd, a software engineer focused on Retool, SQL-driven workflows, and operational tools that help people make better decisions with less friction."', 3)
 ON DUPLICATE KEY UPDATE `value` = VALUES(`value`);
 
+-- One-time rename: title is part of portfolio_projects' unique key
+-- (title, company_slug), so the ON DUPLICATE KEY UPDATE below won't match
+-- the existing 'Personal Portfolio' row once its title changes -- it'd
+-- insert a duplicate instead of renaming in place. This UPDATE handles the
+-- rename explicitly; it's a no-op on any re-run once the title has changed.
+UPDATE portfolio_projects SET title = 'Ryan''s Portfolio', image = '/images/projects/ryans-portfolio.png'
+  WHERE title = 'Personal Portfolio' AND company_slug = 'personal-projects';
+
 INSERT INTO portfolio_projects (title, summary, image, company, company_slug, color, tech_stack, featured, published) VALUES
-('Personal Portfolio', 'Built this portfolio to expand knowledge of Next.js, HeroUI, and MariaDB while showcasing professional experience.', '/images/projects/personal-portfolio.png', 'Personal Projects', 'personal-projects', 'sky', 'Next.js, HeroUI, MariaDB', 1, 1),
+('Ryan''s Portfolio', 'Built this portfolio to expand knowledge of Next.js, HeroUI, and MariaDB while showcasing professional experience.', '/images/projects/ryans-portfolio.png', 'Personal Projects', 'personal-projects', 'sky', 'Next.js, HeroUI, MariaDB', 1, 1),
 ('Minesweeper', 'A classic Minesweeper build in Retool, exploring custom component logic and state management outside typical business apps.', NULL, 'Personal Projects', 'personal-projects', 'sky', 'Retool', 0, 1),
 ('Tetris', 'An in-progress Tetris build in Retool, exploring game-loop logic and state management. Still a work in progress.', NULL, 'Personal Projects', 'personal-projects', 'sky', 'Retool', 0, 1),
 ('Debt Calculator', 'A debt payoff planner built in Retool to compare snowball- and avalanche-style payoff ordering.', NULL, 'Personal Projects', 'personal-projects', 'sky', 'Retool', 0, 1),
