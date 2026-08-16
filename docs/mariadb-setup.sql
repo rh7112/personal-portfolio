@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS portfolio_projects (
   company_slug VARCHAR(150) DEFAULT NULL,
   color VARCHAR(50) DEFAULT 'sky',
   tech_stack VARCHAR(255) DEFAULT NULL,
+  link VARCHAR(500) DEFAULT NULL,
   featured TINYINT(1) DEFAULT 0,
   published TINYINT(1) DEFAULT 1,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -114,6 +115,10 @@ INSERT INTO portfolio_projects (title, summary, image, company, company_slug, co
 ('PC Building', 'Built a PC in 2017 and have been upgrading and maintaining it ever since.', NULL, 'Personal Projects', 'personal-projects', 'sky', 'Hardware', 0, 1),
 ('Technology Repair', 'Repaired game consoles including PlayStation, Switch, and Xbox hardware.', NULL, 'Personal Projects', 'personal-projects', 'sky', 'Hardware repair', 0, 1),
 ('Household Projects', 'General contractor-style home projects: fan installation, spackling and painting, converting a bay window into a slider door, and electrical updates.', NULL, 'Personal Projects', 'personal-projects', 'sky', 'Home improvement', 0, 1),
+('Raspberry Pi Steam Link', 'Set up a Raspberry Pi running Steam Link to stream PC games to the TV.', NULL, 'Personal Projects', 'personal-projects', 'sky', 'Raspberry Pi, Steam Link', 0, 1),
+('Alycia''s Portfolio', 'Built a separate portfolio site for Alycia using SvelteKit and Tailwind CSS, backed by portfolio-api''s isolated Alycia tenant.', NULL, 'Personal Projects', 'personal-projects', 'sky', 'SvelteKit, Tailwind CSS, portfolio-api', 0, 1),
+('portfolio-api (Go)', 'Built a Go REST API backed by MariaDB as the shared read/write layer for this site, Alycia''s portfolio, and blog.hurd.cc, replacing direct database queries from each site.', NULL, 'Personal Projects', 'personal-projects', 'sky', 'Go, MariaDB, Docker', 0, 1),
+('Morel Mushroom Hunting App (Concept)', 'A planned application for tracking morel mushroom hunting spots and conditions. Not yet started, but scoped out enough to move quickly once picked up.', NULL, 'Personal Projects', 'personal-projects', 'sky', NULL, 0, 1),
 ('Yield Report', 'A reporting experience that surfaced production, material, and customer-job trends in a clearer way for operations and leadership.', '/images/projects/ppi-yield-report.svg', 'Packaging Personified, Inc.', 'packaging-personified', 'sky', 'Retool, Excel, DL4, PKP, Access', 1, 1),
 ('EPA Reporting', 'A compliance-focused reporting workflow that consolidated multiple sources into a more maintainable experience.', '/images/projects/ppi-epa-reporting-screenshot.png', 'Packaging Personified, Inc.', 'packaging-personified', 'sky', 'Retool, Excel, DL4, PKP, Access', 1, 1),
 ('Press WIP Optimization', 'A workflow efficiency project that reduced processing time and improved usability for day-to-day operations, improving speed by over 40%.', '/images/projects/ppi-press-wip.svg', 'Packaging Personified, Inc.', 'packaging-personified', 'sky', 'Retool, DL4, PKP, Access', 1, 1),
@@ -154,6 +159,15 @@ INSERT INTO portfolio_projects (title, summary, image, company, company_slug, co
 ('Phase 10 Dice', 'Developed the Phase 10 Dice game as the final project for an introductory programming course.', '/images/projects/phase-10-dice.jpg', 'Ivy Tech', 'ivy-tech', 'sky', 'C++', 0, 1),
 ('Banking Application', 'Built a banking application as a course project.', NULL, 'Ivy Tech', 'ivy-tech', 'sky', 'C++', 0, 1)
 ON DUPLICATE KEY UPDATE summary = VALUES(summary), image = VALUES(image), company = VALUES(company), color = VALUES(color), tech_stack = VALUES(tech_stack), featured = VALUES(featured), published = VALUES(published);
+
+-- Projects with an external link (repo, live docs, etc.), rendered as
+-- clickable on the site instead of static text. Separate INSERT since these
+-- are the only rows in this file that set the `link` column.
+INSERT INTO portfolio_projects (title, summary, image, company, company_slug, color, tech_stack, link, featured, published) VALUES
+('BBSystems.US Website', 'An in-progress website project for BBSystems.US, currently in the planning stage while scoping requirements with the site''s owner, Cruz Gregory.', NULL, 'Personal Projects', 'personal-projects', 'sky', NULL, 'https://github.com/rh7112/bbsystems-us', 0, 1),
+('blog.hurd.cc Extraction', 'Split the blog and recipes content out of this portfolio into its own site, including migrating the data into portfolio-api''s isolated hurd_blog database.', NULL, 'Personal Projects', 'personal-projects', 'sky', 'Next.js, portfolio-api', 'https://blog.hurd.cc', 0, 1),
+('portfolio-api Swagger Docs', 'Set up Swagger/OpenAPI documentation for portfolio-api, giving a browsable, interactive reference for its REST endpoints.', NULL, 'Personal Projects', 'personal-projects', 'sky', 'Swagger/OpenAPI, Go', 'https://api.hurd.cc/docs/', 0, 1)
+ON DUPLICATE KEY UPDATE summary = VALUES(summary), image = VALUES(image), company = VALUES(company), color = VALUES(color), tech_stack = VALUES(tech_stack), link = VALUES(link), featured = VALUES(featured), published = VALUES(published);
 
 -- Employers: single source of truth for homepage Experience cards, the
 -- header's Work dropdown, and /experience/[slug] pages.

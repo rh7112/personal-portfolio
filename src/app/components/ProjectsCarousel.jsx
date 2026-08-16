@@ -35,30 +35,37 @@ export default function ProjectsCarousel({ projects }) {
   return (
     <>
       <div className="mt-8 grid gap-6 lg:grid-cols-3">
-        {visibleProjects.map((project) => (
-          <article
-            key={project.id ?? project.title}
-            className={`overflow-hidden rounded-3xl border ${project.cardClassName}`}
-          >
-            <div className="relative h-48 w-full">
-              <Image src={project.image} alt={project.title} fill className="object-cover" />
-            </div>
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-stone-900 dark:text-white">{project.title}</h3>
-              {project.company && (
-                <p className="mt-1 text-xs uppercase tracking-[0.2em] text-stone-500 dark:text-stone-400">
-                  {project.company}
-                </p>
-              )}
-              <p className="mt-3 text-sm leading-7 text-stone-600 dark:text-stone-300">{project.summary}</p>
-              {project.techStack && (
-                <p className="mt-3 text-xs uppercase tracking-[0.15em] text-stone-500 dark:text-stone-400">
-                  {project.techStack}
-                </p>
-              )}
-            </div>
-          </article>
-        ))}
+        {visibleProjects.map((project) => {
+          const Wrapper = project.link ? "a" : "article";
+          const linkProps = project.link ? { href: project.link, target: "_blank", rel: "noreferrer" } : {};
+          return (
+            <Wrapper
+              key={project.id ?? project.title}
+              {...linkProps}
+              className={`block overflow-hidden rounded-3xl border ${project.cardClassName} ${
+                project.link ? "transition hover:-translate-y-0.5 hover:shadow-md" : ""
+              }`}
+            >
+              <div className="relative h-48 w-full">
+                <Image src={project.image} alt={project.title} fill className="object-cover" />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-stone-900 dark:text-white">{project.title}</h3>
+                {project.company && (
+                  <p className="mt-1 text-xs uppercase tracking-[0.2em] text-stone-500 dark:text-stone-400">
+                    {project.company}
+                  </p>
+                )}
+                <p className="mt-3 text-sm leading-7 text-stone-600 dark:text-stone-300">{project.summary}</p>
+                {project.techStack && (
+                  <p className="mt-3 text-xs uppercase tracking-[0.15em] text-stone-500 dark:text-stone-400">
+                    {project.techStack}
+                  </p>
+                )}
+              </div>
+            </Wrapper>
+          );
+        })}
       </div>
 
       {canRotate && (
