@@ -1,0 +1,33 @@
+name: Lighthouse CI
+
+# Reports performance/accessibility/best-practices/SEO scores on PRs so
+# regressions are visible before merge. Informational only for now (doesn't
+# block merges) -- can add score thresholds via lhci assert later once
+# there's a baseline to tune against.
+
+on:
+  pull_request:
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v11
+        with:
+          staticDistDir: ./out
+          uploadArtifacts: true
+          temporaryPublicStorage: true
