@@ -36,6 +36,18 @@ const nonEmployerCompanyColors = {
   "personal-projects": "orange",
 };
 
+// Date-only strings ("YYYY-MM-DD") parse as UTC midnight, which can shift to
+// the previous day in a non-UTC timezone -- build from local components
+// instead, same fix as portfolio-data.js's formatMonthYear.
+function formatPostDate(value) {
+  const [year, month, day] = value.split("-").map(Number);
+  return new Date(year, month - 1, day).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
 function resolveCompanyColor(companySlug, employers) {
   const employer = employers.find((item) => item.slug === companySlug);
   if (employer?.color) {
@@ -113,6 +125,7 @@ export default function PortfolioShell({
   education,
   certifications,
   psnTrophies,
+  latestBlogPosts,
   projectsHeading,
   featuredProjects,
   projects,
@@ -387,6 +400,49 @@ export default function PortfolioShell({
                 ))}
               </div>
             )}
+          </div>
+        </section>
+      )}
+
+      {latestBlogPosts?.length > 0 && (
+        <section className="mx-auto max-w-6xl px-6 py-8 lg:px-8">
+          <div className="rounded-3xl border border-stone-900/10 bg-white/70 p-8 dark:border-white/10 dark:bg-stone-900/60 lg:p-10">
+            <div className="flex flex-wrap items-baseline justify-between gap-4">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-700 dark:text-orange-400">
+                  Latest from the blog
+                </p>
+                <h2 className="mt-2 text-2xl font-semibold text-stone-900 dark:text-white">
+                  Family notes, projects, and the occasional recipe.
+                </h2>
+              </div>
+              <a
+                href="https://blog.hurd.cc/blog/"
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm font-medium text-orange-700 transition hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300"
+              >
+                Visit blog.hurd.cc →
+              </a>
+            </div>
+
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              {latestBlogPosts.map((post) => (
+                <a
+                  key={post.slug}
+                  href={`https://blog.hurd.cc/blog/${post.slug}/`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block rounded-2xl border border-stone-900/10 bg-stone-100/70 p-5 transition hover:border-orange-600 dark:border-white/10 dark:bg-stone-950/70 dark:hover:border-orange-400"
+                >
+                  <p className="text-xs uppercase tracking-[0.15em] text-stone-500 dark:text-stone-400">
+                    {formatPostDate(post.publishedAt)}
+                  </p>
+                  <h3 className="mt-2 text-lg font-semibold text-stone-900 dark:text-white">{post.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-stone-600 dark:text-stone-300">{post.excerpt}</p>
+                </a>
+              ))}
+            </div>
           </div>
         </section>
       )}

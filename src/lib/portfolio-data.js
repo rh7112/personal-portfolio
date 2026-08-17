@@ -559,3 +559,25 @@ export async function getCertifications() {
 
   return certifications.map(normalizeCertificationRow);
 }
+
+// Homepage teaser only -- blog.hurd.cc is the actual blog, this just points
+// at it. No fallback content: if portfolio-api is unreachable, the teaser
+// section simply doesn't render (same pattern as PSN trophies).
+export async function getLatestBlogPosts(limit = 2) {
+  const posts = await fetchFromApi("/api/v1/blog-posts");
+
+  if (!posts?.length) {
+    return [];
+  }
+
+  return posts
+    .filter((post) => post.type === "article" && post.publishedAt)
+    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+    .slice(0, limit)
+    .map((post) => ({
+      slug: post.slug,
+      title: post.title,
+      excerpt: post.excerpt,
+      publishedAt: post.publishedAt,
+    }));
+}
