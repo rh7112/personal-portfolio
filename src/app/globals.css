@@ -1,16 +1,29 @@
 @import "tailwindcss";
 
+/* Lets `dark:` utilities respond to a `.dark` class on <html> (set by
+   ThemeToggle) instead of only prefers-color-scheme, so the manual toggle
+   can actually override the system preference. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   color-scheme: light dark;
   --background: #fafaf9;
   --foreground: #1c1917;
 }
 
+/* System preference applies dark, unless the user has explicitly chosen
+   light via the toggle (.light class short-circuits this). */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not(.light) {
     --background: #0c0a09;
     --foreground: #fafaf9;
   }
+}
+
+/* Explicit dark choice always wins, regardless of system preference. */
+:root.dark {
+  --background: #0c0a09;
+  --foreground: #fafaf9;
 }
 
 html {
@@ -27,10 +40,15 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
+  :root:not(.light) body {
     background: radial-gradient(circle at top left, rgba(251, 146, 60, 0.16), transparent 28%),
       linear-gradient(135deg, #0c0a09 0%, #1c1917 100%);
   }
+}
+
+:root.dark body {
+  background: radial-gradient(circle at top left, rgba(251, 146, 60, 0.16), transparent 28%),
+    linear-gradient(135deg, #0c0a09 0%, #1c1917 100%);
 }
 
 * {
