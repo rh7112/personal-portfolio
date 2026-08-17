@@ -425,6 +425,7 @@ function normalizeEmployerRow(row) {
     sortOrder: row.sort_order ?? row.sortOrder,
     color: row.color,
     secondaryColor: row.secondary_color ?? row.secondaryColor,
+    highlights: row.highlights ?? [],
   };
 }
 
