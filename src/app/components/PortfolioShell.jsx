@@ -120,7 +120,10 @@ export default function PortfolioShell({
   contactBody,
   contactLinks,
 }) {
-  const carouselProjects = [...featuredProjects, ...projects]
+  // Featured-only so a project never appears both as a carousel card here
+  // and as a pill in Project History below -- each project shows up in
+  // exactly one place now.
+  const carouselProjects = featuredProjects
     .filter((project) => project.image)
     .map((project) => ({
       ...project,
