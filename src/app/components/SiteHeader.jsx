@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { FaBars, FaChevronDown, FaTimes } from "react-icons/fa";
 
+import ThemeToggle from "./ThemeToggle";
+
 const navLinkClass = "transition hover:text-stone-900 dark:hover:text-white";
 
 export default function SiteHeader({ employers = [] }) {
@@ -94,14 +96,18 @@ export default function SiteHeader({ employers = [] }) {
           </Link>
         </div>
 
-        <button
-          type="button"
-          className="inline-flex items-center justify-center rounded-full border border-stone-900/10 p-2 text-stone-700 dark:border-white/10 dark:text-stone-200 md:hidden"
-          onClick={() => setMobileOpen((open) => !open)}
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <FaTimes /> : <FaBars />}
-        </button>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+
+          <button
+            type="button"
+            className="inline-flex items-center justify-center rounded-full border border-stone-900/10 p-2 text-stone-700 dark:border-white/10 dark:text-stone-200 md:hidden"
+            onClick={() => setMobileOpen((open) => !open)}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <FaTimes /> : <FaBars />}
+          </button>
+        </div>
       </div>
 
       {mobileOpen && (
