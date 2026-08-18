@@ -112,6 +112,7 @@ UPDATE portfolio_projects SET title = 'Ryan''s Portfolio', image = '/images/proj
 
 INSERT INTO portfolio_projects (title, summary, image, company, company_slug, color, tech_stack, featured, published) VALUES
 ('Ryan''s Portfolio', 'Built this portfolio to expand knowledge of Next.js, HeroUI, and MariaDB while showcasing professional experience.', '/images/projects/ryans-portfolio.png', 'Personal Projects', 'personal-projects', 'sky', 'Next.js, HeroUI, MariaDB', 1, 1),
+('Self-Hosted Home AI Platform', 'Built a fully self-hosted LLM stack running on home hardware for family use and as groundwork for a potential web-development business -- no data ever leaves the household network to a third-party AI vendor. Ollama serves multiple local models (coding, general chat, and vision) behind Open WebUI, reachable remotely via both a Synology-hosted OpenVPN server and a Cloudflare Tunnel, with private web search via a self-hosted SearXNG instance instead of Google/Bing. The most technically demanding part was diagnosing a silent, multi-layer network failure: Docker''s daemon was resetting the NAS''s iptables FORWARD policy to DROP on every restart, invisibly breaking VPN routing -- tracked down via systematic elimination (packet captures, iptables rule inspection) rather than guesswork, then made persistent by hooking the fix into the NAS''s existing boot script.', NULL, 'Personal Projects', 'personal-projects', 'sky', 'Ollama, Open WebUI, Docker, Qwen2.5 (Coder/Instruct/VL), Synology DSM, OpenVPN, Cloudflare Tunnel, SearXNG, Windows/WSL2, PowerShell, iptables', 1, 1),
 ('Minesweeper', 'A classic Minesweeper build in Retool, exploring custom component logic and state management outside typical business apps.', NULL, 'Personal Projects', 'personal-projects', 'sky', 'Retool', 0, 1),
 ('Tetris', 'An in-progress Tetris build in Retool, exploring game-loop logic and state management. Still a work in progress.', NULL, 'Personal Projects', 'personal-projects', 'sky', 'Retool', 0, 1),
 ('Debt Calculator', 'A debt payoff planner built in Retool to compare snowball- and avalanche-style payoff ordering.', NULL, 'Personal Projects', 'personal-projects', 'sky', 'Retool', 0, 1),
@@ -251,8 +252,9 @@ INSERT INTO portfolio_education (slug, institution, degree, start_date, end_date
 ON DUPLICATE KEY UPDATE institution = VALUES(institution), degree = VALUES(degree), start_date = VALUES(start_date), end_date = VALUES(end_date), location = VALUES(location), sort_order = VALUES(sort_order);
 
 INSERT INTO portfolio_certifications (slug, name, issuer, date_earned, credential_url, score, expired, sort_order) VALUES
-('python-pcep', 'Python PCEP Certification', 'Python Institute', '2021-09-01', NULL, NULL, 0, 1),
+('python-pcep', 'Python PCEP Certification', 'Python Institute', '2021-09-24', 'https://pythoninstitute.org/credential-verification', NULL, 0, 1),
 ('comptia-a-plus', 'CompTIA A+', 'CompTIA', '2017-12-01', NULL, '1880', 1, 2),
-('retool-platform-admin', 'Retool Platform Admin', 'Retool', '2025-03-01', NULL, NULL, 0, 3),
-('retool-platform-developer', 'Retool Platform Developer', 'Retool', '2025-03-01', NULL, NULL, 0, 4)
+('retool-platform-admin', 'Retool Platform Admin', 'Retool', '2025-03-20', 'https://www.credly.com/badges/ff682844-9d1f-4336-9f49-6622bdce25c5/linked_in_profile', NULL, 0, 3),
+('retool-platform-developer', 'Retool Platform Developer', 'Retool', '2025-03-19', 'https://www.credly.com/badges/9d9a47c9-09dd-4527-ab31-ab6766df44de/linked_in_profile', NULL, 0, 4),
+('testout-pc-pro', 'TestOut PC Pro', 'TestOut', '2017-12-13', 'https://webservices.testout.com/OrbisServerJson/DownloadCertificates.aspx?certificateSetGuid=a82a3791-07ad-4736-9cb5-bc8af4a98f13', NULL, 0, 5)
 ON DUPLICATE KEY UPDATE name = VALUES(name), issuer = VALUES(issuer), date_earned = VALUES(date_earned), credential_url = VALUES(credential_url), score = VALUES(score), expired = VALUES(expired), sort_order = VALUES(sort_order);

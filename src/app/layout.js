@@ -63,12 +63,31 @@ const personJsonLd = {
   ],
 };
 
+// Applies a stored manual theme choice before first paint, so there's no
+// flash of the wrong theme while React hydrates. Runs synchronously as the
+// first thing in <body>; suppressHydrationWarning on <html> is needed
+// because this intentionally changes className before hydration compares it.
+const themeInitScript = `
+(function () {
+  try {
+    var theme = window.localStorage.getItem("theme");
+    if (theme === "dark" || theme === "light") {
+      document.documentElement.classList.add(theme);
+    }
+  } catch (e) {}
+})();
+`;
+
 export default async function RootLayout({ children }) {
   const employers = await getEmployers();
 
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <script
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: themeInitScript }}
+        />
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger

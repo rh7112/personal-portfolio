@@ -371,7 +371,7 @@ async function fetchFromApi(path) {
 // Fisher-Yates shuffle, used to replicate the old "ORDER BY RAND() LIMIT 3"
 // featured-project selection now that filtering happens via the API instead
 // of SQL.
-function pickRandom(items, count) {
+export function pickRandom(items, count) {
   const pool = [...items];
   for (let i = pool.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -381,11 +381,11 @@ function pickRandom(items, count) {
 }
 
 
-function normalizeDate(value) {
+export function normalizeDate(value) {
   return value instanceof Date ? value.toISOString().slice(0, 10) : value;
 }
 
-function formatMonthYear(value) {
+export function formatMonthYear(value) {
   if (!value) {
     return null;
   }
@@ -402,7 +402,7 @@ function formatMonthYear(value) {
   return value.toLocaleDateString("en-US", { month: "short", year: "numeric" });
 }
 
-function formatDateRange(startDate, endDate) {
+export function formatDateRange(startDate, endDate) {
   const start = formatMonthYear(startDate);
   if (!start) {
     return null;
@@ -411,7 +411,7 @@ function formatDateRange(startDate, endDate) {
   return `${start} – ${endDate ? formatMonthYear(endDate) : "Present"}`;
 }
 
-function normalizeEmployerRow(row) {
+export function normalizeEmployerRow(row) {
   return {
     slug: row.slug,
     name: row.name,
@@ -425,10 +425,11 @@ function normalizeEmployerRow(row) {
     sortOrder: row.sort_order ?? row.sortOrder,
     color: row.color,
     secondaryColor: row.secondary_color ?? row.secondaryColor,
+    highlights: row.highlights ?? [],
   };
 }
 
-function normalizeImagePath(image) {
+export function normalizeImagePath(image) {
   if (!image) {
     return null;
   }
@@ -436,7 +437,7 @@ function normalizeImagePath(image) {
   return image.startsWith("/") ? image : `/${image}`;
 }
 
-function normalizeProjectRows(rows) {
+export function normalizeProjectRows(rows) {
   return rows.map((row) => ({
     id: row.id,
     title: row.title,
@@ -510,7 +511,7 @@ export async function getEmployerBySlug(slug) {
   };
 }
 
-function normalizeEducationRow(row) {
+export function normalizeEducationRow(row) {
   const startDate = row.start_date ?? row.startDate;
   const endDate = row.end_date ?? row.endDate;
   return {
@@ -535,7 +536,7 @@ export async function getEducation() {
   return education.map(normalizeEducationRow);
 }
 
-function normalizeCertificationRow(row) {
+export function normalizeCertificationRow(row) {
   const dateEarned = row.date_earned ?? row.dateEarned;
   return {
     slug: row.slug,
@@ -558,4 +559,26 @@ export async function getCertifications() {
   }
 
   return certifications.map(normalizeCertificationRow);
+}
+
+// Homepage teaser only -- blog.hurd.cc is the actual blog, this just points
+// at it. No fallback content: if portfolio-api is unreachable, the teaser
+// section simply doesn't render (same pattern as PSN trophies).
+export async function getLatestBlogPosts(limit = 2) {
+  const posts = await fetchFromApi("/api/v1/blog-posts");
+
+  if (!posts?.length) {
+    return [];
+  }
+
+  return posts
+    .filter((post) => post.type === "article" && post.publishedAt)
+    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+    .slice(0, limit)
+    .map((post) => ({
+      slug: post.slug,
+      title: post.title,
+      excerpt: post.excerpt,
+      publishedAt: post.publishedAt,
+    }));
 }

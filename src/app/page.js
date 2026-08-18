@@ -4,6 +4,7 @@ import {
   getEducation,
   getEmployers,
   getHomepageData,
+  getLatestBlogPosts,
   getProjectList,
 } from "@/lib/portfolio-data";
 import { getGitHubStats } from "@/lib/github-data";
@@ -43,15 +44,17 @@ const contactLinks = [
 ];
 
 export default async function Home() {
-  const [homeData, projects, employers, education, certifications, psnTrophies, githubStats] = await Promise.all([
-    getHomepageData(),
-    getProjectList(),
-    getEmployers(),
-    getEducation(),
-    getCertifications(),
-    getPsnTrophies(),
-    getGitHubStats(),
-  ]);
+  const [homeData, projects, employers, education, certifications, psnTrophies, githubStats, latestBlogPosts] =
+    await Promise.all([
+      getHomepageData(),
+      getProjectList(),
+      getEmployers(),
+      getEducation(),
+      getCertifications(),
+      getPsnTrophies(),
+      getGitHubStats(),
+      getLatestBlogPosts(),
+    ]);
 
   return (
     <PortfolioShell
@@ -70,6 +73,7 @@ export default async function Home() {
       certifications={certifications}
       psnTrophies={psnTrophies}
       githubStats={githubStats}
+      latestBlogPosts={latestBlogPosts}
       projectsHeading={homeData.projectsHeading}
       featuredProjects={homeData.featuredProjects}
       projects={projects}
