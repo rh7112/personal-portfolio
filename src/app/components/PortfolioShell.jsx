@@ -158,6 +158,12 @@ export default function PortfolioShell({
               >
                 View resume <FaFileAlt />
               </a>
+              <Link
+                href="/resume"
+                className="inline-flex items-center gap-2 rounded-full border border-stone-300 px-5 py-3 font-medium text-stone-700 transition hover:border-stone-400 hover:text-stone-900 dark:border-stone-700 dark:text-stone-200 dark:hover:border-stone-500 dark:hover:text-white"
+              >
+                HTML resume <FaFileAlt />
+              </Link>
             </div>
           </div>
 
