@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "vitest run"
   },
   "dependencies": {
     "next": "^16.3.0",
@@ -20,6 +21,7 @@
     "eslint": "^10.8.0",
     "eslint-config-next": "^16.3.0",
     "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.11"
+    "tailwindcss": "^4.1.11",
+    "vitest": "^4.1.10"
   }
 }
