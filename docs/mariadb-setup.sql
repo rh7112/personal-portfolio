@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS portfolio_content (
 
 CREATE TABLE IF NOT EXISTS portfolio_projects (
   id INT AUTO_INCREMENT PRIMARY KEY,
+  slug VARCHAR(255) DEFAULT NULL,
   title VARCHAR(255) NOT NULL,
   summary TEXT NOT NULL,
   image VARCHAR(255) DEFAULT NULL,
@@ -27,7 +28,8 @@ CREATE TABLE IF NOT EXISTS portfolio_projects (
   featured TINYINT(1) DEFAULT 0,
   published TINYINT(1) DEFAULT 1,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  UNIQUE KEY uq_project_title_company (title, company_slug)
+  UNIQUE KEY uq_project_title_company (title, company_slug),
+  UNIQUE KEY uq_project_slug (slug)
 );
 
 -- Single source of truth for work history: the homepage Experience cards, the
@@ -109,6 +111,18 @@ ON DUPLICATE KEY UPDATE `value` = VALUES(`value`);
 -- rename explicitly; it's a no-op on any re-run once the title has changed.
 UPDATE portfolio_projects SET title = 'Ryan''s Portfolio', image = '/images/projects/ryans-portfolio.png'
   WHERE title = 'Personal Portfolio' AND company_slug = 'personal-projects';
+
+-- Slugs for the featured projects that get a dedicated /projects/[slug]
+-- detail page. Plain UPDATEs (not part of the bulk INSERT below) since
+-- these rows already exist -- idempotent, safe to re-run.
+UPDATE portfolio_projects SET slug = 'ryans-portfolio' WHERE title = 'Ryan''s Portfolio' AND company_slug = 'personal-projects';
+UPDATE portfolio_projects SET slug = 'yield-report' WHERE title = 'Yield Report' AND company_slug = 'packaging-personified';
+UPDATE portfolio_projects SET slug = 'epa-reporting' WHERE title = 'EPA Reporting' AND company_slug = 'packaging-personified';
+UPDATE portfolio_projects SET slug = 'press-wip-optimization' WHERE title = 'Press WIP Optimization' AND company_slug = 'packaging-personified';
+UPDATE portfolio_projects SET slug = 'gear-exchange-braintree' WHERE title = 'Gear Exchange - Braintree Implementation' AND company_slug = 'sweetwater-sound';
+UPDATE portfolio_projects SET slug = 'price-management-platform' WHERE title = 'Price Management Platform' AND company_slug = 'sweetwater-sound';
+UPDATE portfolio_projects SET slug = 'ecms' WHERE title = 'Tax Exemption Certification Management System (ECMS)' AND company_slug = 'sweetwater-sound';
+UPDATE portfolio_projects SET slug = 'turkey-handout-application' WHERE title = 'Turkey Handout Application' AND company_slug = 'sweetwater-sound';
 
 INSERT INTO portfolio_projects (title, summary, image, company, company_slug, color, tech_stack, featured, published) VALUES
 ('Ryan''s Portfolio', 'Built this portfolio to expand knowledge of Next.js, HeroUI, and MariaDB while showcasing professional experience.', '/images/projects/ryans-portfolio.png', 'Personal Projects', 'personal-projects', 'sky', 'Next.js, HeroUI, MariaDB', 1, 1),

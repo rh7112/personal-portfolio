@@ -1,4 +1,4 @@
-import { getEmployers } from "@/lib/portfolio-data";
+import { getEmployers, getProjectsWithSlugs } from "@/lib/portfolio-data";
 
 export const dynamic = "force-static";
 
@@ -8,7 +8,7 @@ const siteUrl = "https://ryan.hurd.cc";
 // slash to match what the site actually serves -- otherwise crawlers see a
 // redirect instead of a 200 for every entry.
 export default async function sitemap() {
-  const employers = await getEmployers();
+  const [employers, projectsWithSlugs] = await Promise.all([getEmployers(), getProjectsWithSlugs()]);
 
   const staticRoutes = ["", "/resume"].map((path) => ({
     url: `${siteUrl}${path}/`,
@@ -20,5 +20,10 @@ export default async function sitemap() {
     lastModified: new Date(),
   }));
 
-  return [...staticRoutes, ...employerRoutes];
+  const projectRoutes = projectsWithSlugs.map((project) => ({
+    url: `${siteUrl}/projects/${project.slug}/`,
+    lastModified: new Date(),
+  }));
+
+  return [...staticRoutes, ...employerRoutes, ...projectRoutes];
 }
