@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaPause, FaPlay } from "react-icons/fa";
 
@@ -36,14 +37,21 @@ export default function ProjectsCarousel({ projects }) {
     <>
       <div className="mt-8 grid gap-6 lg:grid-cols-3">
         {visibleProjects.map((project) => {
-          const Wrapper = project.link ? "a" : "article";
-          const linkProps = project.link ? { href: project.link, target: "_blank", rel: "noreferrer" } : {};
+          // A detail page beats an external link when a project happens to
+          // have both -- keeps visitors on the site.
+          const hasLink = Boolean(project.slug || project.link);
+          const Wrapper = project.slug ? Link : project.link ? "a" : "article";
+          const linkProps = project.slug
+            ? { href: `/projects/${project.slug}` }
+            : project.link
+              ? { href: project.link, target: "_blank", rel: "noreferrer" }
+              : {};
           return (
             <Wrapper
               key={project.id ?? project.title}
               {...linkProps}
               className={`block overflow-hidden rounded-3xl border ${project.cardClassName} ${
-                project.link ? "transition hover:-translate-y-0.5 hover:shadow-md" : ""
+                hasLink ? "transition hover:-translate-y-0.5 hover:shadow-md" : ""
               }`}
             >
               <div className="relative h-48 w-full">

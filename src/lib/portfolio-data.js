@@ -440,6 +440,7 @@ export function normalizeImagePath(image) {
 export function normalizeProjectRows(rows) {
   return rows.map((row) => ({
     id: row.id,
+    slug: row.slug ?? null,
     title: row.title,
     summary: row.summary,
     image: normalizeImagePath(row.image),
@@ -480,6 +481,26 @@ export async function getProjectList() {
   }
 
   return normalizeProjectRows(projects);
+}
+
+// Only projects with a `slug` set get a dedicated /projects/[slug] page --
+// currently just the featured ones. No fallback list: if portfolio-api is
+// unreachable at build time, generateStaticParams just gets an empty
+// array and no detail pages are generated for that build (same
+// graceful-degradation pattern as everywhere else).
+export async function getProjectsWithSlugs() {
+  const projects = await fetchFromApi("/api/v1/projects?published=true");
+
+  if (!projects) {
+    return [];
+  }
+
+  return normalizeProjectRows(projects).filter((project) => project.slug);
+}
+
+export async function getProjectBySlug(slug) {
+  const projects = await getProjectsWithSlugs();
+  return projects.find((project) => project.slug === slug) ?? null;
 }
 
 export async function getEmployers() {

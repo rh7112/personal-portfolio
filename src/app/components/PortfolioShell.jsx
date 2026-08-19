@@ -280,6 +280,20 @@ export default function PortfolioShell({
                 <div className="mt-3 flex flex-wrap gap-3">
                   {group.items.map((project) => {
                     const pillClassName = `rounded-full border px-3 py-2 text-sm text-stone-700 dark:text-stone-200 ${getCompanyCardClass(group.color)}`;
+                    // A detail page beats an external link when a project
+                    // happens to have both -- keeps visitors on the site.
+                    if (project.slug) {
+                      return (
+                        <Link
+                          key={project.id}
+                          href={`/projects/${project.slug}`}
+                          title={project.company}
+                          className={`${pillClassName} transition hover:border-orange-600 dark:hover:border-orange-400`}
+                        >
+                          {project.title}
+                        </Link>
+                      );
+                    }
                     return project.link ? (
                       <a
                         key={project.id}
