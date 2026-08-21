@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { FaBars, FaChevronDown, FaTimes } from "react-icons/fa";
@@ -36,8 +37,15 @@ export default function SiteHeader({ employers = [] }) {
   return (
     <header className="sticky top-0 z-20 border-b border-stone-900/10 bg-stone-50/80 backdrop-blur dark:border-white/10 dark:bg-stone-950/80">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
-        <Link href="/" className="text-lg font-semibold uppercase tracking-[0.2em] text-stone-900 dark:text-white">
-          Ryan Hurd
+        <Link href="/" aria-label="Ryan Hurd" className="shrink-0">
+          <Image
+            src="/images/logo-no-background.png"
+            alt="Ryan Hurd"
+            width={1500}
+            height={939}
+            priority
+            className="h-14 w-auto"
+          />
         </Link>
 
         <div className="hidden items-center gap-4 text-sm text-stone-600 dark:text-stone-300 md:flex">
