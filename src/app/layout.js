@@ -95,6 +95,8 @@ export default async function RootLayout({ children }) {
         />
         <SiteHeader employers={employers} />
         {children}
+        <script type="module" src="https://cdn.jsdelivr.net/gh/rh7112/hurd-footer@main/hurd-footer.js"></script>
+        <hurd-footer tagline="Ryan Hurd" link-href="https://github.com/rh7112"></hurd-footer>
       </body>
     </html>
   );
