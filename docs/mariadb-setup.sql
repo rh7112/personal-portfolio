@@ -196,7 +196,7 @@ ON DUPLICATE KEY UPDATE summary = VALUES(summary), image = VALUES(image), compan
 -- clickable on the site instead of static text. Separate INSERT since these
 -- are the only rows in this file that set the `link` column.
 INSERT INTO portfolio_projects (title, summary, image, company, company_slug, color, tech_stack, link, featured, published) VALUES
-('BBSystems.US Website', 'An in-progress website project for BBSystems.US, currently in the planning stage while scoping requirements with the site''s owner, Cruz Gregory.', NULL, 'Personal Projects', 'personal-projects', 'sky', NULL, NULL, 0, 1),
+('BBSystems.US Website', 'Built and launched the BBSystems.US website for site owner Cruz Gregory.', NULL, 'Personal Projects', 'personal-projects', 'sky', NULL, 'https://bbsystems.us', 1, 1),
 ('blog.hurd.cc Extraction', 'Split the blog and recipes content out of this portfolio into its own site, including migrating the data into portfolio-api''s isolated hurd_blog database.', NULL, 'Personal Projects', 'personal-projects', 'sky', 'Next.js, portfolio-api', 'https://blog.hurd.cc', 0, 1),
 ('portfolio-api Swagger Docs', 'Set up Swagger/OpenAPI documentation for portfolio-api, giving a browsable, interactive reference for its REST endpoints.', NULL, 'Personal Projects', 'personal-projects', 'sky', 'Swagger/OpenAPI, Go', 'https://api.hurd.cc/docs/', 0, 1),
 ('Ramona Bauch, PA-C Website', 'Built a simple static portfolio website for Ramona Bauch, PA-C, deployed to Cloudflare Pages.', NULL, 'Personal Projects', 'personal-projects', 'sky', 'HTML, CSS, Cloudflare Pages', 'https://ramona.bauch.cc', 0, 1),
