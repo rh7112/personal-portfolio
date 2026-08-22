@@ -386,6 +386,9 @@ export default function PortfolioShell({
               Trophy level {psnTrophies.trophyLevel} ({psnTrophies.tierLabel}), {psnTrophies.progress}% of the way to
               the next level.
             </p>
+            <p className="mt-2 text-stone-600 dark:text-stone-300">
+              Away from the console, I'm usually out fishing or kayaking.
+            </p>
 
             <div className="mt-6 flex flex-wrap gap-3 text-sm">
               <span className="rounded-full border border-stone-900/10 bg-stone-100/70 px-4 py-2 text-stone-700 dark:border-white/10 dark:bg-stone-950/70 dark:text-stone-200">
