@@ -5,7 +5,6 @@ import Link from "next/link";
 
 import BuyMeACoffeeButton from "./BuyMeACoffeeButton";
 import NotTheOtherRyanHurd from "./NotTheOtherRyanHurd";
-import ProjectsCarousel from "./ProjectsCarousel";
 
 import {
   FaArrowRight,
@@ -127,23 +126,11 @@ export default function PortfolioShell({
   psnTrophies,
   githubStats,
   latestBlogPosts,
-  projectsHeading,
-  featuredProjects,
   projects,
   contactHeading,
   contactBody,
   contactLinks,
 }) {
-  // Featured-only so a project never appears both as a carousel card here
-  // and as a pill in Project History below -- each project shows up in
-  // exactly one place now.
-  const carouselProjects = featuredProjects
-    .filter((project) => project.image)
-    .map((project) => ({
-      ...project,
-      cardClassName: getCompanyCardClass(resolveCompanyColor(project.companySlug, employers)),
-    }));
-
   const projectGroups = groupProjectsByCompany(projects, employers);
 
   return (
@@ -252,19 +239,6 @@ export default function PortfolioShell({
       </section>
 
       <section id="projects" className="mx-auto max-w-6xl px-6 py-8 lg:px-8">
-        <div className="rounded-3xl border border-stone-900/10 bg-white/70 p-8 dark:border-white/10 dark:bg-stone-900/60 lg:p-10">
-          <div className="flex items-end justify-between gap-4">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-700 dark:text-orange-400">Projects</p>
-              <h2 className="mt-2 text-3xl font-semibold text-stone-900 dark:text-white">{projectsHeading}</h2>
-            </div>
-          </div>
-
-          <ProjectsCarousel projects={carouselProjects} />
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-6 py-8 lg:px-8">
         <div className="rounded-3xl border border-stone-900/10 bg-white/70 p-8 dark:border-white/10 dark:bg-stone-900/60 lg:p-10">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-700 dark:text-orange-400">Project history</p>
           <h3 className="mt-2 text-2xl font-semibold text-stone-900 dark:text-white">
@@ -385,9 +359,6 @@ export default function PortfolioShell({
             <p className="mt-3 text-stone-600 dark:text-stone-300">
               Trophy level {psnTrophies.trophyLevel} ({psnTrophies.tierLabel}), {psnTrophies.progress}% of the way to
               the next level.
-            </p>
-            <p className="mt-2 text-stone-600 dark:text-stone-300">
-              Away from the console, I'm usually out fishing or kayaking.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3 text-sm">

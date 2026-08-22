@@ -74,8 +74,6 @@ export default async function Home() {
       psnTrophies={psnTrophies}
       githubStats={githubStats}
       latestBlogPosts={latestBlogPosts}
-      projectsHeading={homeData.projectsHeading}
-      featuredProjects={homeData.featuredProjects}
       projects={projects}
       contactHeading={homeData.contactHeading}
       contactBody={homeData.contactBody}
