@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import BuyMeACoffeeButton from "./BuyMeACoffeeButton";
 import NotTheOtherRyanHurd from "./NotTheOtherRyanHurd";
+import { educationTranscripts } from "@/lib/portfolio-data";
 
 import {
   FaArrowRight,
@@ -298,17 +299,27 @@ export default function PortfolioShell({
           <h2 className="mt-2 text-3xl font-semibold text-stone-900 dark:text-white">Where it started.</h2>
 
           <div className="mt-8 grid gap-6 lg:grid-cols-3">
-            {education.map((item) => (
-              <div
-                key={item.slug}
-                className="rounded-2xl border border-stone-900/10 bg-stone-100/70 p-6 dark:border-white/10 dark:bg-stone-950/70"
-              >
-                <p className="text-sm text-orange-700 dark:text-orange-400">{item.dateRange}</p>
-                <h3 className="mt-2 text-lg font-semibold text-stone-900 dark:text-white">{item.institution}</h3>
-                {item.degree && <p className="mt-1 text-sm text-stone-600 dark:text-stone-300">{item.degree}</p>}
-                {item.location && <p className="mt-1 text-sm text-stone-500 dark:text-stone-400">{item.location}</p>}
-              </div>
-            ))}
+            {education.map((item) => {
+              const transcriptUrl = educationTranscripts[item.slug];
+              const EducationTag = transcriptUrl ? "a" : "div";
+              return (
+                <EducationTag
+                  key={item.slug}
+                  {...(transcriptUrl ? { href: transcriptUrl, target: "_blank", rel: "noreferrer" } : {})}
+                  className="block rounded-2xl border border-stone-900/10 bg-stone-100/70 p-6 dark:border-white/10 dark:bg-stone-950/70"
+                >
+                  <p className="text-sm text-orange-700 dark:text-orange-400">{item.dateRange}</p>
+                  <h3 className="mt-2 text-lg font-semibold text-stone-900 dark:text-white">{item.institution}</h3>
+                  {item.degree && <p className="mt-1 text-sm text-stone-600 dark:text-stone-300">{item.degree}</p>}
+                  {item.location && <p className="mt-1 text-sm text-stone-500 dark:text-stone-400">{item.location}</p>}
+                  {transcriptUrl && (
+                    <p className="mt-2 text-xs font-medium uppercase tracking-wide text-orange-700 dark:text-orange-400">
+                      View unofficial transcript →
+                    </p>
+                  )}
+                </EducationTag>
+              );
+            })}
           </div>
         </div>
       </section>

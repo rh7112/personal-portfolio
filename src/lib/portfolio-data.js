@@ -519,6 +519,15 @@ export async function getEmployerBySlug(slug) {
   };
 }
 
+// Unofficial transcripts, keyed by education slug -- a static-asset map
+// like ContactLinks' contactLinks, not portfolio-api content, since these
+// are fixed PDFs rather than editable text. Not every school has one
+// (Whitko's high school transcript isn't included).
+export const educationTranscripts = {
+  "ivy-tech": "/documents/ivy-tech-transcript.pdf",
+  "purdue-fort-wayne": "/documents/purdue-fort-wayne-transcript.pdf",
+};
+
 export function normalizeEducationRow(row) {
   const startDate = row.start_date ?? row.startDate;
   const endDate = row.end_date ?? row.endDate;
