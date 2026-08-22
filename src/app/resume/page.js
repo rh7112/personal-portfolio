@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
 import ContactLinks from "@/app/components/ContactLinks";
-import { getCertifications, getEducation, getEmployers } from "@/lib/portfolio-data";
+import { educationTranscripts, getCertifications, getEducation, getEmployers } from "@/lib/portfolio-data";
 
 export const metadata = {
   title: "Resume",
@@ -70,21 +70,31 @@ export default async function ResumePage() {
         <section className="mt-8">
           <h2 className="text-2xl font-semibold text-stone-900 dark:text-white">Education</h2>
           <div className="mt-4 space-y-4">
-            {education.map((item) => (
-              <div
-                key={item.slug}
-                className="rounded-3xl border border-stone-900/10 bg-white/70 p-6 dark:border-white/10 dark:bg-stone-900/60"
-              >
-                <div className="flex flex-wrap items-baseline justify-between gap-2">
-                  <h3 className="text-xl font-semibold text-stone-900 dark:text-white">{item.institution}</h3>
-                  <p className="text-sm text-stone-500 dark:text-stone-400">{item.dateRange}</p>
-                </div>
-                {item.degree && <p className="text-sm text-stone-600 dark:text-stone-300">{item.degree}</p>}
-                {item.location && (
-                  <p className="text-sm text-stone-500 dark:text-stone-400">{item.location}</p>
-                )}
-              </div>
-            ))}
+            {education.map((item) => {
+              const transcriptUrl = educationTranscripts[item.slug];
+              const EducationTag = transcriptUrl ? "a" : "div";
+              return (
+                <EducationTag
+                  key={item.slug}
+                  {...(transcriptUrl ? { href: transcriptUrl, target: "_blank", rel: "noreferrer" } : {})}
+                  className="block rounded-3xl border border-stone-900/10 bg-white/70 p-6 dark:border-white/10 dark:bg-stone-900/60"
+                >
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <h3 className="text-xl font-semibold text-stone-900 dark:text-white">{item.institution}</h3>
+                    <p className="text-sm text-stone-500 dark:text-stone-400">{item.dateRange}</p>
+                  </div>
+                  {item.degree && <p className="text-sm text-stone-600 dark:text-stone-300">{item.degree}</p>}
+                  {item.location && (
+                    <p className="text-sm text-stone-500 dark:text-stone-400">{item.location}</p>
+                  )}
+                  {transcriptUrl && (
+                    <p className="mt-2 text-xs font-medium uppercase tracking-wide text-orange-700 dark:text-orange-400">
+                      View unofficial transcript →
+                    </p>
+                  )}
+                </EducationTag>
+              );
+            })}
           </div>
         </section>
 
