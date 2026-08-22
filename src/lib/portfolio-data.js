@@ -20,27 +20,6 @@ const fallbackHomeData = {
   ],
   experienceHeading:
     "Experience that spans engineering, operations, and teamwork.",
-  projectsHeading: "Some of my projects.",
-  featuredProjects: [
-    {
-      title: "Yield Report",
-      summary:
-        "Built an operations reporting experience that surfaced production, material, and customer-job trends in a clearer, faster way for decision-making.",
-      image: "/images/projects/ppi-yield-report.svg",
-    },
-    {
-      title: "EPA Reporting",
-      summary:
-        "Consolidated reporting across multiple sources into a reliable workflow that supported compliance needs across several facilities.",
-      image: "/images/projects/ppi-epa-reporting-screenshot.png",
-    },
-    {
-      title: "Press WIP Optimization",
-      summary:
-        "Improved a production workflow by reducing friction and increasing throughput while preserving the reliability of the process.",
-      image: "/images/projects/ppi-press-wip.svg",
-    },
-  ],
   employerHighlights: [
     {
       title: "Packaging Personified",
@@ -462,19 +441,14 @@ export async function getHomepageData() {
     return fallbackHomeData;
   }
 
-  const featuredPool = await fetchFromApi("/api/v1/projects?featured=true&published=true");
-
-  return {
-    ...fallbackHomeData,
-    ...content,
-    featuredProjects: featuredPool?.length
-      ? normalizeProjectRows(pickRandom(featuredPool, 3))
-      : fallbackHomeData.featuredProjects,
-  };
+  return { ...fallbackHomeData, ...content };
 }
 
+// Every published project, featured or not -- used for the homepage's
+// single Project History list (no separate featured carousel anymore, so
+// there's no featured/non-featured split to maintain here).
 export async function getProjectList() {
-  const projects = await fetchFromApi("/api/v1/projects?featured=false&published=true");
+  const projects = await fetchFromApi("/api/v1/projects?published=true");
 
   if (!projects) {
     return [];
