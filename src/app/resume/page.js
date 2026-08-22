@@ -113,19 +113,23 @@ export default async function ResumePage() {
         <section className="mt-8">
           <h2 className="text-2xl font-semibold text-stone-900 dark:text-white">Certifications</h2>
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
-            {certifications.map((cert) => (
-              <div
-                key={cert.slug}
-                className="rounded-3xl border border-stone-900/10 bg-white/70 p-6 dark:border-white/10 dark:bg-stone-900/60"
-              >
-                <h3 className="text-lg font-semibold text-stone-900 dark:text-white">{cert.name}</h3>
-                <p className="text-sm text-stone-500 dark:text-stone-400">
-                  {cert.issuer}
-                  {cert.dateEarnedDisplay ? ` — ${cert.dateEarnedDisplay}` : ""}
-                  {cert.expired ? " (expired)" : ""}
-                </p>
-              </div>
-            ))}
+            {certifications.map((cert) => {
+              const CertTag = cert.credentialUrl ? "a" : "div";
+              return (
+                <CertTag
+                  key={cert.slug}
+                  {...(cert.credentialUrl ? { href: cert.credentialUrl, target: "_blank", rel: "noreferrer" } : {})}
+                  className="rounded-3xl border border-stone-900/10 bg-white/70 p-6 dark:border-white/10 dark:bg-stone-900/60"
+                >
+                  <h3 className="text-lg font-semibold text-stone-900 dark:text-white">{cert.name}</h3>
+                  <p className="text-sm text-stone-500 dark:text-stone-400">
+                    {cert.issuer}
+                    {cert.dateEarnedDisplay ? ` — ${cert.dateEarnedDisplay}` : ""}
+                    {cert.expired ? " (expired)" : ""}
+                  </p>
+                </CertTag>
+              );
+            })}
           </div>
         </section>
       </div>
