@@ -477,6 +477,19 @@ export async function getProjectBySlug(slug) {
   return projects.find((project) => project.slug === slug) ?? null;
 }
 
+// All published projects tied to one company (both featured and
+// non-featured) -- used on the employer detail page, which shows the full
+// project list rather than the homepage's featured/non-featured split.
+export async function getProjectsByCompanySlug(companySlug) {
+  const projects = await fetchFromApi("/api/v1/projects?published=true");
+
+  if (!projects) {
+    return [];
+  }
+
+  return normalizeProjectRows(projects).filter((project) => project.companySlug === companySlug);
+}
+
 export async function getEmployers() {
   const employers = await fetchFromApi("/api/v1/employers");
 

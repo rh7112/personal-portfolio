@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import { FaArrowLeft, FaEnvelope, FaFileAlt, FaGithub, FaLinkedin, FaPhoneAlt } from "react-icons/fa";
-import { SiIndeed } from "react-icons/si";
-import { getEmployerBySlug, getEmployers } from "@/lib/portfolio-data";
+import { FaArrowLeft } from "react-icons/fa";
+import ContactLinks from "@/app/components/ContactLinks";
+import { getEmployerBySlug, getEmployers, getProjectsByCompanySlug } from "@/lib/portfolio-data";
 
 export async function generateStaticParams() {
   const employers = await getEmployers();
@@ -55,14 +55,7 @@ export default async function EmployerPage({ params }) {
     );
   }
 
-  const contactLinks = [
-    { label: "Email", href: "mailto:rh25170@gmail.com", icon: FaEnvelope },
-    { label: "Phone", href: "tel:+13525800408", icon: FaPhoneAlt },
-    { label: "GitHub", href: "https://github.com/rh7112", icon: FaGithub },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/ryan-lee-hurd/", icon: FaLinkedin },
-    { label: "Resume", href: "/documents/ryan-hurd-resume.pdf", icon: FaFileAlt },
-    { label: "Indeed", href: "https://profile.indeed.com/p/ryanh-sv25zg9", icon: SiIndeed },
-  ];
+  const projects = await getProjectsByCompanySlug(slug);
 
   return (
     <main className="min-h-screen bg-stone-50 text-stone-900 dark:bg-stone-950 dark:text-stone-100">
@@ -91,24 +84,43 @@ export default async function EmployerPage({ params }) {
         </section>
       )}
 
-      {employer.caseStudies?.length > 0 && (
+      {projects.length > 0 && (
         <section className="mx-auto max-w-6xl px-6 py-8 lg:px-8">
           <div className="rounded-3xl border border-stone-900/10 bg-white/70 p-8 dark:border-white/10 dark:bg-stone-900/60 lg:p-10">
-            <h2 className="text-3xl font-semibold text-stone-900 dark:text-white">Featured work</h2>
+            <h2 className="text-3xl font-semibold text-stone-900 dark:text-white">Projects</h2>
             <div className="mt-8 grid gap-6 lg:grid-cols-3">
-              {employer.caseStudies.map((project) => (
-                <article key={project.title} className="overflow-hidden rounded-3xl border border-stone-900/10 bg-stone-100/70 dark:border-white/10 dark:bg-stone-950/70">
-                  {project.image && (
-                    <div className="relative h-48 w-full">
-                      <Image src={project.image} alt={project.title} fill className="object-cover" />
+              {projects.map((project) => {
+                const href = project.slug ? `/projects/${project.slug}` : project.link;
+                const card = (
+                  <article className="overflow-hidden rounded-3xl border border-stone-900/10 bg-stone-100/70 dark:border-white/10 dark:bg-stone-950/70">
+                    {project.image && (
+                      <div className="relative h-48 w-full">
+                        <Image src={project.image} alt={project.title} fill className="object-cover" />
+                      </div>
+                    )}
+                    <div className="p-6">
+                      <h3 className="text-xl font-semibold text-stone-900 dark:text-white">{project.title}</h3>
+                      <p className="mt-3 text-sm leading-7 text-stone-600 dark:text-stone-300">{project.summary}</p>
                     </div>
-                  )}
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold text-stone-900 dark:text-white">{project.title}</h3>
-                    <p className="mt-3 text-sm leading-7 text-stone-600 dark:text-stone-300">{project.summary}</p>
-                  </div>
-                </article>
-              ))}
+                  </article>
+                );
+
+                if (!href) {
+                  return <div key={project.id}>{card}</div>;
+                }
+
+                return (
+                  <Link
+                    key={project.id}
+                    href={href}
+                    target={href.startsWith("http") ? "_blank" : undefined}
+                    rel={href.startsWith("http") ? "noreferrer" : undefined}
+                    className="block transition hover:-translate-y-0.5"
+                  >
+                    {card}
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -117,22 +129,7 @@ export default async function EmployerPage({ params }) {
       <section className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
         <div className="rounded-3xl border border-orange-600/20 bg-gradient-to-br from-stone-100 to-stone-50 p-8 dark:border-orange-500/20 dark:from-stone-900 dark:to-stone-950 lg:p-10">
           <h2 className="text-3xl font-semibold text-stone-900 dark:text-white">Contact</h2>
-          <div className="mt-8 flex flex-wrap gap-3">
-            {contactLinks.map((link) => {
-              const Icon = link.icon;
-              return (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target={link.href.startsWith("http") ? "_blank" : undefined}
-                  rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-                  className="inline-flex items-center gap-2 rounded-full border border-stone-900/10 bg-stone-100/70 px-4 py-3 text-sm font-medium text-stone-700 transition hover:border-orange-600 hover:text-stone-900 dark:border-white/10 dark:bg-stone-950/70 dark:text-stone-200 dark:hover:border-orange-400 dark:hover:text-white"
-                >
-                  <Icon /> {link.label}
-                </a>
-              );
-            })}
-          </div>
+          <ContactLinks className="mt-8" />
         </div>
       </section>
     </main>

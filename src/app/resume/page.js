@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { FaArrowLeft, FaEnvelope, FaFileAlt, FaGithub, FaLinkedin, FaPhoneAlt } from "react-icons/fa";
+import { FaArrowLeft } from "react-icons/fa";
+import ContactLinks from "@/app/components/ContactLinks";
 import { getCertifications, getEducation, getEmployers } from "@/lib/portfolio-data";
 
 export const metadata = {
@@ -12,14 +13,6 @@ export const metadata = {
     url: "/resume/",
   },
 };
-
-const contactLinks = [
-  { label: "Email", href: "mailto:rh25170@gmail.com", icon: FaEnvelope },
-  { label: "Phone", href: "tel:+13525800408", icon: FaPhoneAlt },
-  { label: "GitHub", href: "https://github.com/rh7112", icon: FaGithub },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/ryan-lee-hurd/", icon: FaLinkedin },
-  { label: "PDF version", href: "/documents/ryan-hurd-resume.pdf", icon: FaFileAlt },
-];
 
 export default async function ResumePage() {
   const [employers, education, certifications] = await Promise.all([
@@ -42,22 +35,7 @@ export default async function ResumePage() {
           <h1 className="text-4xl font-semibold text-stone-900 dark:text-white">Ryan Hurd</h1>
           <p className="mt-2 text-lg text-stone-600 dark:text-stone-300">Software Engineer</p>
 
-          <div className="no-print mt-6 flex flex-wrap gap-3">
-            {contactLinks.map((link) => {
-              const Icon = link.icon;
-              return (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target={link.href.startsWith("http") ? "_blank" : undefined}
-                  rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-                  className="inline-flex items-center gap-2 rounded-full border border-stone-900/10 bg-stone-100/70 px-4 py-2 text-sm font-medium text-stone-700 transition hover:border-orange-600 hover:text-stone-900 dark:border-white/10 dark:bg-stone-950/70 dark:text-stone-200 dark:hover:border-orange-400 dark:hover:text-white"
-                >
-                  <Icon /> {link.label}
-                </a>
-              );
-            })}
-          </div>
+          <ContactLinks size="sm" className="no-print mt-6" />
         </div>
 
         <section className="mt-8">
